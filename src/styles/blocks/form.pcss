@@ -25,7 +25,7 @@ flex-direction: column;
     font-size: 16px;
     font-weight: 600;
     color: #c4c8d0;
-    margin-left: 47px;  
+    margin-left: 47px;
   }
 
   &__input {
@@ -39,15 +39,19 @@ flex-direction: column;
     padding: 20px 0 20px 47px;
     outline: none;
     cursor: pointer;
-    
+
+    &::-webkit-input-placeholder {color: $grey;}
+    &:-moz-placeholder           {color: $grey;}
+    &:-ms-input-placeholder      {color: $grey;}
+
     &:hover {
       border-bottom: 1px solid #5500f2;
     }
-    
+
     &:last-child {
       margin-bottom: 60px;
     }
-  
+
   }
   &__img {
     width: 32px;
@@ -88,7 +92,6 @@ input {
   &::-webkit-input-placeholder {
     font-size: 18px;
     font-weight: 800px;
-    color: $grey;
   }
 }
 
