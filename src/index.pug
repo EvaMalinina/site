@@ -37,13 +37,13 @@ html(lang="en")
                 +image('content/14.jpg', 'about__pic')
               .about__shortinfo
                 .about__text 
-                  p Currently:
-                  p Age:
-                  p Date of Birth: 
+                  .text Currently:
+                  .text Age:
+                  .text Date of Birth: 
                 .about__text_b
-                  p Kyiv
-                  p 22
-                  p 18 Oct 1996
+                  .text Kyiv
+                  .text 22
+                  .text 18 Oct 1996
             .about__right
               .about__text.about__text_mb33 Hi, my name is
               .about__name Tetiana Dotsenko
@@ -118,26 +118,7 @@ html(lang="en")
                       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
                         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under") 
                         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -10s")
-              //-     ul.user-skills
-              //- - 
-              //-   var skills = [
-              //-     ['frontend', ['html', 'css', 'js']],
-              //-     ['workflow', ['git', 'gulp', 'webpack']],
-              //-   ]
-              //- each item in skills
-              //-   li.user-skills__item.skills-row
-              //-     h3.skills-row__title #{item[0]}
-              //-     ul.skills-row__list
-              //-       each skill in item[1]
-              //-         li.skills-row__item
-              //-           .skill
-              //-             svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-              //-               circle(
-              //-                 r="80" cx="100" cy="100"
-              //-               ).skill__circle.skill__circle--under
-              //-               //- circle().skill__circle.skill__circle--above
-              //-               linear-gradient()
-              //-             .skill__title #{skill}
+              
       section.fullscreen-section.works-section
         .container
           .works__title.title.title_fz36 My projects
@@ -147,9 +128,9 @@ html(lang="en")
                 +image('content/4.jpg', 'works__img')
               +projects('works', ["content/1", "content/2", "content/3", "content/4"])
               .works__slider-buttons
-                .works__button-up
+                button.works__button-up
                   +icon('arrow-down', 'arrow arrow_up')
-                .works__button-down
+                button.works__button-down
                   +icon('arrow-down', 'arrow arrow_down')
               .works__number
                 +image('content/4.png', 'works__img')
@@ -195,9 +176,9 @@ html(lang="en")
                       .reviews__person-name Kovalchuk Dmitry
                       .reviews__person-job Founder of LoftSchool 
                 .reviews__buttons 
-                  .reviews__button
+                  button.reviews__button
                     +icon('arrow-down', 'arrow arrow_left')
-                  .reviews__button
+                  button.reviews__button
                     +icon('arrow-down', 'arrow arrow_right')
           section.last-form
             .title.title_mb100 Contact me
