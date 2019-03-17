@@ -36,10 +36,10 @@ html(lang="en")
               .about__photo
                 +image('content/14.jpg', 'about__pic')
               .about__shortinfo
-                .about__text 
+                .about__text
                   p Currently:
                   p Age:
-                  p Date of Birth: 
+                  p Date of Birth:
                 .about__text_b
                   p Kyiv
                   p 22
@@ -49,7 +49,7 @@ html(lang="en")
               .about__name Tetiana Dotsenko
               .about__text.about__text_mb45 I develop modern websites and applications. I like to do interesting and modern projects.
               .about__text.about__text_note I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!
-            
+
           .triangles
             svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
               polygon(points="0,0 0,120 900,120")
@@ -61,65 +61,113 @@ html(lang="en")
           .skills__info
             .skills__bag
               +image('content/backpack.png', 'skills__bag-pic')
-            .skills__desc            
-              .skills__title.title How can I be useful to you               
-              .skills__text I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!               
+            .skills__desc
+              .skills__title.title How can I be useful to you
+              .skills__text I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!
               .skills__block
-                .skills__block-one
-                  .skills__type Front-end
-                  ul.skills__box
-                    li.skills__box-item
-                      .skills__name HTML5
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -40s")
-                        lineargradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
-                          stop(offset="0%" stop-color="#5500f2")
-                          stop(offset="100%" stop-color="#8900ef")
 
-                    li.skills__box-item
-                      .skills__name CSS3
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -40s")
-                    
-                    li.skills__box-item
-                      .skills__name JavaScript
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -60s")
-                    li.skills__box-item
-                      .skills__name jQuery and Vue.js
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -40s")
-                    
-                .skills__block-two
-                  .skills__type Workflow
-                  ul.skills__box
-                    li.skills__box-item
-                      .skills__name GIT
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -10s")
-                    li.skills__box-item
-                      .skills__name Terminal
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -60s")
-                    
-                    li.skills__box-item
-                      .skills__name Gulp
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -50s")
-                    li.skills__box-item
-                      .skills__name Webpack
-                      svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under") 
-                        circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -10s")
+                -
+                  var skills = [
+                    {
+                      type: 'frontend',
+                      items: [{
+                        lang: 'html',
+                        level: '90'
+                      },{
+                        lang: 'css',
+                        level: '100'
+                      },{
+                        lang: 'js',
+                        level: '30'
+                      }]
+                    },
+                    {
+                      type: 'wf',
+                      items: [{
+                        lang: 'git',
+                        level: '90'
+                      },{
+                        lang: 'terminal',
+                        level: '100'
+                      },{
+                        lang: 'gulp',
+                        level: '30'
+                      }]
+                    },
+                  ]
+
+                .skills__block-one
+                  each skill in skills
+                    .skills__type= skill.type
+                    ul.skills__box
+                      each item in skill.items
+                        li.skills__box-item
+                          .skills__name= item.lang
+                          svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                            circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                            circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style=`animation-delay: -${item.level}s`)
+                            lineargradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
+                              stop(offset="0%" stop-color="#5500f2")
+                              stop(offset="100%" stop-color="#8900ef")
+
+
+                //-   .skills__type Front-end
+                //-   ul.skills__box
+                //-     li.skills__box-item
+                //-       .skills__name HTML5
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -40s")
+                //-         lineargradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
+                //-           stop(offset="0%" stop-color="#5500f2")
+                //-           stop(offset="100%" stop-color="#8900ef")
+
+                //-     li.skills__box-item
+                //-       .skills__name CSS3
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -40s")
+
+                //-     li.skills__box-item
+                //-       .skills__name JavaScript
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -60s")
+                //-     li.skills__box-item
+                //-       .skills__name jQuery and Vue.js
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -40s")
+
+                //- .skills__block-two
+                //-   .skills__type Workflow
+                //-   ul.skills__box
+                //-     li.skills__box-item
+                //-       .skills__name GIT
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -10s")
+                //-     li.skills__box-item
+                //-       .skills__name Terminal
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -60s")
+
+                //-     li.skills__box-item
+                //-       .skills__name Gulp
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -50s")
+                //-     li.skills__box-item
+                //-       .skills__name Webpack
+                //-       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" )
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+                //-         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -10s")
+
+
+
               //-     ul.user-skills
-              //- - 
+              //- -
               //-   var skills = [
               //-     ['frontend', ['html', 'css', 'js']],
               //-     ['workflow', ['git', 'gulp', 'webpack']],
@@ -182,7 +230,7 @@ html(lang="en")
                       +image('content/dmitryi-kovalchuk.jpg', 'reviews__img')
                     .reviews__person-info
                       .reviews__person-name Kovalchuk Dmitry
-                      .reviews__person-job Founder of LoftSchool 
+                      .reviews__person-job Founder of LoftSchool
                 li.reviews__slider-item
                   .reviews__quote
                     .reviews__quote-icon
@@ -193,8 +241,8 @@ html(lang="en")
                       +image('content/vladimir-sabantsev.jpg', 'reviews__img')
                     .reviews__person-info
                       .reviews__person-name Kovalchuk Dmitry
-                      .reviews__person-job Founder of LoftSchool 
-                .reviews__buttons 
+                      .reviews__person-job Founder of LoftSchool
+                .reviews__buttons
                   .reviews__button
                     +icon('arrow-down', 'arrow arrow_left')
                   .reviews__button
@@ -221,15 +269,15 @@ html(lang="en")
                   .form__img
                     +icon('message', 'form__icon')
               input.form__button(id="send" type="submit" value='Send')
-          
+
       footer.footer
         .container.footer__container
           .footer__left
             .footer__copyright
-              .copyright © 2019 
+              .copyright © 2019
             .footer__info
-              .footer__autor 
-                .autor__name Tetiana 
+              .footer__autor
+                .autor__name Tetiana
                   br
                   | Dotsenko
               .footer__text Web-developer
@@ -241,13 +289,13 @@ html(lang="en")
             .footer__blocks
               .footer__blocks-left
                 .footer__text I made this site as part of my studies
-                  
+
                   |  at the LoftSchool School of Online Education.
                 .footer__socials
                   +socials('socials_rounded socials', ["insta", "vk", "github"])
               .footer__blocks-right
-                .footer__text Always write the code as if 
+                .footer__text Always write the code as if
                   |  it would be accompanied by a violent psychopath who knows where you live.
                 .footer__autor-quote Martin Golding
 
-        
+
