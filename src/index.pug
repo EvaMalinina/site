@@ -34,14 +34,14 @@ html(lang="en")
           .container.container_about
             .about__left
               .about__photo
-                +image('content/user.jpg', 'about__pic')
+                +image('content/14.jpg', 'about__pic')
               .about__shortinfo
                 .about__text 
                   p Currently:
                   p Age:
                   p Date of Birth: 
                 .about__text_b
-                  p Bangkok
+                  p Kyiv
                   p 22
                   p 18 Oct 1996
             .about__right
@@ -62,7 +62,7 @@ html(lang="en")
             .skills__bag
               +image('content/backpack.png', 'skills__bag-pic')
             .skills__desc            
-              .skills__title How can I be useful to you               
+              .skills__title.title How can I be useful to you               
               .skills__text I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!               
               .skills__block
                 .skills__block-one
@@ -118,50 +118,51 @@ html(lang="en")
                       svg(class="percentage", viewbox="0 0 150 150", preserveAspectRatio="none" ) 
                         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under") 
                         circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style="animation-delay: -10s")
-                    //-defs
-                    //-lineargradient#lgrad(x1='0%', y1='0%', x2='0%', y2='0%')
-                    //-stop(offset='0%', style='stop-color:rgb(142,0,239);stop-opacity:1')
-                    //-stop(offset='100%', style='stop-color:rgb(85,0,242);stop-opacity:1')
-
-      section.fullscreen-section.works
+              //-     ul.user-skills
+              //- - 
+              //-   var skills = [
+              //-     ['frontend', ['html', 'css', 'js']],
+              //-     ['workflow', ['git', 'gulp', 'webpack']],
+              //-   ]
+              //- each item in skills
+              //-   li.user-skills__item.skills-row
+              //-     h3.skills-row__title #{item[0]}
+              //-     ul.skills-row__list
+              //-       each skill in item[1]
+              //-         li.skills-row__item
+              //-           .skill
+              //-             svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
+              //-               circle(
+              //-                 r="80" cx="100" cy="100"
+              //-               ).skill__circle.skill__circle--under
+              //-               //- circle().skill__circle.skill__circle--above
+              //-               linear-gradient()
+              //-             .skill__title #{skill}
+      section.fullscreen-section.works-section
         .container
-          .works__title My projects
+          .works__title.title.title_fz36 My projects
           .works__block
             .works__pics
               .works__mainpic
                 +image('content/4.jpg', 'works__img')
-              .works__slider
-                .works__slider-one
-                  +image('content/1.jpg', 'works__img')
-                .works__slider-two
-                  +image('content/2.jpg', 'works__img')
-                .works__slider-three
-                  +image('content/3.jpg', 'works__img')
-                .works__slider-four
-                  +image('content/4.jpg', 'works__img')
-                .works__slider-buttons
-                  .works__button-up
-                    +icon('arrow-down', 'arrow arrow_up')
-                  .works__button-down
-                    +icon('arrow-down', 'arrow arrow_down')
+              +projects('works', ["content/1", "content/2", "content/3", "content/4"])
+              .works__slider-buttons
+                .works__button-up
+                  +icon('arrow-down', 'arrow arrow_up')
+                .works__button-down
+                  +icon('arrow-down', 'arrow arrow_down')
               .works__number
                 +image('content/4.png', 'works__img')
             .works__desc
-              .works__skills
-                .works__skill-box
-                  .works__skill HTML
-                .works__skill-box
-                  .works__skill CSS
-                .works__skill-box
-                  .works__skill JavaScript
-              .works__title School website
+              +skill-name('works-skills', ['HTML','CSS','JavaScript'])
+              .works__title.title School website
               .works__text This girl was not learning web development somewhere, but at LoftSchool! 2 months only the most difficult trials and sleepless nights!
               a.works__link(href="#")
                 .works__link-icon
                   +icon('link', 'works__link')
                 .works__link-text Go to website
-      section.wrapper-last
-        .triangles__last
+      .wrapper-last
+        .triangles.triangles_last
           svg(preserveAspectRatio="none" viewBox="0 0 900 100" class="triangle triangle_last")
             polygon(points="0,0 900,0 900,100" fill="#ffffff")
           svg(preserveAspectRatio="none" viewBox="0 0 900 100" class="triangle triangle_last")
@@ -169,7 +170,7 @@ html(lang="en")
         .container
           section.last-review
             .reviews
-              .title.title__mb100 What people tell
+              .title.title_mb100.title_fz36 What people tell
               ul.reviews__slider
                 li.reviews__slider-item
                   .reviews__quote
@@ -199,7 +200,7 @@ html(lang="en")
                   .reviews__button
                     +icon('arrow-down', 'arrow arrow_right')
           section.last-form
-            .title.title__mb100 Contact me
+            .title.title_mb100 Contact me
             form.order-form(action="")
               .form__row
                 label.form__block
@@ -236,21 +237,17 @@ html(lang="en")
                 | personal website
           .footer__right
             .footer__nav
-              +nav('nav', ["Home", "About me", "Skills", "Experience", "Reviews", "Contact"], 0)
+              +nav('nav-footer', ["Home", "About me", "Skills", "Experience", "Reviews", "Contact"], 0)
             .footer__blocks
               .footer__blocks-left
                 .footer__text I made this site as part of my studies
                   
                   |  at the LoftSchool School of Online Education.
                 .footer__socials
-                  +icon('insta', 'socials socials_insta')
-                  +icon('vk', 'socials socials_vk')
-                  +icon('github', 'socials socials_github')
+                  +socials('socials_rounded socials', ["insta", "vk", "github"])
               .footer__blocks-right
                 .footer__text Always write the code as if 
                   |  it would be accompanied by a violent psychopath who knows where you live.
                 .footer__autor-quote Martin Golding
 
-        //- +image('content/user.jpg', 'user-pic')
-        //- +icon('link', 'link-class')
-        //- .icon-bg
+        

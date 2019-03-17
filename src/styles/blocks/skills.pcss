@@ -19,11 +19,10 @@
   }
 
   &__desc {
-    width: 885px;
+    /* width: 885px; */
+    width: 60%;
   }
   &__title {
-    font-weight: 700;
-    font-size: 30px;
     margin-bottom: 65px;
   }
   &__text {
@@ -32,6 +31,10 @@
     line-height: 30px;
     margin-bottom: 90px;
     color: #a0a5b1;
+  }
+
+  &__block {
+    margin-left: 145px;
   }
   &__block-one {
     margin-bottom: 45px;
@@ -43,12 +46,13 @@
     color: $grey;
   }
   &__box {
-    width: 770px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 760px;
   }
   &__box-item {
     position: relative;
+    margin-right: 20px;
   }
   &__name {
     display: block;

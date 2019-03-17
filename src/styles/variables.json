@@ -1,4 +1,9 @@
 {
+  "grey": "#414c63",
+  "lightgrey": "#b6bfce",
+  "black": "#000000",
+  "white": "#ffffff",
+  "footer-text": "#5b5c60",
   "text-color": "#414c63",
   "links-color": "#4b6fd7",
   "bp-desktop-hd": "1800px",

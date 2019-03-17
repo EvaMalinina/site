@@ -23,3 +23,26 @@
     text-decoration: none;
   }  
 }
+.nav-footer {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+  &__item{
+    font-size: 16px;
+    font-weight: 300;
+    color: $white;
+    margin-right: 60px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    
+    &_active {
+      color: $lightgrey;
+    }
+  }
+  &__link {
+    text-decoration: none;
+  }  
+}
