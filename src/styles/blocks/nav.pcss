@@ -1,0 +1,25 @@
+.nav {
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item{
+    font-size: 16px;
+    font-weight: 300;
+    color: $grey;
+    margin-right: 60px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    
+    &_active {
+      color: $lightgrey;
+    }
+  }
+  &__link {
+    text-decoration: none;
+  }  
+}

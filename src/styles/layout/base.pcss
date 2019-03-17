@@ -1,3 +1,7 @@
+$grey: #414c63;
+$lightgrey: #b6bfce;
+$black: #000000;
+
 html {
   @include desktop {
     font-size: 15px;
@@ -31,6 +35,10 @@ body {
   max-width: 1480px;
   width: 95%;
   // width: 1490px;
+  &_about {
+    width: 980px;
+    display: flex;
+  }
 
   @include phones {
     width: 85%;
@@ -87,3 +95,4 @@ img {
   max-width: 100%;
   max-height: 100%;
 }
+

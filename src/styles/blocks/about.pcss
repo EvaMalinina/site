@@ -1,0 +1,81 @@
+/*.icon-bg {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  background: svg-load('github.svg', fill=$text-color, width=100%, height=100%);
+  &:hover {
+    background: svg-load('github.svg', fill=#55ddcc, width=100%, height=100%);
+  }
+}*/
+.about {
+  height: 700px;
+  margin-top: 52px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  
+  &__left {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+  &__photo {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 75px;
+    align-self: center;
+
+    -webkit-box-shadow: -2px 97px 149px -28px rgba(0,0,0,0.71);
+    -moz-box-shadow: -2px 97px 149px -28px rgba(0,0,0,0.71);
+    box-shadow: -2px 97px 149px -28px rgba(0,0,0,0.71);
+     filter: contrast(150%);
+    -webkit-filter: contrast(150%);
+    -moz-filter: contrast(150%);
+    -o-filter: contrast(150%);
+    -ms-filter: contrast(150%);
+  }
+  &__pic {
+    height: 100%;
+    width: 100%;
+  }
+  &__shortinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  &__text {
+    color: #c3c5d0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 30px;
+
+    &_b {
+      color: $grey;
+      margin-left: 80px;
+      font-weight: 800;
+    }
+    &_mb33 {
+      margin-bottom: 33px;
+    }
+    &_mb45 {
+      margin-bottom: 45px;
+    }
+    &_note {
+    font-style: italic;
+    }
+  }
+  &__right {
+    width: 530px;
+  }
+  &__name {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 48px;
+    color: $grey;
+    margin-bottom: 48px;
+  } 
+}
+
