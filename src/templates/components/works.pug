@@ -1,0 +1,11 @@
+.works__pics
+  .works__mainpic
+    +image('content/4.jpg', 'works__img')
+  +projects('works', ["content/1", "content/2", "content/3", "content/4"])
+  .works__slider-buttons
+    button.works__button-up
+      +icon('arrow-down', 'arrow arrow_up')
+    button.works__button-down
+      +icon('arrow-down', 'arrow arrow_down')
+  .works__number
+    +image('content/4.png', 'works__img')
