@@ -26,8 +26,9 @@ mixin projects(className, items)
     ul(class=`${className}__list`)
       each item in items
         li(class=`${className}__item`)
-          button(class=`${className}__link` href='#')
+          button(class=`${className}__btn` href='#')
             +image(`${item}.jpg`, 'works__img')
+            .works__overlay
 
 mixin skill-name(className, items)
   skill-name(class=`${className}`)
