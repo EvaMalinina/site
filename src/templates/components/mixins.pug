@@ -32,13 +32,7 @@ mixin projects(className, items)
 
 mixin skill-name(className, items)
   skill-name(class=`${className}`)
-    ul(class=`${className}`)
+    ul(class=`${className}__list`)
       each item in items
         li(class=`${className}__item`)
           div(class=`${className}__name`)=item
-
-//- mixin placeholder($selector, $color) {
-//-   #{$selector}::-webkit-input-placeholder {color: $color}
-//-   #{$selector}::-moz-placeholder          {color: $color}
-//-   #{$selector}::-ms-input-placeholder      {color: $color}
-//- }

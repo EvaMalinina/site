@@ -2,6 +2,10 @@
   display: flex;
   align-items: center;
 
+  @include tablets {
+    justify-content: flex-end;
+  }
+
   &__list {
     flex-direction: row;
     display: flex;
@@ -44,8 +48,8 @@
 }
 
 .socials__link {
-  width: 25px;
-  height: 31px;
+  width: 31px;
+  height: 25px;
   display: block;
 }
 

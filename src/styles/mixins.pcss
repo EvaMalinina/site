@@ -19,12 +19,12 @@
 @mixin phones() {
   @media screen and (max-width: $bp-phones) {
     @content;
-  }
+  } 
 }
 
-@mixin placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}
+@mixin placeholder () {
+  &::-webkit-input-placeholder {@content;}
+  &:-moz-placeholder           {@content;}
+  &::-moz-placeholder          {@content;}
+  &:-ms-input-placeholder      {@content;}
 }

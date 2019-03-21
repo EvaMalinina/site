@@ -31,13 +31,14 @@ body {
   max-width: 1480px;
   width: 95%;
   // width: 1490px;
-  &_about {
-    width: 980px;
-    display: flex;
+  @include desktop {
+    max-width: 1080px;
   }
-
+  @include tablets {
+    max-width: 690px;
+  }
   @include phones {
-    width: 85%;
+    width: 82%;
   }
 }
 

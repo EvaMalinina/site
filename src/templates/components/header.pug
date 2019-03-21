@@ -1,7 +1,12 @@
 header.header
-  .logo TD
+  .header__logo
+    a.logo(href="index.html") TD
   .header__menu
     +nav('nav', ["Home", "About me", "Skills", "Experience", "Reviews", "Contact"], 0)
+    ul.humburger(id='humburger')
+      li.humburger__item
+      li.humburger__item
+      li.humburger__item
   .header__socials
     +socials('socials', ["insta", "vk", "github"])
     

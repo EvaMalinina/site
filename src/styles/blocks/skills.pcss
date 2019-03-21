@@ -8,10 +8,15 @@
     align-items: flex-end;
   }
   &__bag {
-  /* width: 425px; */
-  height: 625px;
+  height: 645px;
   display: flex;
   align-items: flex-end;
+  margin-right: 80px;
+
+  @include desktop {
+    margin-left: -220px;
+    margin-right: 0px;
+    }
   }
   &__bag-pic {
     width: 100%;
@@ -21,6 +26,10 @@
   &__desc {
     /* width: 885px; */
     width: 60%;
+
+    @include desktop {
+      width: 75%;
+    }
   }
   &__title {
     margin-bottom: 65px;
@@ -35,6 +44,10 @@
 
   &__block {
     margin-left: 145px;
+
+    @include desktop {
+      margin-left: 90px;
+    }
   }
   &__block-one {
     margin-bottom: 45px;
@@ -49,6 +62,11 @@
     display: flex;
     flex-wrap: wrap;
     width: 760px;
+    margin-bottom: 45px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
   }
   &__box-item {
     position: relative;

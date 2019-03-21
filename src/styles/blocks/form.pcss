@@ -1,5 +1,9 @@
 .last-form {
   padding-bottom: 135px;
+
+  @include desktop {
+    padding-bottom: 165px;
+  }
 }
 .order-form {
 width: 865px;
@@ -40,9 +44,11 @@ flex-direction: column;
     outline: none;
     cursor: auto;
 
-    &::-webkit-input-placeholder {color: $grey;}
-    &:-moz-placeholder           {color: $grey;}
-    &:-ms-input-placeholder      {color: $grey;}
+    /* @include placeholder {
+      color: $grey;
+      font-size: 18px;
+      font-weight: 800px
+    } */
 
     &:hover {
       border-bottom: 1px solid #5500f2;
@@ -84,13 +90,6 @@ flex-direction: column;
     cursor: pointer;
   }
 }
-
-input {
-  &::-webkit-input-placeholder {
-    font-size: 18px;
-    font-weight: 800px;
-  }
-}
 .form__block {
   &:hover {
     .form__icon {
@@ -98,4 +97,5 @@ input {
     }
   }
 }
+
 

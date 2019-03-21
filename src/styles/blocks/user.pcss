@@ -3,12 +3,38 @@
   flex-direction: column;
   align-items: center;
 
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__desc {
-    color: $lightgrey;
+    color: #a9b1ba;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 600;
     margin-bottom: 45px;
     line-height: 30px;
+
+    @include desktop {
+      margin-bottom: 0;
+      margin-right: 65px;
+      text-align: right;
+    }
+    @include tablets {
+      margin-bottom: 45px;
+      margin-right: 0px;
+      text-align: center;
+      font-size: 16px;
+    }
+    @include phones {
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
   &__name {
     text-align: center;
@@ -16,5 +42,17 @@
     font-size: 72px;
     font-weight: 800;
     line-height: 60px;
+
+    @include desktop {
+      text-align: left;
+    }
+    @include tablets {
+      text-align: center;
+      font-size: 48px;
+      line-height: 48px;
+    }
+    @include phones {
+      font-size: 36px;
+    }
   }
 }

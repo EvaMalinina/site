@@ -8,11 +8,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .hero__scroll {
   display: flex;
   justify-content: center;
   margin-bottom: 90px;
+
+  @include tablets {
+    display: none;
+  }
 }
 .scroll {
   display: flex;
