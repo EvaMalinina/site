@@ -1,11 +1,26 @@
+
 .skills {
   display: flex;
   background: white;
 
   &__info {
-    margin-top: 150px;
+    padding-top: 150px;
     display: flex;
     align-items: flex-end;
+
+    @include desktop {
+      padding-top: 174px;
+    }
+    @include tablets {
+      padding-top: 120px;
+      flex-direction: column;
+      flex-flow: column-reverse;
+      justify-content: center;
+      align-items: center;
+    }
+    @include phones {
+      padding-top: 95px;
+    }
   }
   &__bag {
   height: 645px;
@@ -14,8 +29,13 @@
   margin-right: 80px;
 
   @include desktop {
-    margin-left: -220px;
-    margin-right: 0px;
+      margin-left: -220px;
+      margin-right: 0px;
+    }
+  @include tablets {
+      margin-left: 0px;
+      height: 285px;
+      width: 216px;
     }
   }
   &__bag-pic {
@@ -30,9 +50,31 @@
     @include desktop {
       width: 75%;
     }
+    @include tablets {
+      margin-bottom: 110px;
+      text-align: center;
+      width: 100%;
+    }
+    @include phones {
+      width: inherit;
+    }
   }
   &__title {
     margin-bottom: 65px;
+
+    @include tablets {
+      margin-bottom: 30px;
+      width: 265px;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    @include phones {
+      font-size: 24px;
+      line-height: 36px;
+      margin-left: 0%;
+      transform: translate(0%);
+      text-align: left;
+    }
   }
   &__text {
     font-size: 16px;
@@ -40,6 +82,22 @@
     line-height: 30px;
     margin-bottom: 90px;
     color: #a0a5b1;
+
+    @include tablets {
+      width: 452px;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    @include phones {
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 600;
+      width: inherit;
+      margin-left: 0;
+      transform: translate(0%);
+      text-align: left;
+      margin-bottom: 60px;
+    }
   }
 
   &__block {
@@ -48,6 +106,10 @@
     @include desktop {
       margin-left: 90px;
     }
+    @include tablets {
+      margin-left: 0;
+    }
+    
   }
   &__block-one {
     margin-bottom: 45px;
@@ -56,21 +118,54 @@
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 40px;
+    line-height: 48px;
     color: $grey;
+
+    @include tablets {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
   }
   &__box {
     display: flex;
     flex-wrap: wrap;
-    width: 760px;
+    width: 770px;
     margin-bottom: 45px;
 
     &:last-child {
       margin-bottom: 0px;
     }
+    @include tablets {
+      width: 600px;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    @include phones {
+      width: 280px;
+      margin-left: 0%;
+      transform: translate(0%);
+    }
+
   }
   &__box-item {
     position: relative;
-    margin-right: 20px;
+    margin-right: 35px;
+
+    @include desktop {
+      margin-right: 30px;
+    }
+    @include tablets {
+      margin-right: 12px;
+    }
+    @include phones {
+      margin-right: 3px;
+      &::nth-child(2) {
+        margin-right: 0px;
+      }
+    }
+    &::last-child {
+      margin-right: 0px;
+    }
   }
   &__name {
     display: block;
@@ -88,10 +183,14 @@
 .percentage {
   display: inline-block;
   align-items: center;
-  width: 170px;
-  height: 170px;
+  width: 157px;
+  height: 157px;
   transform: rotate(-180deg)
   
+  /* @include tablets {
+    width: 134px;
+    height: 134px;
+  } */
 }
 .percentage__circle {
   fill: transparent;

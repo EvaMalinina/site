@@ -21,7 +21,9 @@
 }
 .triangle{
   height: 120px;
-  width: 50%;
+  width: 50%; 
+  stroke: white;
+  stroke-width: 3px;
 
   @include desktop {
     height: 80px;
@@ -36,7 +38,13 @@
     height: 100px;
 
     @include desktop {
-    height: 65px;
+      height: 65px;
+    }
+    @include tablets{
+      height: 40px;
+    }
+    @include phones {
+      height: 20px;
     }
   }
 }

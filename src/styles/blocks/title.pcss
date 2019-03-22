@@ -6,8 +6,30 @@
 
   &_fz36 {
     font-size: 36px;
+    
+    @include tablets {
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+    @include phones {
+      font-size: 24px;
+      text-align: center;
+    }
   }
   &_mb100{
     margin-bottom: 100px;
+
+    @include tablets {
+      margin-bottom: 75px;
+    }
+    @include phones {
+      margin-bottom: 30px;
+    }
+    &_mn60 {
+      @include tablets {
+      margin-bottom: 60px;
+      }
+    }
   }
+
 }

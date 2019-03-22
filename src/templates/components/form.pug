@@ -1,4 +1,4 @@
-.title.title_mb100 Contact me
+.title.title_mb100.titile_mb60 Contact me
 form.order-form(action="")
   .form__row
     label.form__block
@@ -15,7 +15,7 @@ form.order-form(action="")
   .form__row
     label.form__block
       .form__block-title Message to letter
-      input.form__input(type='text', cols="10", wrap="hard", placeholder='I need a website.\n Would like to ask terms and price.')
+      textarea.form__textarea(name="text", cols="10", rows="2", placeholder='I need a website.\nWould like to ask terms and price.' )
       .form__img
         +icon('message', 'form__icon')
   input.form__button(id="send" type="submit" value='Send')

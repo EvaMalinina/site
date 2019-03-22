@@ -2,6 +2,18 @@
 .last-review {
   margin-bottom: 200px;
   padding-top: 265px;
+
+  @include desktop {
+    padding-top: 190px;
+  }
+  @include tablets {
+    padding-top: 185px;
+    margin-bottom: 110px;
+  }
+  @include phones {
+    padding-top: 110px;
+    margin-bottom: 150px;
+  }
 }
 .reviews {
 
@@ -9,19 +21,56 @@
     display: flex;
     width: 956px;
     position: relative;
+
+    @include tablets {
+      width: 688px;
+    }
+    @include phones {
+      width: 260px;
+      padding-top: 80px;
+    }
   }
   &__slider-item {
     width: 455px;
     margin: 0 25px 0 25px;
+
+    @include tablets {
+      width: 273px;
+      margin-right: 80px;
+    }
+    &:first-child {
+      margin-left: 0;
+
+      @include tablets {
+      margin-left: 35px;
+      }
+    }
+    &:last-child {
+      @include tablets {
+        margin-right: 0px;;
+      } 
+    @include phones {
+        width: initial;
+        margin: 0;
+      } 
+    }
   }
   &__quote {
     display: flex;
     margin-bottom: 60px;
+    
+    @include tablets {
+      margin-bottom: 28px;
+    }
   }
   &__quote-icon {
     width: 65px;
     height: 75px;
     margin-right: 30px;
+
+    @include tablets {
+      display: none;
+    }
   }
   &__qicon {
     width: 100%;
@@ -33,10 +82,20 @@
     color: #97a1ac;
     font-size: 16px;
     line-height: 30px;
+    font-weight: 600;
+
+    @include tablets {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
   &__person {
     margin-left: 105px; 
     display: flex;
+
+    @include tablets {
+      margin-left: 0px;
+    }
   }
   &__person-pic {
     width: 75px;
@@ -55,11 +114,21 @@
    font-size: 18px;
    font-weight: 700;
    color: $grey; 
+
+   @include tablets {
+     font-size: 16px;
+     line-height: 48px;
+   }
   }
   &__person-job {
     color: #bec5c9;
     font-weight: 600;
     font-size: 16px;
+
+    @include tablets {
+     font-size: 14px;
+     line-height: 30px;
+   }
   }
   &__buttons {
     width: 130px;
@@ -69,6 +138,15 @@
     position: absolute;
     top: -140px;
     left: 475px;
+
+    @include tablets {
+     left: 355px;
+     top: -120px;
+   }
+    @include phones {
+     left: 85px;
+     top: 0px;
+    }
   }
   &__button {
     height: 50px;
