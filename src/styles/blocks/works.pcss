@@ -2,6 +2,7 @@
   background: white;
   padding-top: 150px;
   min-height: 1010px;
+
   @include desktop {
     min-height: 700px;
     padding-top: 100px;
@@ -36,39 +37,45 @@
     }
   }
   &__pics {
-    width: 1133px;
+    /* width: 1133px; */
+    width: 77%;
     height: 600px;
     position: relative;
 
     @include desktop {
-      width: 735px;
+      /* width: 735px; */
+      width: 68%;
       height: 405px;
     }
     @include tablets {
+      width: 100%;
       margin-bottom: 55px;
     }
     @include phones {
       height: 186px;
-      margin-left: -10%;
-      width: 320px;
+      width: 330px;
     }
   }
   &__mainpic {
     position: absolute;
     left: 0;
     top: 0;
-    width: 977px;
+    /* width: 977px; */
+    width: 87%;
     height: 555px;
 
     @include desktop {
-      width: 623px;
+      /* width: 623px; */
+      width: 85%;
       height: 357px;
     }
     @include phones {
       /* width: 320px; */
+      width: 111%;
       height: 186px;
       right: 0;
-    }
+      left: -16%;
+    } 
   }
   &__btn {
     position: relative;
@@ -89,22 +96,26 @@
     background-color: #5500f2;
   }
   &__list {
-    top: 150px;
-    left: 797px;
+    bottom: 50px;
+    /* left: 797px; */
+    left: 71%;
     position: absolute;
     height: 405px;
-    width: 180px;
+    /* width: 180px; */
+    width: 16%;
     display: flex;
     flex-direction: column;
     align-content: flex-end;
 
-    @include desktop {
+     @include desktop {
       top: 53px;
-      left: 445px;
-      width: 178px;
+      /* left: 445px; */
+      left: 60%;
+      /* width: 178px; */
+      width: 25%;
       height: 304px;
       overflow: hidden;
-    }
+    } 
     @include phones {
       display: none;
     }
@@ -124,21 +135,29 @@
     flex-direction: row;
     justify-content: flex-end;
     position: absolute;
-    top: 550px;
-    left: 877px;
+    top: 554px;
+    /* left: 877px; */
+    left: 78%;
+    width: 9%;
+    
 
     @include desktop {
       top: 356px;
-      left: 523px;
+      /* left: 523px; */
+      left: 71%;
+      width: 14%;
     }
     @include phones {
-      left: 270px;
+      left: 60%;
+      /* left: 84.3%; */
+      width: 35%;
       top: 135px;
     }
   }
   &__button-up, &__button-down {
     background-color: #2d3c4e;
-    width: 50px;
+    /* width: 50px; */
+    width: 50%;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -160,19 +179,21 @@
       top: 7px;
     }
     @include tablets {
-      right: -40px;
+      /* right: -40px; */
+      right: -14.2%;
     }
     @include phones {
       display: none;
     }
   }
   &__desc {
-    width: 350px;
+    /* width: 350px; */
+    width: 24%;
     height: auto;
 
     @include tablets {
       align-self: center;
-      width: 452px;
+      width: 66%;
       text-align: center;
     }
     @include phones {

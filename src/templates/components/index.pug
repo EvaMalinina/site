@@ -12,6 +12,22 @@ html(lang="en")
     .wrapper
       .maincontent
       .wrapper-welcome
+        .wrapper-welcome__layer(data-speed = '0.1')
+          +image('content/Sky1.jpg', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.13')
+          +image('content/Mountain2.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.17')
+          +image('content/Baloon3.png', 'wrapper-welcome__pic wrapper-welcome__pic_baloon')
+        .wrapper-welcome__layer(data-speed = '0.23')
+          +image('content/Cloud4.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.25')
+          +image('content/Man5.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.29')
+          +image('content/Mountain16.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.31')
+          +image('content/White7.png', 'wrapper-welcome__pic')
+
+
         section.fullscreen-section.hero
           .container.hero__container
             include ./header.pug
@@ -48,11 +64,11 @@ html(lang="en")
               .about__text.about__text_mb105 I develop modern websites and applications. I like to do interesting and modern projects.
               .about__text.about__text_note I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!
 
-          .triangles
-            svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
-              polygon(points="0,0 0,120 900,120")
-            svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
-              polygon(points="0,120 900,120 900,0")
+        .triangles
+          svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
+            polygon(points="0,0 0,120 900,120")
+          svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
+            polygon(points="0,120 900,120 900,0")
 
       section.skills
         .container

@@ -26,17 +26,24 @@
   height: 645px;
   display: flex;
   align-items: flex-end;
-  margin-right: 80px;
+  /* margin-right: 80px; */
+  margin-right: 3.5%;
 
   @include desktop {
-      margin-left: -220px;
+      /* margin-left: -220px; */
+      margin-left: -19%;
       margin-right: 0px;
     }
   @include tablets {
       margin-left: 0px;
       height: 285px;
-      width: 216px;
+      /* width: 216px; */
+      width: 29%;
     }
+  @include phones {
+    height: 250px;
+    width: 70%;
+  }
   }
   &__bag-pic {
     width: 100%;
@@ -64,11 +71,13 @@
 
     @include tablets {
       margin-bottom: 30px;
-      width: 265px;
+      /* width: 265px; */
+      width: 34.5%;
       margin-left: 50%;
       transform: translate(-50%);
     }
     @include phones {
+      width: 100%;
       font-size: 24px;
       line-height: 36px;
       margin-left: 0%;
@@ -84,7 +93,8 @@
     color: #a0a5b1;
 
     @include tablets {
-      width: 452px;
+      /* width: 452px; */
+      width: 59%;
       margin-left: 50%;
       transform: translate(-50%);
     }
@@ -101,13 +111,22 @@
   }
 
   &__block {
-    margin-left: 145px;
+    /* margin-left: 145px; */
+    margin-left: 6%;
+    /* min-width: 770px; */
+    width: 100%;
 
     @include desktop {
-      margin-left: 90px;
+      /* margin-left: 90px;
+      min-width: 705px; */
     }
     @include tablets {
       margin-left: 0;
+      width: 100%;
+    }
+    @include phones {
+      /* margin-left: -10px; */
+      margin-left: -3.2%;
     }
     
   }
@@ -129,19 +148,19 @@
   &__box {
     display: flex;
     flex-wrap: wrap;
-    width: 770px;
+    justify-content: space-around;
+    width: 100%;
     margin-bottom: 45px;
 
     &:last-child {
       margin-bottom: 0px;
     }
     @include tablets {
-      width: 600px;
       margin-left: 50%;
       transform: translate(-50%);
     }
     @include phones {
-      width: 280px;
+      width: 108%;
       margin-left: 0%;
       transform: translate(0%);
     }
@@ -150,20 +169,23 @@
   &__box-item {
     position: relative;
     margin-right: 35px;
+    width: 20%;
 
     @include desktop {
       margin-right: 30px;
     }
     @include tablets {
       margin-right: 12px;
+      width: 23%;
     }
     @include phones {
       margin-right: 3px;
-      &::nth-child(2) {
+      width: 49%;
+      &:nth-child(2) {
         margin-right: 0px;
       }
     }
-    &::last-child {
+    &:last-child {
       margin-right: 0px;
     }
   }
@@ -183,14 +205,10 @@
 .percentage {
   display: inline-block;
   align-items: center;
-  width: 157px;
-  height: 157px;
+  width: 100%;
+  /* width: 157px;
+  height: 157px; */
   transform: rotate(-180deg)
-  
-  /* @include tablets {
-    width: 134px;
-    height: 134px;
-  } */
 }
 .percentage__circle {
   fill: transparent;

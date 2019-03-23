@@ -43,11 +43,16 @@
     color: $white;
     margin-right: 60px;
 
+    @include desktop {
+      margin-right: 7%;
+    }
+
     @include tablets {
       font-size: 14px;
+      margin-right: 13%;
     }
     @include phones {
-      margin-right: 83px;
+      margin-right: 30%;
     }
 
     &:last-child {
