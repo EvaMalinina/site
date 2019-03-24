@@ -27,15 +27,33 @@
   }  
 }
 .nav-footer {
+
   &__list {
     display: flex;
     align-items: center;
+
+    @include tablets {
+    flex-wrap: wrap;
+    line-height: 30px;
+    }
   }
   &__item{
     font-size: 16px;
     font-weight: 300;
     color: $white;
     margin-right: 60px;
+
+    @include desktop {
+      margin-right: 7%;
+    }
+
+    @include tablets {
+      font-size: 14px;
+      margin-right: 13%;
+    }
+    @include phones {
+      margin-right: 30%;
+    }
 
     &:last-child {
       margin-right: 0;

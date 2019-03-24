@@ -114,7 +114,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "src/templates/components/index.pug",
+        template: "src/templates/index.pug",
         chunks: ["main"]
       }),
       new HtmlWebpackPlugin({

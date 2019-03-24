@@ -1,49 +1,85 @@
-.skills__block
-  -
-    var skills = [
-      {
-        type: 'Frontend',
-        items: [{
-          lang: 'HTML5',
-          level: '90'
-        },{
-          lang: 'CSS3',
-          level: '90'
-        },{
-          lang: 'JS',
-          level: '30'
-        },{
-          lang: 'jQuery & Vue.js',
-          level: '50'
-        }]
-      },
-      {
-        type: 'Workflow',
-        items: [{
-          lang: 'GIT',
-          level: '90'
-        },{
-          lang: 'Terminal',
-          level: '100'
-        },{
-          lang: 'Gulp',
-          level: '30'
-        },{
-          lang: 'Webpack',
-          level: '40'
-        }]
-      },
-    ]
-  .skills__block-one
-    each skill in skills
-      .skills__type= skill.type
-      ul.skills__box
-        each item in skill.items
-          li.skills__box-item
-            .skills__name= item.lang
-            svg(class="percentage", viewbox="0 0 140 140", preserveAspectRatio="none" )
-              circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
-              circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style=`animation-delay: -${item.level}s`)
-              lineargradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
-                stop(offset="0%" stop-color="#5500f2")
-                stop(offset="100%" stop-color="#8900ef")
+//- script(type="text/x-template")#skills-unit
+//-   .skills__block
+//-     -
+//-       var skills = [
+//-         {
+//-           type: 'Frontend',
+//-           items: [{
+//-             lang: 'HTML5',
+//-             level: '90'
+//-           },{
+//-             lang: 'CSS3',
+//-             level: '90'
+//-           },{
+//-             lang: 'JS',
+//-             level: '30'
+//-           },{
+//-             lang: 'jQuery & Vue.js',
+//-             level: '50'
+//-           }]
+//-         },
+//-         {
+//-           type: 'Workflow',
+//-           items: [{
+//-             lang: 'GIT',
+//-             level: '90'
+//-           },{
+//-             lang: 'Terminal',
+//-             level: '100'
+//-           },{
+//-             lang: 'Gulp',
+//-             level: '30'
+//-           },{
+//-             lang: 'Webpack',
+//-             level: '40'
+//-           }]
+//-         },
+//-       ]
+//-     ul.skills__block-one
+//-       each skill in skills
+//-         .skills__type= skill.type
+//-         ul.skills__box
+//-           each item in skill.items
+//-             li.skills__box-item
+//-               .skills__name= item.lang
+//-               svg(class="percentage", viewbox="0 0 140 140", preserveAspectRatio="none" )
+//-                 circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_under")
+//-                 circle(cx="50%", cy="50%", r="60", class="percentage__circle  percentage__circle_above", style=`animation-delay: -${item.level}s`)
+//-                 lineargradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
+//-                   stop(offset="0%" stop-color="#5500f2")
+//-                   stop(offset="100%" stop-color="#8900ef")
+        
+//- script(type="text/x-template")#skills__block-one
+  
+
+//- script(type="text/x-template")#skills__box
+ 
+
+ 
+script(type="text/x-template")#skills-list
+  .skills__block
+    ul.skills__block-wrapper
+      li.skills__item(v-for="skill in skills" :key="skill.type")
+        skills-row(
+          :skill="skill"
+        )
+
+script(type="text/x-template")#skills-row
+  .skill-row
+    .skills__type {{skill.type}}
+    ul.skills__box
+      li.skills__box-item(v-for="(skillPercent, skillName) in skill.skills")
+        skill(
+          :skillName="skillName"
+          :skillPercent="skillPercent"
+        )
+
+script(type="text/x-template")#skill
+  .skill
+    svg(class="percentage", viewbox="0 0 140 140", preserveAspectRatio="none" )
+      circle(cx="50%", cy="50%", r="60").percentage__circle.percentage__circle_under
+      circle(cx="50%", cy="50%", r="60", ref="color-circle", stroke="url(#gradient)", transform="rotate(180 88 75)").percentage__circle.percentage__circle_above
+      linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
+        stop(offset="0%" stop-color="#5500f2")
+        stop(offset="100%" stop-color="#8900ef")
+    .skills__name {{skillName}}

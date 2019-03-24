@@ -1,27 +1,17 @@
 .triangles{
   width: 100%;
-  margin-top: 582px;
   position: absolute;
+  bottom: -2px;
   display: flex;
 
-  @include desktop {
-    margin-top: 581px;
-  }
-  @include tablets {
-    margin-top: 456px;
-  }
-  @include phones {
-    margin-top: 890px;
-  }
-
   &_last {
-    margin-top: 0px;
     top: -2px;
   }
 }
 .triangle{
   height: 120px;
-  width: 50%;
+  width: 50%; 
+  stroke: white;
 
   @include desktop {
     height: 80px;
@@ -36,7 +26,13 @@
     height: 100px;
 
     @include desktop {
-    height: 65px;
+      height: 65px;
+    }
+    @include tablets{
+      height: 40px;
+    }
+    @include phones {
+      height: 20px;
     }
   }
 }

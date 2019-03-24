@@ -1,0 +1,180 @@
+include ./mixins.pug
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    script(src='https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js')
+    title Portfolio | main page
+  body
+    .wrapper
+      .maincontent
+      .wrapper-welcome
+        .wrapper-welcome__layer(data-speed = '0.1')
+          +image('content/Sky1.jpg', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.13')
+          +image('content/Mountain2.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.17')
+          +image('content/Baloon3.png', 'wrapper-welcome__pic wrapper-welcome__pic_baloon')
+        .wrapper-welcome__layer(data-speed = '0.23')
+          +image('content/Cloud4.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.25')
+          +image('content/Man5.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.29')
+          +image('content/Mountain16.png', 'wrapper-welcome__pic')
+        .wrapper-welcome__layer(data-speed = '0.31')
+          +image('content/White7.png', 'wrapper-welcome__pic')
+
+
+        section.fullscreen-section.hero
+          .container.hero__container
+            header.header
+              .header__logo
+                a.logo(href="index.html") TD
+              .header__menu
+                +nav('nav', ["Home", "About me", "Skills", "Experience", "Reviews", "Contact"], 0)
+                ul.humburger(id='humburger')
+                  li.humburger__item
+                  li.humburger__item
+                  li.humburger__item
+              .header__socials
+                +socials('socials', ["insta", "vk", "github"])
+
+            .hero__content
+              .user
+                .user__desc Web developer
+                  br
+                  | personal site
+                .user__name Tetiana
+                  br
+                  | Dotsenko
+            .hero__scroll
+              .scroll
+                .scroll__text Scroll
+                .scroll__pic
+                 +icon('scroll', 'scroll__icon')
+        section.about
+          .container.container_about
+            .about__left
+              .about__photo
+                +image('content/14.jpg', 'about__pic')
+              .about__shortinfo
+                .about__text
+                  .text Currently:
+                  .text Age:
+                  .text Date of Birth:
+                .about__text_b
+                  .text Kyiv
+                  .text 22
+                  .text 18 Oct 1996
+            .about__right
+              .about__text.about__text_mb33 Hi, my name is
+              .about__name Tetiana Dotsenko
+              .about__text.about__text_mb105 I develop modern websites and applications. I like to do interesting and modern projects.
+              .about__text.about__text_note I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!
+
+        .triangles
+          svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
+            polygon(points="0,0 0,120 900,120")
+          svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
+            polygon(points="0,120 900,120 900,0")
+
+      section.skills
+        .container
+          .skills__info
+            .skills__bag
+              +image('content/backpack.png', 'skills__bag-pic')
+            .skills__desc
+              .skills__title.title How can I be useful to you
+              .skills__text I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!
+              .skills__block
+                #skills-component
+
+
+      section.works-section(style="background-color: red")
+        .container
+          .works__title.title.title_fz36 My projects
+          .works__block
+            #slider-component
+
+      .wrapper-last
+        .wrapper-last__layer(data-speed = '0.1')
+          +image('content/layer1.jpg', 'wrapper-last__pic')
+        .wrapper-last__layer(data-speed = '0.12')
+          +image('content/layer2.jpg', 'wrapper-last__pic')
+        .wrapper-last__layer(data-speed = '0.15')
+          +image('content/layer3.png', 'wrapper-last__pic')
+        .wrapper-last__layer(data-speed = '0.17')
+          +image('content/layer4-budda.png', 'wrapper-last__pic')
+        .wrapper-last__layer(data-speed = '0.19')
+          +image('content/layer5.png', 'wrapper-last__pic')
+        .wrapper-last__layer(data-speed = '0.21')
+          +image('content/layer6.png', 'wrapper-last__pic')
+        .wrapper-last__layer(data-speed = '0.23')
+          +image('content/layer7.png', 'wrapper-last__pic')
+
+        .triangles.triangles_last
+          svg(preserveAspectRatio="none" viewBox="0 0 900 100" class="triangle triangle_last")
+            polygon(points="0,0 900,0 900,100" fill="green")
+          svg(preserveAspectRatio="none" viewBox="0 0 900 100" class="triangle triangle_last")
+            polygon(points="0,0 900,0 0,100" fill="green")
+
+        .container
+          section.last-review
+            .reviews
+              .title.title_mb100.title_fz36 What people tell
+              include ./components/reviews.pug
+          section.last-form
+            .title.title_mb100.titile_mb60 Contact me
+              form.order-form(action="")
+                .form__row
+                  label.form__block
+                    .form__block-title Your name
+                    input.form__input(type='text', name='name', placeholder='Ivan Ivanov', required='')
+                    .form__img
+                      +icon('user', 'form__icon')
+
+                  label.form__block
+                    .form__block-title Your email
+                    input.form__input(name='email', placeholder='userdotsenko@gmail.com', required='')
+                    .form__img
+                      +icon('envelope', 'form__icon')
+                .form__row
+                  label.form__block
+                    .form__block-title Message to letter
+                    textarea.form__textarea(name="text", cols="10", rows="2", placeholder='I need a website.\nWould like to ask terms and price.' )
+                    .form__img
+                      +icon('message', 'form__icon')
+                input.form__button(id="send" type="submit" value='Send')
+
+      footer.footer
+        .container.footer__container
+          .footer__left
+            .footer__copyright
+              .copyright © 2019
+            .footer__info
+              .footer__autor
+                .autor__name Tetiana Dotsenko
+              .footer__text Web-developer personal website
+          .footer__right
+            .footer__nav
+              +nav('nav-footer', ["Home", "About me", "Skills", "Experience", "Reviews", "Contact"], 0)
+            .footer__blocks
+              .footer__blocks-left
+                .footer__text I made this site as part of my studies
+
+                  |  at the LoftSchool School of Online Education.
+                .footer__socials
+                  +socials('socials_rounded socials', ["insta", "vk", "github"])
+              .footer__blocks-right
+                .footer__text Always write the code as if
+                  |  it would be accompanied by a violent psychopath who knows where you live.
+                .footer__autor-quote Martin Golding
+
+
+      include ./entry.pug
+      script('src=../main.js')
+
+

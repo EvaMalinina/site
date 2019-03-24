@@ -1,25 +1,61 @@
 .last-form {
   padding-bottom: 135px;
+  display: block;
+  z-index: 5;
+
 
   @include desktop {
     padding-bottom: 165px;
   }
+  @include tablets {
+    padding-bottom: 110px;
+    text-align: center;
+  }
 }
 .order-form {
-width: 865px;
+max-width: 865px;
+width: 59%;
 display: flex;
 flex-direction: column;
+
+  @include desktop {
+    width: 80%;
+  }
+  @include tablets {
+    width: 100%;
+    text-align: left;
+  }
+  @include phones {
+    text-align: center;
+  }
 }
 .form {
   &__row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @include phones {
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    }
   }
   &__block {
   flex: 1;
-  margin-right: 50px;
+  /* margin-right: 50px; */
+  margin-right: 6%;
   position: relative;
+
+  @include tablets {
+    /* margin-right: 20px; */
+    margin-right: 3%;
+  }
+  @include phones {
+    margin-right: 0px;
+    text-align: left;
+  }
   &:last-child {
     margin-right: 0;
     }
@@ -29,10 +65,11 @@ flex-direction: column;
     font-size: 16px;
     font-weight: 600;
     color: #c4c8d0;
-    margin-left: 47px;
+    /* margin-left: 47px; */
+    margin-left: 5.5%;
   }
 
-  &__input {
+  &__input, &__textarea {
     background: transparent;
     border-bottom: 1px solid $grey;
     border-top: none;
@@ -43,11 +80,17 @@ flex-direction: column;
     padding: 20px 0 20px 47px;
     outline: none;
     cursor: auto;
+    text-overflow: ellipsis;
 
     @include placeholder {
       color: $grey;
       font-size: 18px;
-      font-weight: 800px
+      font-weight: 800;
+      word-wrap: break-word;
+
+      @include phones {
+        font-size: 14px;
+      }
     }
 
     &:hover {
@@ -57,7 +100,12 @@ flex-direction: column;
     &:last-child {
       margin-bottom: 60px;
     }
-
+    @include tablets {
+      margin-bottom: 30px;
+    }
+    @include phones {
+      /* text-align: center; */
+    }
   }
   &__img {
     width: 32px;
@@ -68,6 +116,10 @@ flex-direction: column;
     position: absolute;
     top: 35px;
     left: 0;
+
+    @include tablets {
+      display: none;
+    }
   }
   &__icon {
     fill: #c4c8d0;
@@ -88,6 +140,11 @@ flex-direction: column;
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
+    border: none;
+
+    @include tablets {
+      align-self: center;
+    }
   }
 }
 .form__block {

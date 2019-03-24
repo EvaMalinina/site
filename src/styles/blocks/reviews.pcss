@@ -2,26 +2,94 @@
 .last-review {
   margin-bottom: 200px;
   padding-top: 265px;
+  z-index: 5;
+
+  @include desktop {
+    padding-top: 190px;
+  }
+  @include tablets {
+    padding-top: 185px;
+    margin-bottom: 110px;
+  }
+  @include phones {
+    padding-top: 110px;
+    margin-bottom: 150px;
+  }
 }
 .reviews {
-
+  position: relative;
   &__slider {
     display: flex;
-    width: 956px;
+    max-width: 956px;
+    width: 65%;
     position: relative;
+
+   @include desktop {
+     width: 100%;
+   }
+    @include tablets {
+      max-width: 688px;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    @include phones {
+      max-width: 260px;
+      width: 100%;
+      padding-top: 80px;
+      overflow: hidden;
+      flex-wrap: nowrap;
+    }
   }
   &__slider-item {
-    width: 455px;
-    margin: 0 25px 0 25px;
+    /* width: 455px; */
+    width: 50%;
+    /* margin: 0 25px 0 25px; */
+    margin: 0 3% 0 3%;
+
+    @include tablets {
+      max-width: 273px;
+      width: 40%;
+      /* margin-right: 80px; */
+      margin-right: 6%;
+    }
+    @include phones {
+      width: 100%;
+      margin: 0px;
+      min-width: 260px;
+     } 
+    &:first-child {
+      margin-left: 0;
+      @include tablets {
+      /* margin-left: 35px; */
+        margin-left: 5%;
+      }
+      @include phones {
+        margin-left: 0;
+      }
+    }
+    &:last-child {
+      @include tablets {
+        margin-right: 0px;;
+      } 
+    
+    }
   }
   &__quote {
     display: flex;
     margin-bottom: 60px;
+    
+    @include tablets {
+      margin-bottom: 28px;
+    }
   }
   &__quote-icon {
-    width: 65px;
-    height: 75px;
+    max-width: 65px;
+    max-height: 70px;
     margin-right: 30px;
+
+    @include tablets {
+      display: none;
+    }
   }
   &__qicon {
     width: 100%;
@@ -29,14 +97,29 @@
     fill: #dae1ec;
   }
   &__text {
-    width: 350px;
+    max-width: 350px;
     color: #97a1ac;
     font-size: 16px;
     line-height: 30px;
+    font-weight: 600;
+
+    @include tablets {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
   &__person {
-    margin-left: 105px; 
+    /* margin-left: 105px;  */
+    margin-left: 26%;
     display: flex;
+
+    @include desktop {
+      /* margin-left: 90px; */
+      margin-left: 29%;
+    }
+    @include tablets {
+      margin-left: 0px;
+    }
   }
   &__person-pic {
     width: 75px;
@@ -44,6 +127,18 @@
     border-radius: 50%;
     overflow: hidden;
     margin-right: 30px;
+
+    @include tablets {
+      min-width: 75px;
+      width: 11%;
+      margin-right: 3%;
+    }
+    @include phones {
+      min-width: 50px;
+      width: 20%;
+      height: 50px;
+      margin-right: 7%;
+    }
   }
   &__img {
     min-width: 100%;
@@ -55,20 +150,47 @@
    font-size: 18px;
    font-weight: 700;
    color: $grey; 
+
+   @include tablets {
+     font-size: 16px;
+     line-height: 36px;
+   }
+   @include phones {
+     line-height: 20px;
+   }
   }
   &__person-job {
     color: #bec5c9;
     font-weight: 600;
     font-size: 16px;
+
+    @include tablets {
+     font-size: 14px;
+     line-height: 30px;
+   }
   }
   &__buttons {
-    width: 130px;
+    min-width: 130px;
     height: 50px;
     display: flex;
     justify-content: space-between;
     position: absolute;
-    top: -140px;
-    left: 475px;
+    top: 0px;
+    /* left: 475px; */
+    left: 32%;
+
+    @include desktop {
+      left: 43%;
+    }
+    @include tablets {
+     /* left: 355px; */
+     left: 53%;
+   }
+    @include phones {
+     /* left: 85px; */
+     left: 25%;
+     top: 22%;
+    }
   }
   &__button {
     height: 50px;

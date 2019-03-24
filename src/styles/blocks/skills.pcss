@@ -1,22 +1,49 @@
+
 .skills {
   display: flex;
   background: white;
 
   &__info {
-    margin-top: 150px;
+    padding-top: 150px;
     display: flex;
     align-items: flex-end;
+
+    @include desktop {
+      padding-top: 174px;
+    }
+    @include tablets {
+      padding-top: 120px;
+      flex-direction: column;
+      flex-flow: column-reverse;
+      justify-content: center;
+      align-items: center;
+    }
+    @include phones {
+      padding-top: 95px;
+    }
   }
   &__bag {
   height: 645px;
   display: flex;
   align-items: flex-end;
-  margin-right: 80px;
+  /* margin-right: 80px; */
+  margin-right: 3.5%;
 
   @include desktop {
-    margin-left: -220px;
-    margin-right: 0px;
+      /* margin-left: -220px; */
+      margin-left: -19%;
+      margin-right: 0px;
     }
+  @include tablets {
+      margin-left: 0px;
+      height: 285px;
+      /* width: 216px; */
+      width: 29%;
+    }
+  @include phones {
+    height: 250px;
+    width: 70%;
+  }
   }
   &__bag-pic {
     width: 100%;
@@ -30,9 +57,33 @@
     @include desktop {
       width: 75%;
     }
+    @include tablets {
+      margin-bottom: 110px;
+      text-align: center;
+      width: 100%;
+    }
+    @include phones {
+      width: inherit;
+    }
   }
   &__title {
     margin-bottom: 65px;
+
+    @include tablets {
+      margin-bottom: 30px;
+      /* width: 265px; */
+      width: 34.5%;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    @include phones {
+      width: 100%;
+      font-size: 24px;
+      line-height: 36px;
+      margin-left: 0%;
+      transform: translate(0%);
+      text-align: left;
+    }
   }
   &__text {
     font-size: 16px;
@@ -40,37 +91,103 @@
     line-height: 30px;
     margin-bottom: 90px;
     color: #a0a5b1;
+
+    @include tablets {
+      /* width: 452px; */
+      width: 59%;
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    @include phones {
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 600;
+      width: inherit;
+      margin-left: 0;
+      transform: translate(0%);
+      text-align: left;
+      margin-bottom: 60px;
+    }
   }
 
   &__block {
-    margin-left: 145px;
+    /* margin-left: 145px; */
+    margin-left: 6%;
+    /* min-width: 770px; */
+    width: 100%;
 
     @include desktop {
-      margin-left: 90px;
+      /* margin-left: 90px;
+      min-width: 705px; */
     }
+    @include tablets {
+      margin-left: 0;
+      width: 100%;
+    }
+    @include phones {
+      /* margin-left: -10px; */
+      margin-left: -3.2%;
+    }
+    
   }
-  &__block-one {
+  &__block-wrapper {
     margin-bottom: 45px;
   }
   &__type {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 40px;
+    line-height: 48px;
     color: $grey;
+
+    @include tablets {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
   }
   &__box {
     display: flex;
     flex-wrap: wrap;
-    width: 760px;
+    justify-content: space-around;
+    width: 100%;
     margin-bottom: 45px;
 
     &:last-child {
       margin-bottom: 0px;
     }
+    @include tablets {
+      margin-left: 50%;
+      transform: translate(-50%);
+    }
+    @include phones {
+      width: 108%;
+      margin-left: 0%;
+      transform: translate(0%);
+    }
+
   }
   &__box-item {
     position: relative;
-    margin-right: 20px;
+    margin-right: 35px;
+    width: 20%;
+
+    @include desktop {
+      margin-right: 30px;
+    }
+    @include tablets {
+      margin-right: 12px;
+      width: 23%;
+    }
+    @include phones {
+      margin-right: 3px;
+      width: 49%;
+      &:nth-child(2) {
+        margin-right: 0px;
+      }
+    }
+    &:last-child {
+      margin-right: 0px;
+    }
   }
   &__name {
     display: block;
@@ -88,38 +205,40 @@
 .percentage {
   display: inline-block;
   align-items: center;
-  width: 170px;
-  height: 170px;
-  transform: rotate(-180deg)
-  
+  width: 100%;
+  position: relative;
+  /* width: 157px;
+  height: 157px; */
+  /* transform: rotate(-180deg) */
 }
 .percentage__circle {
   fill: transparent;
-  stroke: #eaeaea;
-  stroke-width: 10px;
 
   &_under {
-    stroke-width: 10;
+    stroke: #eaeaea;
+    stroke-width: 10px;
   }
 
   &_above {
-    stroke: url(#gradient);
+    stroke: url(#gradient); 
+    
     stroke-dasharray: 410;
-    stroke-dashoffset: 410;
-    animation: fill 100s linear infinite;
-    animation-play-state: paused;
-    stroke-width: 20;
+    stroke-dashoffset: 100;
+    /* animation: fill 100s linear infinite;
+    animation-play-state: paused; */
+    stroke-width: 20px;
   }
 }
-.percentage__circle_above[style="animation-delay: -100s"] {
+/* .percentage__circle_above[style="animation-delay: -100s"] {
   animation: initial;
   stroke-dashoffset: 0;
 }
-@keyframes fill {
+*/
+/* @keyframes fill {
   from {
     stroke-dashoffset: 410;
   }
   to {
     stroke-dashoffset: 0;
   }
-}
+}  */

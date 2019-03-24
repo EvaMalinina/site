@@ -12,6 +12,15 @@
   }
 
   &_rounded {
+
+    @include tablets {
+      justify-content: flex-start;
+    }
+    .socials__item {
+      @include tablets {
+        margin-right: 20px;
+      }
+    }
     .socials__link {
       border: 1px solid $footer-text;
       border-radius: 50%;

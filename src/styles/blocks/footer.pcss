@@ -5,10 +5,20 @@
   @include desktop {
     padding: 80px 0;
   }
+  @include tablets {
+    padding: 60px 0;
+  }
+  @include phones {
+    padding: 65px 0;
+  }
   
   &__container {
     display: flex;
     flex-direction: row;
+
+    @include phones {
+      flex-direction: column;
+    }
   }
 
   &__left {
@@ -23,6 +33,15 @@
       align-items: left;
       min-width: 15.3%;
     }
+    @include tablets {
+      margin-right: 75px;
+      min-width: 24%;
+    }
+    @include phones {
+      margin-right: 0px;
+      margin-bottom: 20px;
+      min-width: 100%;
+    }
   }
 
   &__copyright {
@@ -35,25 +54,47 @@
       margin-right: 0px;
       margin-bottom: 30px;
     }
+    @include phones {
+      margin-bottom: 10px;
+    }
   }
   &__info {
     flex-direction: column;
   }
   &__autor {
     margin-bottom: 32px;
+
+    @include phones {
+      margin-bottom: 10px;
+    }
   }
   &__nav {
     margin-bottom: 70px;
+
+    @include tablets {
+      margin-bottom: 55px;
+    }
+    @include phones {
+      margin-bottom: 35px;
+    }
   }
   &__blocks {
     display: flex;
     flex-direction: row;
+
+    @include tablets {
+      flex-direction: column;
+    }
   }
   &__blocks-left {
     margin-right: 185px;
 
     @include desktop {
       margin-right: 56px;
+    }
+    @include tablets {
+      margin-right: 0px;
+      margin-bottom: 50px;
     }
   }
   &__autor-quote {
@@ -73,4 +114,11 @@
   line-height: 30px;
   color: $footer-text;
   margin-bottom: 25px;
+
+  @include tablets {
+    margin-bottom: 20px;
+  }
+  @include phones {
+    font-size: 14px;
+  }
 }
