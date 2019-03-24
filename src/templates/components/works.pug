@@ -1,12 +1,80 @@
-.works__pics
-  .works__mainpic
-    +image('content/4.jpg', 'works__img')
-  +projects('works', ["content/1", "content/2", "content/3", "content/4"])
+//- .works-slider   
+//-   .works-slider__pics(data-slider="1")
+
+    //- .works__pics
+    //-   .works__mainpic
+    //-     +image('content/4.jpg', 'works__img')
+    //-   +projects('works', ["content/1", "content/2", "content/3", "content/4"])
+    //-   .works__slider-buttons
+    //-     button.works__button-up
+    //-       +icon('arrow-down', 'arrow arrow_up')
+    //-     button.works__button-down
+    //-       +icon('arrow-down', 'arrow arrow_down')
+    //-   .works__number
+    //-     +image('content/4.png', 'works__img')
+
+      .works__desc
+        +skill-name('works-skills', ['HTML','CSS','JavaScript'])
+        .works__title.title School website
+        .works__text This girl was not learning web development somewhere, but at LoftSchool! 2 months only the most difficult trials and sleepless nights!
+        a.works__link(href="#")
+          .works__link-icon
+            +icon('link', 'works__link')
+          .works__link-text Go to website
+
+script(type="text/x-template")#slider-container
+  .works-slider
+    
+    display(
+      :works="works",
+      :currentWork="currentWork",
+      :currentIndex="currentIndex"
+      @slide="handleSlide"
+    )
+    info(
+      :currentWork="currentWork"
+    )
+
+script(type="text/x-template")#slider-display
+  .works-slider__pics(:data-slide="currentIndex + 1")
+    .works__pics
+      .works__mainpic
+        img(:src="currentWork.photo").works__img
+        btns(
+          @slide="direction => $emit('slide', direction)"
+        )
+        thumbs(
+          :works="reversedWorks"
+          :currentWork="currentWork"
+        )
+
+script(type="text/x-template")#slider-btns
   .works__slider-buttons
-    button.works__button-up
-      +icon('arrow-down', 'arrow arrow_up')
-    button.works__button-down
-      +icon('arrow-down', 'arrow arrow_down')
-  .works__number
-    +image('content/4.png', 'works__img')
+    a(href="#" @click.prevent="$emit('slide', 'next')").arrow.arrow_up
+    a(href="#" @click.prevent="$emit('slide', 'prev')").arrow.arrow_down
+
+script(type="text/x-template")#slider-thumbs
+  ul.works__list
+    li.works__item(
+      v-for="work in works" :key="work.id"
+      :class="{active: currentWork.id === work.id }"
+    )
+      a.works__btn
+        img(:src="work.photo" alt="").works__img
+
+script(type="text/x-template")#slider-info
+  .works__desc
+    tags(
+      :tagsArray="tagsArray"
+    )
+  .works__title.title  {{currentWork.title}}
+  .works__text
+    p {{currentWork.desc}}
+  .works__link 
+    a(:href="currentWork.link").works__link-text Go to website
+
+script(type="text/x-template")#slider-tags
+  ul.works-skills__list
+    li.works-skills__item(v-for="tag in tagsArray")
+      .works-skills__name {{tag}}
     
