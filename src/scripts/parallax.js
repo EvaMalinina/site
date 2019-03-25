@@ -19,7 +19,7 @@ Array.from(layers2).forEach(layer2 => {
   const divider = layer2.dataset.speed;
   const strafe = layers2Chords.y * divider / 10;
 
-  layer2.style.top = strafe + '%';
+  layer2.style.top = strafe + '%'; 
 });
 
 function moveLayersDependsOnScroll(wScroll) {

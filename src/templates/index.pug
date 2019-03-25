@@ -6,12 +6,15 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    //- link(rel='stylesheet', href='/path/to/flickity.css', media='screen')
+    //- script(src='/path/to/flickity.pkgd.min.js')
     script(src='https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js')
     title Portfolio | main page
   body
     .wrapper
       .maincontent
       .wrapper-welcome
+        +image('content/White7.png', 'wrapper-welcome__pic wrapper-welcome__pic_above')
         .wrapper-welcome__layer(data-speed = '0.1')
           +image('content/Sky1.jpg', 'wrapper-welcome__pic')
         .wrapper-welcome__layer(data-speed = '0.13')
@@ -24,8 +27,6 @@ html(lang="en")
           +image('content/Man5.png', 'wrapper-welcome__pic')
         .wrapper-welcome__layer(data-speed = '0.29')
           +image('content/Mountain16.png', 'wrapper-welcome__pic')
-        .wrapper-welcome__layer(data-speed = '0.31')
-          +image('content/White7.png', 'wrapper-welcome__pic')
 
 
         section.fullscreen-section.hero
@@ -93,39 +94,72 @@ html(lang="en")
                 #skills-component
 
 
-      section.works-section(style="background-color: red")
+      section.works-section
         .container
           .works__title.title.title_fz36 My projects
           .works__block
             #slider-component
 
       .wrapper-last
-        .wrapper-last__layer(data-speed = '0.1')
-          +image('content/layer1.jpg', 'wrapper-last__pic')
+        +image('content/layer2.jpg', 'wrapper-last__pic wrapper-last__pic_above')
+        +image('content/layer5.png', 'wrapper-last__pic wrapper-last__pic_above-bottom')
+        
         .wrapper-last__layer(data-speed = '0.12')
-          +image('content/layer2.jpg', 'wrapper-last__pic')
-        .wrapper-last__layer(data-speed = '0.15')
           +image('content/layer3.png', 'wrapper-last__pic')
-        .wrapper-last__layer(data-speed = '0.17')
+        .wrapper-last__layer(data-speed = '0.15')
           +image('content/layer4-budda.png', 'wrapper-last__pic')
-        .wrapper-last__layer(data-speed = '0.19')
-          +image('content/layer5.png', 'wrapper-last__pic')
-        .wrapper-last__layer(data-speed = '0.21')
+        .wrapper-last__layer(data-speed = '0.17')
           +image('content/layer6.png', 'wrapper-last__pic')
-        .wrapper-last__layer(data-speed = '0.23')
+        .wrapper-last__layer(data-speed = '0.20')
           +image('content/layer7.png', 'wrapper-last__pic')
 
         .triangles.triangles_last
-          svg(preserveAspectRatio="none" viewBox="0 0 900 100" class="triangle triangle_last")
-            polygon(points="0,0 900,0 900,100" fill="green")
-          svg(preserveAspectRatio="none" viewBox="0 0 900 100" class="triangle triangle_last")
-            polygon(points="0,0 900,0 0,100" fill="green")
+          svg(preserveAspectRatio="none" viewBox="0 -5 905 105" class="triangle triangle_last")
+            polygon(points="0,-5 905,-5 905,95" fill="#ffffff")
+          svg(preserveAspectRatio="none" viewBox="0 -5 905 105" class="triangle triangle_last")
+            polygon(points="-5,-5 900,-5 -5,95" fill="#ffffff")
 
         .container
           section.last-review
             .reviews
               .title.title_mb100.title_fz36 What people tell
+                
+              -
+                var reviews = [
+                  {
+                    quoteicon: 'quote',
+                    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+                    personpic: 'dmitryi-kovalchuk.jpg',
+                    personname: 'Kovalchuk Dmytryi',
+                    personjob: 'Founder of LoftSchool'
+                  },
+                  {
+                    quoteicon: 'quote',
+                    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+                    personpic: 'vladimir-sabantsev.jpg',
+                    personname: 'Vladymyr Sabantsev',
+                    personjob: 'Founder of LoftSchool' 
+                  },
+                  {
+                    quoteicon: 'quote',
+                    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+                    personpic: 'vladimir-sabantsev.jpg',
+                    personname: 'Vladymyr Sabantsev',
+                    personjob: 'Founder of LoftSchool'  
+                  },
+                  {
+                    quoteicon: 'quote',
+                    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+                    personpic: 'vladimir-sabantsev.jpg',
+                    personname: 'Vladymyr Sabantsev.jpg',
+                    personjob: 'Founder of LoftSchool' 
+                  }
+                ];
               include ./components/reviews.pug
+              +reviewsSlider(reviews)
+
+              #reviews-component
+
           section.last-form
             .title.title_mb100.titile_mb60 Contact me
               form.order-form(action="")

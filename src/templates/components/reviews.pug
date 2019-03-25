@@ -1,28 +1,77 @@
-ul.reviews__slider
-  li.reviews__slider-item
-    .reviews__quote
-      .reviews__quote-icon
-        +icon('quote', 'reviews__qicon')
-      .reviews__text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
-    .reviews__person
-      .reviews__person-pic
-        +image('content/dmitryi-kovalchuk.jpg', 'reviews__img')
-      .reviews__person-info
-        .reviews__person-name Kovalchuk Dmitry
-        .reviews__person-job Founder of LoftSchool
-  li.reviews__slider-item
-    .reviews__quote
-      .reviews__quote-icon
-        +icon('quote', 'reviews__qicon')
-      .reviews__text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
-    .reviews__person
-      .reviews__person-pic
-        +image('content/vladimir-sabantsev.jpg', 'reviews__img')
-      .reviews__person-info
-        .reviews__person-name Kovalchuk Dmitry
-        .reviews__person-job Founder of LoftSchool 
-.reviews__buttons 
-  button.reviews__button
-    +icon('arrow-down', 'arrow arrow_left')
-  button.reviews__button
-    +icon('arrow-down', 'arrow arrow_right')
+mixin reviewsSlider(reviews)
+  script(type="text/x-template")#reviews-list
+    .reviews__slider-wrapper
+
+      flickity(ref='flickity', :options='flickityOptions').reviews__slider
+        each review in reviews
+          .reviews__slider-item
+            .reviews__quote
+              .reviews__quote-icon
+                .reviews__qicon(
+                  style=`background-image: url(${require('../images/icons/quote.svg')})`  
+                )
+              .reviews__text= review.text
+            .reviews__person
+              .reviews__person-pic(
+                style=`background-image: url(${require(`../images/content/${review.personpic}`)})`  
+              )
+              .reviews__person-info
+                .reviews__person-name= review.personname
+                .reviews__person-job= review.personjob
+
+      .reviews__buttons 
+          button(@click="previous()").reviews__button
+            +icon('arrow-down', 'arrows arrows_left')
+          button(@click="next()").reviews__button
+            +icon('arrow-down', 'arrows arrows_right') 
+
+
+    //- li.reviews__slider-item.carousel-cell
+    //-   .reviews__quote
+    //-     .reviews__quote-icon
+    //-       +icon('quote', 'reviews__qicon')
+    //-     .reviews__text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
+    //-   .reviews__person
+    //-     .reviews__person-pic
+    //-       +image('content/dmitryi-kovalchuk.jpg', 'reviews__img')
+    //-     .reviews__person-info
+    //-       .reviews__person-name Kovalchuk Dmitry
+    //-       .reviews__person-job Founder of LoftSchool
+    //- li.reviews__slider-item.carousel-cell
+    //-   .reviews__quote
+    //-     .reviews__quote-icon
+    //-       +icon('quote', 'reviews__qicon')
+    //-     .reviews__text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
+    //-   .reviews__person
+    //-     .reviews__person-pic
+    //-       +image('content/vladimir-sabantsev.jpg', 'reviews__img')
+    //-     .reviews__person-info
+    //-       .reviews__person-name Kovalchuk Dmitry
+    //-       .reviews__person-job Founder of LoftSchool 
+    //- li.reviews__slider-item.carousel-cell
+    //-   .reviews__quote
+    //-     .reviews__quote-icon
+    //-       +icon('quote', 'reviews__qicon')
+    //-     .reviews__text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
+    //-   .reviews__person
+    //-     .reviews__person-pic
+    //-       +image('content/vladimir-sabantsev.jpg', 'reviews__img')
+    //-     .reviews__person-info
+    //-       .reviews__person-name Kovalchuk Dmitry
+    //-       .reviews__person-job Founder of LoftSchool 
+    //- li.reviews__slider-item.carousel-cell
+    //-   .reviews__quote
+    //-     .reviews__quote-icon
+    //-       +icon('quote', 'reviews__qicon')
+    //-     .reviews__text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
+    //-   .reviews__person
+    //-     .reviews__person-pic
+    //-       +image('content/vladimir-sabantsev.jpg', 'reviews__img')
+    //-     .reviews__person-info
+    //-       .reviews__person-name Kovalchuk Dmitry
+    //-       .reviews__person-job Founder of LoftSchool 
+    //- .reviews__buttons 
+    //-   button.reviews__button.previuos
+    //-     +icon('arrow-down', 'arrows arrows_left')
+    //-   button.reviews__button.next
+    //-     +icon('arrow-down', 'arrows arrows_right')

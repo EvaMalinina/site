@@ -23,8 +23,7 @@
           .works__link-text Go to website
 
 script(type="text/x-template")#slider-container
-  .works-slider
-    
+  .works-slider 
     display(
       :works="works",
       :currentWork="currentWork",
@@ -50,8 +49,8 @@ script(type="text/x-template")#slider-display
 
 script(type="text/x-template")#slider-btns
   .works__slider-buttons
-    a(href="#" @click.prevent="$emit('slide', 'next')").arrow.arrow_up
-    a(href="#" @click.prevent="$emit('slide', 'prev')").arrow.arrow_down
+    a(href="#" @click.prevent="$emit('slide', 'prev')").arrow.arrow_up
+    a(href="#" @click.prevent="$emit('slide', 'next')").arrow.arrow_down
 
 script(type="text/x-template")#slider-thumbs
   ul.works__list
@@ -67,11 +66,12 @@ script(type="text/x-template")#slider-info
     tags(
       :tagsArray="tagsArray"
     )
-  .works__title.title  {{currentWork.title}}
-  .works__text
-    p {{currentWork.desc}}
-  .works__link 
-    a(:href="currentWork.link").works__link-text Go to website
+    .works__title.title  {{currentWork.title}}
+    .works__text {{currentWork.desc}}
+    .works__link 
+      .works__link-icon
+        +icon('link', 'works__link')
+      a(:href="currentWork.link").works__link-text Go to website
 
 script(type="text/x-template")#slider-tags
   ul.works-skills__list

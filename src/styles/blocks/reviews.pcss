@@ -19,14 +19,15 @@
 .reviews {
   position: relative;
   &__slider {
-    display: flex;
-    max-width: 956px;
+    /* display: flex;
+    min-width: 956px;
     width: 65%;
     position: relative;
+    overflow: hidden;
 
    @include desktop {
      width: 100%;
-   }
+   } */
     @include tablets {
       max-width: 688px;
       width: 100%;
@@ -41,7 +42,7 @@
     }
   }
   &__slider-item {
-    /* width: 455px; */
+    min-width: 455px;
     width: 50%;
     /* margin: 0 25px 0 25px; */
     margin: 0 3% 0 3%;
@@ -204,12 +205,15 @@
   }
 
 }
-
-.arrow_left {
+.arrows {
+  width: 7px;
+  height: 12px;
+}
+.arrows_left {
     fill: #4e596e;
     transform: rotate(-180deg)
   }
-.arrow_right {
+.arrows_right {
     fill: #4e596e;
 }
 
