@@ -1,4 +1,3 @@
-
 .skills {
   display: flex;
   background: white;
@@ -128,7 +127,7 @@
       /* margin-left: -10px; */
       margin-left: -3.2%;
     }
-    
+
   }
   &__block-wrapper {
     margin-bottom: 45px;
@@ -169,18 +168,18 @@
   &__box-item {
     position: relative;
     margin-right: 35px;
-    width: 20%;
+    /* width: 20%; */
 
     @include desktop {
       margin-right: 30px;
     }
     @include tablets {
       margin-right: 12px;
-      width: 23%;
+      /* width: 23%; */
     }
     @include phones {
       margin-right: 3px;
-      width: 49%;
+      /* width: 49%; */
       &:nth-child(2) {
         margin-right: 0px;
       }
@@ -202,43 +201,3 @@
   }
 
 }
-.percentage {
-  display: inline-block;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  /* width: 157px;
-  height: 157px; */
-  /* transform: rotate(-180deg) */
-}
-.percentage__circle {
-  fill: transparent;
-
-  &_under {
-    stroke: #eaeaea;
-    stroke-width: 10px;
-  }
-
-  &_above {
-    stroke: url(#gradient); 
-    
-    stroke-dasharray: 410;
-    stroke-dashoffset: 100;
-    /* animation: fill 100s linear infinite;
-    animation-play-state: paused; */
-    stroke-width: 20px;
-  }
-}
-/* .percentage__circle_above[style="animation-delay: -100s"] {
-  animation: initial;
-  stroke-dashoffset: 0;
-}
-*/
-/* @keyframes fill {
-  from {
-    stroke-dashoffset: 410;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}  */

@@ -9,10 +9,11 @@ const skill = {
   methods: {
     drawColoredCircle() {
       const circle = this.$refs["color-circle"];
+
       const dashArray = parseInt(
         getComputedStyle(circle).getPropertyValue("stroke-dasharray")
       );
-      console.log(dashArray)
+
       const percent = (dashArray / 100) * (100 - this.skillPercent);
 
       circle.style.strokeDashoffset = percent;
