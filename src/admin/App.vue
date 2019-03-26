@@ -1,6 +1,6 @@
 <template lang="pug">
   main-header
-    h1 Welcome to the Vue App
+    h1 Welcome to the Vue App fffff
     p.text {{ text }}
 </template>
 

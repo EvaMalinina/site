@@ -39,7 +39,8 @@
 
   @include tablets {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column; 
+    z-index: 101;
   }
   &__item {
     height: 4px;
@@ -52,3 +53,111 @@
     }
   }
 }
+
+.header_fullmenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 0px;
+  background-color: white;
+  align-items: flex-start;
+  padding-left: 9%;
+
+  @include phones {
+    width: 100%;
+    padding-left: 24%;
+  }
+
+  .header__logo {
+    position: fixed;
+    top: 65px;
+    left: 10.65%;
+
+    @include phones {
+      display: none;
+    }
+  }
+  .nav {
+    display: flex;
+
+    &__list {
+      flex-direction: column;
+      color: $grey; 
+      align-items: flex-start;
+    }
+    &__item {
+      font-size: 18px;
+      font-weight: 600;
+      /* line-height: 48px; */
+      margin-bottom: 35px;
+    }
+  }
+  .header__menu {
+
+    @include tablets {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 230px 0px 60px 0px;
+
+      flex: 0;
+      order: 1;
+
+      @include phones {
+        margin-top: 190px;
+      }
+    }
+  }
+  .header__socials {
+
+    @include tablets {
+      flex: 0;
+      justify-content: flex-end;
+      /* margin-right: 92px; */
+      margin-right: 0%;
+      order: 3; 
+    }  
+    @include phones {
+      display: flex;
+    }
+  }
+  .socials__list {
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+  .socials__item {
+    margin-bottom: 20%;
+  }
+  .humburger {
+
+    @include tablets {
+      display: flex;
+      flex-direction: column;  
+      position: fixed;
+      top: 65px;
+      right: 10%;
+    }
+    &__item {
+      height: 4px;
+      margin-bottom: 0px;
+      background-color: $grey;
+      transition: 0.7s;
+      &:first-child {
+        transform: rotate(45deg) translateY(2px);
+        }
+      &:nth-child(2) {
+        display: none;
+        }
+      &:last-child {
+        transform: rotate(-45deg) translateY(-2px);
+       }
+      }
+  }
+  
+}
+
