@@ -16,7 +16,7 @@ new Vue({
                 prevNextButtons: false,
                 pageDots: false,
                 wrapAround: true,
-                groupCells: 2,
+                groupCells: window.screen.width > 768 ? 2 : 1,
                 resize: true
 
                 // any options from Flickity can be used

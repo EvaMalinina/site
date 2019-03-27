@@ -88,8 +88,7 @@ html(lang="en")
             .skills__desc
               .skills__title.title How can I be useful to you
               .skills__text I made this site as part of my studies at the LoftSchool School of Online Education. I will refresh my content in it a little later. In the meantime, see how everything is cool and beautiful!
-              .skills__block
-                #skills-component
+              #skills-component
 
 
       section.works-section
@@ -121,7 +120,7 @@ html(lang="en")
           section.last-review
             .reviews
               .title.title_mb100.title_fz36 What people tell
-                
+              include ../data/reviews.json 
               -
                 var reviews = [
                   {
@@ -149,7 +148,7 @@ html(lang="en")
                     quoteicon: 'quote',
                     text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
                     personpic: 'vladimir-sabantsev.jpg',
-                    personname: 'Vladymyr Sabantsev.jpg',
+                    personname: 'Vladymyr Sabantsev',
                     personjob: 'Founder of LoftSchool' 
                   }
                 ];
