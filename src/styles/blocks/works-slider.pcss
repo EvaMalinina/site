@@ -1,0 +1,304 @@
+.works-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  @include tablets {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.works-slider__pics {
+  width: 66%;
+  position: relative;
+  z-index: 10;
+  height: 550px;
+
+  @include desktop {
+    width: 55%;
+    height: 355px;
+  }
+  @include tablets {
+    margin-bottom: 105px;
+    width: 86%;
+  }
+  
+  &:before {
+    content: attr(data-slide);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    line-height: 1;
+    left: 100%;
+    font-size: 400px;
+    font-weight: 800;
+    margin-left: -8%;
+    color: rgba($text-color, .05);
+    @include desktop {
+      top: 0;
+      transform: translateY(-15%);
+      margin-left: -11%;
+    }
+  }
+  @include bigphones {
+    width: 100%;
+    margin-bottom: 60px;
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.works {
+  &__pics {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; 
+
+    @include bigphones {
+      margin-right: -22px;
+      width: calc(100% + 42px);
+    }
+    
+    @include phones {
+      margin-right: -50px;
+      width: calc(100% + 100px);
+    }
+  }
+  &__mainpic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; 
+  }
+  &__btn {
+    display: block;
+    height: 100%;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__list {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 178px;
+
+    @include desktop {
+      &:last-child {
+        display: none;
+      }
+    }
+    @include bigphones {
+      display: none;
+    }
+
+  }
+  &__item{
+    height: 100px;
+    transition: .2s;
+    &.active,
+    &:hover {
+      outline: 3px solid #f29400;
+    }
+  }
+   
+  &__slider-buttons {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: flex;
+
+    @include bigphones {
+      top: initial;
+      bottom: 0;
+    }  
+  }
+
+  &__title {
+    margin-bottom: 50px;
+
+    @include tablets {
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+    @include bigphones {
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+    
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 30px;
+    color: #8c92a0;
+    margin-bottom: 80px;
+
+    @include desktop {
+      margin-bottom: 50px;
+    }
+    @include tablets {
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+  }
+  &__link {
+    color: #4b6fd7;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    @include tablets {
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+    @include bigphones {
+      justify-content: left;
+      margin-bottom: 95px;
+    }
+  }
+  &__link-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+    fill: #4b6fd7;
+
+    @include desktop {
+    fill: #4b6fd7;
+    }
+  }
+  &__link-text {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+} 
+.works__desc {  
+  width: 24%;
+
+  @include desktop {
+    width: 32%;
+  }
+  @include tablets {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 18%;
+    text-align: center;
+  }
+
+  @include bigphones {
+    padding: 0 5%;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+.arrow {
+  width: 50px;
+  height: 50px;
+  background: #2d3c4e;
+  display: block;
+  position: relative;
+  &:before {
+    content: "";
+    background: svg-load('arrow-down.svg', fill=#fff, width=100%, height=100%) center center no-repeat;
+    display: block;
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transition: opacity .3s, margin-top .3s;
+    opacity: .3;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+  &_up {
+    &:before {
+      transform: translate(-50%, -50%) rotate(-270deg);
+    }
+    &:active {
+      &:before {
+        margin-top: 3px;
+      }
+    }
+  }
+  &_down {
+    &:active {
+      &:before {
+        margin-top: -3px;
+      }
+    }
+  }
+}
+
+
+
+ .works-skills__list{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+
+  @include bigphones {
+    flex-wrap: nowrap;
+  }
+}
+ .works-skills__item {
+  background-color: #f1f5f9;
+  padding: 19px;
+  height: 45px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+ }
+.works-skills__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #757e90;
+
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: .3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}

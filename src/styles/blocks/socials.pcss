@@ -50,7 +50,14 @@
 
 .socials__item {
   margin-right: 40px;
+  cursor: pointer;
+  display: flex;
 
+  &:hover {
+    .socials__icon {
+      fill: black;    
+    }
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -60,14 +67,19 @@
   width: 31px;
   height: 25px;
   display: block;
-}
 
+}
 .socials__icon {
   fill: $grey;
-  &:hover {
-    fill: black;
-  }
-}
+}  
+  
+  
+  
+
+
+
+
+
 
 
 
