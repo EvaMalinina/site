@@ -5,6 +5,8 @@
     About
     WorkEdit
     WorkAdd
+    Reviews
+    ReviewAdd
 
 </template>
 
@@ -38,13 +40,15 @@
   .wrapper-inner {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 77px 1fr 1fr 1fr;
+    grid-template-rows: 80px 77px 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
       "header"
       "header-nav"
       "content"
       "content-works"
       "content-workadd"
+      "content-reviews"
+      "content-reviewadd"
   }  
 </style>
 
@@ -54,6 +58,8 @@ import Nav from './components/Nav.vue'
 import About from './components/About.vue'
 import WorkEdit from './components/WorkEdit.vue'
 import WorkAdd from './components/WorkAdd.vue'
+import Reviews from './components/Reviews.vue'
+import ReviewAdd from './components/ReviewAdd.vue'
 
 
 export default {
@@ -73,7 +79,9 @@ export default {
     Nav,
     About,
     WorkEdit,
-    WorkAdd
+    WorkAdd,
+    Reviews,
+    ReviewAdd
   }
 }
 </script>

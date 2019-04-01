@@ -3,8 +3,8 @@
     .container
       .block-info
         .block-info__name Block «My works»
-      .work-edit
-        .title.work-edit__title Work editing
+      .work-edit.block-bg-white
+        .title.block-edit__title Work editing
         .work-edit__body
           .work-edit__left
             .text.work-edit__left-text Drag or drop to load image
@@ -56,14 +56,17 @@ export default {
   grid-area: content-works;
   background-color:#f7f9fe;
 }
-.work-edit {
+.block-bg-white {
   background-color: white;
   padding: 30px;
   display: flex;
   flex-direction: column;
+  box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
+}
+.work-edit {
   margin-bottom: 30px;
 }
-.work-edit__title {
+.block-edit__title {
   margin-bottom: 48px;
   text-align: left;
   border-bottom: solid 1px #dedee0;
@@ -159,6 +162,7 @@ export default {
   border: solid 1px #d9dbe0;
   resize: none;
   outline: none;
+  padding: 15px;
 
   @include placeholder {
     font-size: 16px;

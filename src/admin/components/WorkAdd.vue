@@ -5,6 +5,7 @@
         .workadd__new
           button.button__workadd +
           .workadd__text Add work
+
         // -
         //   var items = [
         //     {
@@ -46,7 +47,23 @@
                 .workadd__btn-delete
                   button.button__delete Remove
                   img.workadd__img
-
+      
+      
+        
+        
+        .workadd__item
+          .workadd__exmpl
+          .container
+            .workadd__exmpl-name School website
+            .text.workadd__exmpl-text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
+            a.workadd__link(href="loftschool.ru") http://loftschool.ru
+            .workadd__btns
+              .workadd__btn-correct
+                button.button__add Correct
+                img.workadd__img
+              .workadd__btn-delete
+                button.button__add Remove
+                img.workadd__img
 </template>
 
 <script>
@@ -98,4 +115,62 @@ export default {
   text-align: center;
   color: #ffffff;
  }
+ .workadd__item {
+   display: flex;
+   flex-direction: column;
+   background-color: white;
+ }
+ .workadd__exmpl {
+  background-image: url('../../images/content/1.jpg');
+  height: 190px;
+  width: 100%;
+  margin-bottom: 40px;
+ }
+ .workadd__exmpl-name {
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: left;
+  color: #414c63;
+  margin-bottom: 25px;
+ }
+ .workadd__exmpl-text {
+   margin-bottom: 30px;
+   color: #414c63;
+ }
+ .workadd__link {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.88;
+  letter-spacing: normal;
+  text-align: left;
+  color: #383bcf;
+  margin-bottom: 45px;
+  display: flex;
+ }
+ .workadd__btns {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 40px;
+ }
+ .button__add {
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.88;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(65, 76, 99, 0.5);
+  background: transparent;
+  margin-right: 10px;
+ }
+ 
 </style>
