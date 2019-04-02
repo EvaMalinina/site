@@ -1,11 +1,14 @@
 <template lang="pug">
   .block__trash
-    button.button__trash
+    button(@click="onClick").button__trash
 </template>
 
 <script>
 export default {
   name: 'Trash',
+  props: {
+    onClick: [Function, Boolean]
+  },
 };
 </script>
 
