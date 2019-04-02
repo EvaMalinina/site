@@ -5,26 +5,30 @@
         .workadd__new
           button.button__workadd +
           .workadd__text Add work
-        Plank
+        //- diV.workadd__list
+        Plank(
+          v-for="(item, index) in items"
+          :item="item"
+        )
         //- .workadd__item(v-for="(item, index) in items")
         //-   .workadd__exmpl(
         //-        v-if="item.pic"
         //-        :style="{ backgroundImage: `url(${require(`../../images/content/${item.pic}`)})` }"
-        //-    ) 
+        //-    )
         //-   .container
-        //-     .workadd__exmpl-name {{ item.title }} 
-        //-     .workadd__exmpl-text.text {{ item.text }} 
+        //-     .workadd__exmpl-name {{ item.title }}
+        //-     .workadd__exmpl-text.text {{ item.text }}
         //-     a.workadd__link(href="#") {{ item.link }}
         //-     .workadd__btns
-        //-       .workadd__btn 
+        //-       .workadd__btn
         //-         .workadd__btn-correct Correct
         //-         .block__pencil
-        //-           button.button__pencil 
+        //-           button.button__pencil
         //-       .workadd__btn
         //-         .workadd__btn-correct Remove
         //-         .block__cross
-        //-           button.button__cross  
-        
+        //-           button.button__cross
+
 </template>
 
 <script>
@@ -32,36 +36,36 @@ import Plank from '../ui/Plank.vue'
 
 export default {
   name: 'WorkAdd',
-  // data () {
-  //   return {
-  //     items:[
-  //            {
-  //              pic: '1.jpg',
-  //              title: 'School website',
-  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-  //              link: 'http://loftschool.ru'
-  //            },
-  //            {
-  //              pic: '2.jpg',
-  //              title: 'Music website',
-  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-  //              link: 'http://loftschool.ru'
-  //            },
-  //            {
-  //              pic: '3.jpg',
-  //              title: 'Beauty salon website',
-  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-  //              link: 'http://loftschool.ru'
-  //            },
-  //            {
-  //              pic: '4.jpg',
-  //              title: 'Auto website',
-  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-  //              link: 'http://loftschool.ru'
-  //            }
-  //          ]
-  //   }
-  // },
+  data () {
+    return {
+      items:[
+             {
+               pic: '1.jpg',
+               title: 'School website',
+               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+               link: 'http://loftschool.ru'
+             },
+             {
+               pic: '2.jpg',
+               title: 'Music website',
+               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+               link: 'http://loftschool.ru'
+             },
+             {
+               pic: '3.jpg',
+               title: 'Beauty salon website',
+               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+               link: 'http://loftschool.ru'
+             },
+             {
+               pic: '4.jpg',
+               title: 'Auto website',
+               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+               link: 'http://loftschool.ru'
+             }
+           ]
+    }
+  },
   components: {
     Plank
   }
@@ -77,7 +81,7 @@ export default {
   display: grid;
   grid-template-columns: 32% 32% 32%;
   grid-template-rows: 556px 556px;
-  grid-gap: 3%; 
+  grid-gap: 3%;
 
 }
 .workadd__new {
