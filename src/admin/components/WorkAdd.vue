@@ -5,70 +5,66 @@
         .workadd__new
           button.button__workadd +
           .workadd__text Add work
-
-        // -
-        //   var items = [
-        //     {
-        //       pic: '1.jpg',
-        //       title: 'School website',
-        //       text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-        //       link: 'http://loftschool.ru'
-        //     },
-        //     {
-        //       pic: '2.jpg',
-        //       title: 'Music website',
-        //       text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-        //       link: 'http://loftschool.ru'
-        //     },
-        //     {
-        //       pic: '3.jpg',
-        //       title: 'Beauty salon website',
-        //       text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-        //       link: 'http://loftschool.ru'
-        //     },
-        //     {
-        //       pic: '4.jpg',
-        //       title: 'Auto website',
-        //       text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-        //       link: 'http://loftschool.ru'
-        //     }
-        //   ];
-        // ul.workadd__list
-          each item in items
-            li.workadd__item
-              .workadd__exmpl(:style="{ backgroundImage:` url(${require(`../../images/${item.pic}`)})` }")
-              .workadd__exmpl-name= item.title
-              .workadd__exmpl-text= item.text
-              a.workadd__link(href="#")= item.link
-              .workadd__btns
-                .workadd__btn-correct
-                  button.button__correct Correct
-                  img.workadd__img
-                .workadd__btn-delete
-                  button.button__delete Remove
-                  img.workadd__img
-      
-      
+        Plank
+        //- .workadd__item(v-for="(item, index) in items")
+        //-   .workadd__exmpl(
+        //-        v-if="item.pic"
+        //-        :style="{ backgroundImage: `url(${require(`../../images/content/${item.pic}`)})` }"
+        //-    ) 
+        //-   .container
+        //-     .workadd__exmpl-name {{ item.title }} 
+        //-     .workadd__exmpl-text.text {{ item.text }} 
+        //-     a.workadd__link(href="#") {{ item.link }}
+        //-     .workadd__btns
+        //-       .workadd__btn 
+        //-         .workadd__btn-correct Correct
+        //-         .block__pencil
+        //-           button.button__pencil 
+        //-       .workadd__btn
+        //-         .workadd__btn-correct Remove
+        //-         .block__cross
+        //-           button.button__cross  
         
-        
-        .workadd__item
-          .workadd__exmpl
-          .container
-            .workadd__exmpl-name School website
-            .text.workadd__exmpl-text This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!
-            a.workadd__link(href="loftschool.ru") http://loftschool.ru
-            .workadd__btns
-              .workadd__btn-correct
-                button.button__add Correct
-                img.workadd__img
-              .workadd__btn-delete
-                button.button__add Remove
-                img.workadd__img
 </template>
 
 <script>
+import Plank from '../ui/Plank.vue'
+
 export default {
-  name: 'WorkAdd'
+  name: 'WorkAdd',
+  // data () {
+  //   return {
+  //     items:[
+  //            {
+  //              pic: '1.jpg',
+  //              title: 'School website',
+  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+  //              link: 'http://loftschool.ru'
+  //            },
+  //            {
+  //              pic: '2.jpg',
+  //              title: 'Music website',
+  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+  //              link: 'http://loftschool.ru'
+  //            },
+  //            {
+  //              pic: '3.jpg',
+  //              title: 'Beauty salon website',
+  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+  //              link: 'http://loftschool.ru'
+  //            },
+  //            {
+  //              pic: '4.jpg',
+  //              title: 'Auto website',
+  //              text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+  //              link: 'http://loftschool.ru'
+  //            }
+  //          ]
+  //   }
+  // },
+  components: {
+    Plank
+  }
 };
 </script>
 
@@ -82,6 +78,7 @@ export default {
   grid-template-columns: 32% 32% 32%;
   grid-template-rows: 556px 556px;
   grid-gap: 3%; 
+
 }
 .workadd__new {
   background-image: linear-gradient(to right, #006aed, #3f35cb);
@@ -115,15 +112,15 @@ export default {
   text-align: center;
   color: #ffffff;
  }
- .workadd__item {
+ /* .workadd__item {
    display: flex;
    flex-direction: column;
    background-color: white;
  }
  .workadd__exmpl {
-  background-image: url('../../images/content/1.jpg');
   height: 190px;
   width: 100%;
+  background-size: cover;
   margin-bottom: 40px;
  }
  .workadd__exmpl-name {
@@ -159,8 +156,9 @@ export default {
    justify-content: space-between;
    align-items: center;
    margin-bottom: 40px;
+   align-self: flex-end;
  }
- .button__add {
+ .workadd__btn {
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
@@ -171,6 +169,9 @@ export default {
   color: rgba(65, 76, 99, 0.5);
   background: transparent;
   margin-right: 10px;
+  display: flex;
  }
- 
+ .workadd__btn-correct {
+   margin-right: 10px;
+ } */
 </style>

@@ -3,139 +3,147 @@
     .container
       .block-info
         .block-info__name Block «About me»
-        .block-info__modify
-          button.circle-btn 
-          a.block-info__add Add group
+        ButtonAddgroup
+        
       .blocks
         .block.block-new 
           .block__row.block__row_first
             input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Write name of new group', required='')
             .block__btns
-              button.block__pencil(
-                style=`background-image: url('../images/icons/pencil.svg')` 
-                )
-              button.block__tick(
-                style=`background-image: url('../images/icons/tick.svg')`
-                )
-              button.block__cross(
-                style=`background-image: url('../images/icons/remove.svg')`
-                )
+              //- .block__pencil
+              //-   button.button__pencil
+              .block__tick
+                button.button__tick
+              .block__cross
+                button.button__cross
           .block__row.block__row_last 
             input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
             input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
             button.circle-btn.cirlce-btn_block
-        .block.block-workflow
-          .block__row.block__row_first
-            input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Workflow', required='')
-            .block__btns
-              button.block__pencil(
-                style=`background-image: url('../images/icons/pencil.svg')`
-                )
-              button.block__tick(
-                style=`background-image: url('../images/icons/tick.svg')`
-                )
-              button.block__cross(
-                style=`background-image: url('../images/icons/remove.svg')`
-                )
-          ul.block__list
-            li.block__item
-              input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='GIT', required='')
-              input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='100 %', required='')
-              .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
-            li.block__item
-              input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Terminal', required='')
-              input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='95 %', required='')
-              .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
-            li.block__item
-              input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Gulp', required='')
-              input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='60 %', required='')
-              .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
-            li.block__item
-              input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Webpack', required='')
-              input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='80 %', required='')
-              .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
-          .block__row.block__row_last 
-            input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
-            input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
-            button.circle-btn.cirlce-btn_block
+        Skillplank
+        //- .block.block-workflow
+        //-   .block__row.block__row_first
+        //-     input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Workflow', required='')
+        //-     .block__btns
+        //-       //- .block__pencil
+        //-       //-   button.button__pencil
+        //-       .block__tick
+        //-         button.button__tick
+        //-       .block__cross
+        //-         button.button__cross
+        //-   ul.block__list
+        //-     li.block__item
+        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='GIT', required='')
+        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='100 %', required='')
+        //-       .block__btns
+        //-         .block__pencil
+        //-           button.button__pencil
+        //-         .block__trash
+        //-           button.button__trash
+        //-         //- .block__tick
+        //-         //-   button.button__tick
+        //-         //- .block__cross
+        //-         //-   button.button__cross
+        //-     li.block__item
+        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Terminal', required='')
+        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='95 %', required='')
+        //-       .block__btns
+        //-         .block__pencil
+        //-           button.button__pencil
+        //-         .block__trash
+        //-           button.button__trash
+        //-         //- .block__tick
+        //-         //-   button.button__tick
+        //-         //- .block__cross
+        //-         //-   button.button__cross
+        //-     li.block__item
+        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Gulp', required='')
+        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='60 %', required='')
+        //-       .block__btns
+        //-         .block__pencil
+        //-           button.button__pencil
+        //-         .block__trash
+        //-           button.button__trash
+        //-         //- .block__tick
+        //-         //-   button.button__tick
+        //-         //- .block__cross
+        //-         //-   button.button__cross
+        //-     li.block__item
+        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Webpack', required='')
+        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='80 %', required='')
+        //-       .block__btns
+        //-         .block__pencil
+        //-           button.button__pencil
+        //-         .block__trash
+        //-           button.button__trash
+        //-         //- .block__tick
+        //-         //-   button.button__tick
+        //-         //- .block__cross
+        //-         //-   button.button__cross
+        //-   .block__row.block__row_last 
+        //-     input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
+        //-     input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
+        //-     button.circle-btn.cirlce-btn_block
         .block.block-frontend 
           .block__row.block__row_first
             input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Frontend', required='')
             .block__btns
-              button.block__pencil(
-                style=`background-image: url('../images/icons/pencil.svg')`
-                )
-              button.block__tick(
-                style=`background-image: url('../images/icons/tick.svg')`
-                )
-              button.block__cross(
-                style=`background-image: url('../images/icons/remove.svg')`
-                )
+              .block__pencil
+                button.button__pencil
+              //- .block__tick
+              //-   button.button__tick
+              //- .block__cross
+              //-   button.button__cross
           ul.block__list
             li.block__item
               input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='HTML5', required='')
               input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='100 %', required='')
               .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
+                .block__pencil
+                  button.button__pencil
+                .block__trash
+                  button.button__trash
+                //- .block__tick
+                //-   button.button__tick
+                //- .block__cross
+                //-   button.button__cross
             li.block__item
               input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='CSS3', required='')
               input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='95 %', required='')
               .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
+                //- .block__pencil
+                //-   button.button__pencil
+                //- .block__trash
+                //-   button.button__trash
+                .block__tick
+                  button.button__tick
+                .block__cross
+                  button.button__cross
+                
             li.block__item
               input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='JavaScript', required='')
               input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='50 %', required='')
               .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
+                .block__pencil
+                  button.button__pencil
+                .block__trash
+                  button.button__trash
+                //- .block__tick
+                //-   button.button__tick
+                //- .block__cross
+                //-   button.button__cross
             li.block__item
               input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='jQuery and Vue.js', required='')
               input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='80 %', required='')
               .block__btns
-                button.button__pencil(
-                  style=`background-image: url('../images/icons/pencil.svg')`
-                )
-                button.button__cross(
-                style=`background-image: url('../images/icons/trash.svg')`
-                )
+                .block__pencil
+                  button.button__pencil
+                .block__trash
+                  button.button__trash
+                //- .block__tick
+                //-   button.button__tick
+                //- .block__cross
+                //-   button.button__cross
           .block__row.block__row_last 
             input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
             input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
@@ -143,8 +151,15 @@
 </template>
 
 <script>
+import Skillplank from "../ui/Skillplank"
+import ButtonAddgroup from "../ui/ButtonAddgroup"
+
 export default {
-  name: 'About'
+  name: 'About',
+  components: {
+    Skillplank,
+    ButtonAddgroup
+  }
 };
 </script>
 
@@ -170,11 +185,11 @@ export default {
   text-align: left;
   color: #414c63;
 }
-.block-info__modify {
+/* .block-info__modify {
   display: flex;
   align-items: center;
-}
-.block-info__add {
+} */
+/* .block-info__add {
   font-size: 16px;
   font-weight: 400;
   line-height: 2.12;
@@ -198,7 +213,7 @@ export default {
   transform: translate(-50%);
   font-size: 15px;
   color: #ffffff;
-}
+} */
 
 .blocks {
   display: grid;
@@ -207,7 +222,7 @@ export default {
   grid-row-gap: 30px;
   grid-column-gap: 30px;
 }
-.block {
+/* .block {
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
   background-color: #ffffff;
   padding: 5%;
@@ -227,6 +242,7 @@ export default {
 .block__row_first {
   border-bottom: solid 1px #dedee0;
   padding: 5px;
+  justify-content: space-between;
 }
 .block__input {
   width: fit-content;
@@ -272,7 +288,7 @@ export default {
   margin-right: 15px;
 }
 .block__input_unit {
-  margin-right: 15px;
+  margin-right: 7%;
   padding-bottom: 10px;
 
   @include placeholder {
@@ -301,33 +317,57 @@ export default {
   font-size: 30px;
 }
 .block__btns {
-  width: 15%;
-  height: 14px;
+  width: 9%;
+  min-width: 48px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-self: center;
 }
 .block__pencil {
-  fill: #414c63;
-  opacity: 0.5;
   width: 14px;
+  height: 14px;
+}
+.button__pencil {
   height: 100%;
+  width: 100%;
+  background: svg-load('../../images/icons/pencil.svg', fill=#a0a5b1, height=100%, width=100%);
+  background-repeat: no-repeat;
+}
+.block__trash {
+  width: 12px;
+  height: 15px;
+}
+.button__trash {
+  height: 100%;
+  width: 100%;
+  background: svg-load('../../images/icons/trash.svg', fill=#a0a5b1, height=100%, width=100%);
+  background-repeat: no-repeat;
 }
 .block__tick {
   width: 15px;
+  height: 12px;
+}
+.button__tick {
   height: 100%;
-  fill: #00d70a;
-  display: none;
+  width: 100%;
+  background: svg-load('../../images/icons/tick.svg',  fill= #00d70a, height=100%, width=100%);
+  background-repeat: no-repeat;
 }
 .block__cross {
   width: 14px;
+  height: 12px;
+}
+.button__cross {
   height: 100%;
-  fill:#bf2929;
-  display: none;
+  width: 100%;
+  background: svg-load('../../images/icons/remove.svg',  fill= #bf2929, height=100%, width=100%);
+  background-repeat: no-repeat;
 }
 .block__list {
-  width: 90%;
+  width: 100%;
   align-self: center;
+  padding: 0px 0px 0px 10px;
 }
 .block__item {
   margin-bottom: 20px;
@@ -335,9 +375,9 @@ export default {
 }
 .block-workflow {
   /* display: grid; */
-  box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
+  /*box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
   background-color: #ffffff;
-}
+} */
 .block-frontend {
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
   background-color: #ffffff;

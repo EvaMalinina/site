@@ -29,15 +29,15 @@
                 .work-form__tag
                   .work-form__tag-name HTML
                   .work-form__tag-close
-                    img.work-form__tag-img
+                    button.button__tag-close
                 .work-form__tag
                   .work-form__tag-name CSS
                   .work-form__tag-close
-                    img.work-form__tag-img
+                    button.button__tag-close
                 .work-form__tag
                   .work-form__tag-name JavaScript
                   .work-form__tag-close
-                    img.work-form__tag-img
+                    button.button__tag-close
               .work-form__btns
                 button.button-ellipse.button-ellipse_bg-trsp Decline
                 button.button-ellipse Save
@@ -183,7 +183,7 @@ export default {
   margin-right: 0.8%;
   border-radius: 14.9px;
   background-color: #f4f4f4;
-  padding: 8px 13px 8px 15px;
+  padding: 8px 26px 8px 15px;
   display: flex;
   align-items: center;
 }
@@ -195,12 +195,18 @@ export default {
   letter-spacing: normal;
   text-align: left;
   color: rgba(40, 51, 64, 0.7);
-  margin-right: 10%;
+  margin-right: 13%;
 }
 .work-form__tag-close {
   min-width: 11px;
   height: 11px;
   display: flex;
+}
+.button__tag-close {
+  height: 100%;
+  width: 100%;
+  background: svg-load('../../images/icons/remove.svg',  fill= #414c63, height=100%, width=100%);
+  background-repeat: no-repeat;
 }
 .work-form__tag-img {
   background-image: url('../../images/icons/remove.svg');

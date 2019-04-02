@@ -1,27 +1,3 @@
-//- .works-slider   
-//-   .works-slider__pics(data-slider="1")
-
-    //- .works__pics
-    //-   .works__mainpic
-    //-     +image('content/4.jpg', 'works__img')
-    //-   +projects('works', ["content/1", "content/2", "content/3", "content/4"])
-    //-   .works__slider-buttons
-    //-     button.works__button-up
-    //-       +icon('arrow-down', 'arrow arrow_up')
-    //-     button.works__button-down
-    //-       +icon('arrow-down', 'arrow arrow_down')
-    //-   .works__number
-    //-     +image('content/4.png', 'works__img')
-
-      .works__desc
-        +skill-name('works-skills', ['HTML','CSS','JavaScript'])
-        .works__title.title School website
-        .works__text This girl was not learning web development somewhere, but at LoftSchool! 2 months only the most difficult trials and sleepless nights!
-        a.works__link(href="#")
-          .works__link-icon
-            +icon('link', 'works__link')
-          .works__link-text Go to website
-
 script(type="text/x-template")#slider-container
   .works-slider 
     display(
