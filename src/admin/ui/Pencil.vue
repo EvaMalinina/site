@@ -1,11 +1,14 @@
 <template lang="pug">
   .block__pencil
-    button.button__pencil
+    button(@click="onClick").button__pencil
 </template>
 
 <script>
 export default {
   name: 'Pencil',
+  props: {
+    onClick: [Function, Boolean]
+  },
 };
 </script>
 

@@ -1,10 +1,22 @@
 <template lang="pug">
   .block__btns
-    Tick(v-if="visible" @click="visible=!visible")
-    Cross(v-if="visible" @click="visible=!visible")
-    Pencil(v-if="invisible" @click="invisible=!invisible")
-    Trash(v-if="invisible" @click="invisible=!invisible")
-    
+    Tick(
+      v-if="onTick"
+      :onClick="onTick"
+    )
+    Cross(
+      v-if="onCross"
+      :onClick="onCross"
+    )
+    Pencil(
+      v-if="onEdit"
+      :onClick="onEdit"
+    )
+    Trash(
+      v-if="onTrash"
+      :onClick="onTrash"
+    )
+
 </template>
 
 <script>
@@ -22,16 +34,16 @@ export default {
     Trash
   },
   data() {
-    return {  
+    return {
       visible: true,
       invisible: false
-    }    
+    }
   },
   props: {
-    onTick: Function(),
-    onCross: Function(),
-    onEdit: Function(),
-    onTrash: Function()
+    onTick: [Function, Boolean],
+    onCross: [Function, Boolean],
+    onEdit: [Function, Boolean],
+    onTrash: [Function, Boolean]
   }
 };
 
