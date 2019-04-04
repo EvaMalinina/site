@@ -1,24 +1,20 @@
 .nav {
-
+  width: 100%;
   @include tablets {
     display: none;
   }
   &__list {
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 100%;
+    justify-content: space-around;
   }
   &__item{
     font-size: 16px;
     font-weight: 300;
     color: $grey;
-    /* margin-right: 60px; */
-    margin-right: 24%;
     white-space: nowrap;
    
-    @include desktop {
-      margin-right: 19%;
-    }
     
     &:last-child {
       margin-right: 0;

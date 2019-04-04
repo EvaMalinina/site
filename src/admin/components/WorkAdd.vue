@@ -7,7 +7,8 @@
           .workadd__text Add work
         //- diV.workadd__list
         Plank(
-          v-for="(item, index) in items"
+          v-for="(item, index) in items",
+          :key="item.id",
           :item="item"
         )
         //- .workadd__item(v-for="(item, index) in items")
@@ -74,7 +75,7 @@ export default {
 
 <style lang="pcss">
 .content-workadd {
-  grid-area: content-workadd;
+  /* grid-area: content-workadd; */
   background-color:#f7f9fe;
 }
 .workadd {

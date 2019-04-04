@@ -3,10 +3,10 @@
     MainHeader
     Nav
     About
-    WorkEdit
-    WorkAdd
+    Works
     Reviews
-    ReviewAdd
+    // router-view
+    
 
 </template>
 
@@ -40,26 +40,22 @@
   .wrapper-inner {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 77px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 80px 77px 1fr 1fr 1fr;
     grid-template-areas: 
       "header"
       "header-nav"
       "content"
       "content-works"
-      "content-workadd"
       "content-reviews"
-      "content-reviewadd"
   }  
 </style>
 
 <script>
 import MainHeader from './components/Header.vue'
 import Nav from './components/Nav.vue'
-import About from './components/About.vue'
-import WorkEdit from './components/WorkEdit.vue'
-import WorkAdd from './components/WorkAdd.vue'
-import Reviews from './components/Reviews.vue'
-import ReviewAdd from './components/ReviewAdd.vue'
+import About from './pages/About.vue'
+import Works from './pages/Works'
+import Reviews from './pages/Reviews.vue'
 
 
 export default {
@@ -78,10 +74,8 @@ export default {
     MainHeader,
     Nav,
     About,
-    WorkEdit,
-    WorkAdd,
-    Reviews,
-    ReviewAdd
+    Works,
+    Reviews
   }
 }
 </script>

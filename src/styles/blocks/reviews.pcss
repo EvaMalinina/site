@@ -49,19 +49,22 @@
     } */
   /* } */
   &__slider-item { 
-     max-width: 455px; 
+     /* max-width: 455px;  */
+     max-width: 50%;
      width: 50%; 
      /* margin: 0 25px 0 25px;  */
      margin: 0 3% 0 3%;
 
      @include tablets {
         width: 40%; 
+        max-width: 40%;
         /* margin-right: 80px; */
         margin-right: 6%;
         } 
       @include bigphones {
-        width: 100%;
-        margin: 0px;
+        max-width: 100%;
+        width: 100%; 
+        margin: 0%;
         min-width: 260px;
         } 
       &:first-child {

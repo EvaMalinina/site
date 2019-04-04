@@ -1,11 +1,14 @@
 <template lang="pug">
   .block__cross
-    button.button__cross
+    button(@click="onClick").button__cross
 </template>
 
 <script>
 export default {
   name: 'Cross',
+  props: {
+    onClick: [Function, Boolean]
+  },
 };
 </script>
 

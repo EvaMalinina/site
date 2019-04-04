@@ -52,8 +52,6 @@ export default {
 <style lang="pcss">
 @import "../../styles/mixins.pcss";
 .content-work {
-  display: grid;
-  grid-area: content-works;
   background-color:#f7f9fe;
 }
 .block-bg-white {

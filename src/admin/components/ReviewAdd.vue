@@ -66,7 +66,6 @@ export default {
 
 <style lang="pcss">
   .content-reviewadd {
-    grid-area: content-reviewadd;
     background-color:#f7f9fe;
   }
   .reviewadd {

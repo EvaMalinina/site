@@ -3,11 +3,17 @@
     .container
       ul.nav
         li.nav__item 
-          a.nav__link(href='./About.vue') About me
-        li.nav__item
-          a.nav__link(href='./Work.vue') Works
-        li.nav__item
-          a.nav__link(href='./Reviews.vue') Reviews
+          router-link(
+            to = "/about"
+          ).nav__link About me
+        li.nav__item 
+          router-link(
+            to = "/works"
+          ).nav__link Works
+        li.nav__item 
+          router-link(
+            to = "/reviews"
+          ).nav__link Reviews
 </template>
 
 <script>

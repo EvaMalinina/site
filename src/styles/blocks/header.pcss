@@ -6,14 +6,15 @@
   
   &__menu {
     display: flex;
-    flex: 1;
-    justify-content: center;
     margin: 0 20px;
+    min-width: 60%;
+    justify-content: space-between;
 
     @include tablets {
       flex: 0;
       order: 3;
       margin: 0;
+      min-width: 5%;
     }
   }
   &__socials {
