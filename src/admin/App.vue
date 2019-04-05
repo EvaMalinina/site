@@ -2,13 +2,44 @@
   .wrapper-inner
     MainHeader
     Nav
-    About
-    Works
-    Reviews
-    // router-view
-    
+    //- About
+    //- Works
+    //- Reviews
+    router-view
+
 
 </template>
+
+<script>
+import MainHeader from './components/Header.vue'
+import Nav from './components/Nav.vue'
+import About from './pages/About.vue'
+import Works from './pages/Works'
+import Reviews from './pages/Reviews.vue'
+
+
+export default {
+  name: 'app',
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+		handleClick(e) {
+			console.log(this.text);
+		}
+  },
+  components: {
+    MainHeader,
+    Nav,
+    About,
+    Works,
+    Reviews
+  }
+}
+</script>
+
 
 
 <style lang="pcss">
@@ -41,41 +72,11 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 80px 77px 1fr 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "header"
       "header-nav"
       "content"
       "content-works"
       "content-reviews"
-  }  
-</style>
-
-<script>
-import MainHeader from './components/Header.vue'
-import Nav from './components/Nav.vue'
-import About from './pages/About.vue'
-import Works from './pages/Works'
-import Reviews from './pages/Reviews.vue'
-
-
-export default {
-  name: 'app',
-  data() {
-    return {
-      
-    }
-  },
-  methods: {
-		handleClick(e) {
-			console.log(this.text);
-		}
-  },
-  components: {
-    MainHeader,
-    Nav,
-    About,
-    Works,
-    Reviews
   }
-}
-</script>
+</style>

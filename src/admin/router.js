@@ -9,17 +9,20 @@ import Reviews from './pages/Reviews';
 
 const routes = [
   {
-    path: '/about',
-    components: About
+    path: '/',
+    component: About
   },
   {
     path: '/works',
-    components: Works
+    component: Works
   },
   {
     path: '/reviews',
-    components: Reviews
+    component: Reviews
   }
 ];
 
-export default new VueRouter({ routes, mode: 'history' });
+export default new VueRouter({
+    routes,
+    // mode: 'history'
+});

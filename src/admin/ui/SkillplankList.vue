@@ -9,8 +9,9 @@
         @onEdit = "onEdit"
         @onTick = "onTick"
         @onCross = "onCross"
+        @handleName="handleName"
       )
-        
+
 </template>
 
 <script>
@@ -39,6 +40,9 @@ import SkillplankItem from './SkillplankItem'
       },
       onCross(valueId) {
         this.$emit('onCross', valueId);
+      },
+      handleName(data) {
+        this.$emit('handleName', data);
       }
     },
     components: {

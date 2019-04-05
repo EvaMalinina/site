@@ -2,17 +2,17 @@
   .header-nav
     .container
       ul.nav
-        li.nav__item 
+        li.nav__item
           router-link(
-            to = "/about"
+            to="/"
           ).nav__link About me
-        li.nav__item 
+        li.nav__item
           router-link(
-            to = "/works"
+            to="/works"
           ).nav__link Works
-        li.nav__item 
+        li.nav__item
           router-link(
-            to = "/reviews"
+            to="/reviews"
           ).nav__link Reviews
 </template>
 

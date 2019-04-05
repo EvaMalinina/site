@@ -1,74 +1,84 @@
 <template lang='pug'>
   .block__row.block__row_last(
     :class="{error: validation.hasError('value.name')}"
-  ) 
+  )
     input.block__input.block__input_newskill(
       name='newgroup',
       placeholder='New skill',
       autofocus
       required=''
       v-model="value.name"
-      @keydown.enter="addSkill" 
+      @keydown.enter="addSkill"
+      :style="{borderColor: validation.hasError('value.name') ? 'red' : ''}"
     )
-    diV {{ validation.firstError('value.name') }}
-    div(:class="{error: validation.hasError('value.prc')}") 
+    //- diV {{ validation.firstError('value.name') }}
+    div(:class="{error: validation.hasError('value.prc')}")
     input.block__input.block__input_percentage(
-      name='percent', 
-      placeholder='100 %', 
+      name='percent',
+      placeholder='100 %',
       required='',
-      
+
       v-model="value.prc"
       @keydown.enter="addSkill"
     )
     diV {{ validation.firstError('value.prc') }}
     button.circle-btn.cirlce-btn_block(
+      :class="isBtnDisabled ? 'disabled' : ''"
       @click="addSkill"
+      :disabled="isBtnDisabled"
     )
 </template>
 
 <script>
 import { Validator } from 'simple-vue-validator';
 
-  export default {
-    mixins: [require('simple-vue-validator').mixin],
-    validators: {
-      'value.name'(value) {
-        return Validator.value(value).required();
-      },
-      'value.prc'(value) {
-        return Validator.value(value).integer();
-      }
+export default {
+  mixins: [require('simple-vue-validator').mixin],
+  validators: {
+    'value.name'(value) {
+      return Validator.value(value).required();
     },
-    name: 'SkillplankInput',
-    data () {
-      return {
-        value: {
-         id: Date.now(),
-         name: 'GIT',
-         prc: '100%',
-       }
+    'value.prc'(value) {
+      return Validator.value(value).integer();
+    }
+  },
+  name: 'SkillplankInput',
+  data () {
+    return {
+      value: {
+        id: Date.now(),
+        name: 'GIT',
+        prc: 100,
+     }
+    }
+  },
+  computed: {
+    isBtnDisabled() {
+      if (!this.value.name || !this.value.prc) {
+        return true;
       }
+      return false;
+    }
+  },
+  methods: {
+    addSkill() {
+        this.$emit('addSkill', {...this.value});
+        this.value.name = "";
+        this.value.prc = "";
     },
-    computed: {},
-    methods: {
-      addSkill() {
-          this.$emit('addSkill', {...this.value});
-          this.value.name = "";
-          this.value.prc = "";   
-      },
-      submit() {
-        this.$validate().then(success => {
-          if(!success) return;
-        });
-      },
-      reset() {
-        this.name = '';
-        this.prc = '';
-        this.validation.reset();
-      }
+    submit() {
+      this.$validate().then(success => {
+        if(!success) return;
+      });
     },
-    components: {}
-  }
+    reset() {
+      this.name = '';
+      this.prc = '';
+      this.validation.reset();
+    }
+  },
+  components: {}
+}
 </script>
 
 
@@ -89,7 +99,7 @@ import { Validator } from 'simple-vue-validator';
 .cirlce-btn_block::after {
   font-size: 30px;
 }
-.block__input_newskill, .block__input_percentage {   
+.block__input_newskill, .block__input_percentage {
   border-bottom: solid 1px #1f232d;
   padding-left: 5%;
 
