@@ -99,6 +99,9 @@ new Vue({
           this.currentIndex--;
           break;
       }
+    },
+    handleThumbonClick(index) {
+      this.currentIndex = index - 1;
     }
   },
   created() {

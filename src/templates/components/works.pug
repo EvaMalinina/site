@@ -5,6 +5,7 @@ script(type="text/x-template")#slider-container
       :currentWork="currentWork",
       :currentIndex="currentIndex"
       @slide="handleSlide"
+      @thumbonClick="handleThumbonClick"
     )
     info(
       :currentWork="currentWork"
@@ -21,7 +22,9 @@ script(type="text/x-template")#slider-display
         thumbs(
           :works="reversedWorks"
           :currentWork="currentWork"
+          @thumbonClick = "index => $emit('thumbonClick', index)"   
         )
+       
 
 script(type="text/x-template")#slider-btns
   .works__slider-buttons
@@ -33,9 +36,13 @@ script(type="text/x-template")#slider-thumbs
     li.works__item(
       v-for="work in works" :key="work.id"
       :class="{active: currentWork.id === work.id }"
+      
     )
-      a.works__btn
-        img(:src="work.photo" alt="").works__img
+      button(
+        type="button" 
+        @click.prevent = "$emit('thumbonClick', work.id)"
+      ).works__btn
+        img(:src="work.photo" alt="work example").works__img
 
 script(type="text/x-template")#slider-info
   .works__desc

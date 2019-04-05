@@ -4,22 +4,15 @@
       name='newgroupname', 
       placeholder='Workflow', 
       required='',
-      v-model="row.name"
-      @keydown.enter="addRowname"
+      v-model="value"
+      @onEdit="onEdit"
     )
 
     Btns(
       :onCross="() => onCross(value)"
       :onTick="() => onTick(value)"
     )
-
-      //- .block__pencil
-      //-   button.button__pencil
-
-      //- .block__tick
-      //-   button.button__tick
-      //- .block__cross
-      //-   button.button__cross
+    // :onEdit="!value.isEdit ? (() => onEdit(value)) : false"
 
 </template>
 
@@ -30,18 +23,23 @@ import Btns from './Btns'
     name: 'SkillplankRow',
     data () {
       return {
-        row: 'name'
+
       }
+    },
+    props: {
+      value: String
     },
     computed: {},
     methods: {
-      addRowname() {
-        this.$emit('addRowname', 'this.row');
-        this.row.name = ""
+      onEdit(value) {
+        this.$emit('onEdit', this.value.id); 
       },
       onTick() {
-        this.$emit('onTick', this.row.id);
+        this.$emit('onTick', this.value.id);
       },
+      onCross() {
+        this.$emit('onCross', this.value.id);
+      }
     },
     components: {
       Btns

@@ -1,7 +1,8 @@
 <template lang="pug">
   .block.block-workflow
     SkillplankRow(
-      @addRowname = "addRowname"
+      
+      @onEdit = "onEdit"
       @onTick = "onTick"
       @onCross = "onCross"
     )    
@@ -30,15 +31,18 @@ export default {
   name: 'Skillplank',
   data() {
     return {
-      // values: [],
-      // name: '',
-      // prc: '',
       values: [{
         id: Date.now(),
         name: 'git',
         prc: 100,
-      }],
-      row: "name"
+      },
+      {
+        id: Date.now(),
+        name: 'git',
+        prc: 100,
+      }
+      ],
+      row: 'name'
     }
   },
   components: {

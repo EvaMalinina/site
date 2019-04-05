@@ -1,14 +1,17 @@
 <template lang='pug'>
-  .block__row.block__row_last
-    div {{ validation.firstError('value.name') }}
+  .block__row.block__row_last(
+    :class="{error: validation.hasError('value.name')}"
+  ) 
     input.block__input.block__input_newskill(
       name='newgroup',
       placeholder='New skill',
       autofocus
       required=''
       v-model="value.name"
-       @keydown.enter="addSkill"
+      @keydown.enter="addSkill" 
     )
+    diV {{ validation.firstError('value.name') }}
+    div(:class="{error: validation.hasError('value.prc')}") 
     input.block__input.block__input_percentage(
       name='percent', 
       placeholder='100 %', 
@@ -17,19 +20,23 @@
       v-model="value.prc"
       @keydown.enter="addSkill"
     )
+    diV {{ validation.firstError('value.prc') }}
     button.circle-btn.cirlce-btn_block(
       @click="addSkill"
     )
 </template>
 
 <script>
-import { validator } from 'simple-vue-validator';
+import { Validator } from 'simple-vue-validator';
 
   export default {
-    mixin: [require('simple-vue-validator').mixin],
+    mixins: [require('simple-vue-validator').mixin],
     validators: {
       'value.name'(value) {
-        return Validator.value(value).require('The field can be empty');
+        return Validator.value(value).required();
+      },
+      'value.prc'(value) {
+        return Validator.value(value).integer();
       }
     },
     name: 'SkillplankInput',
@@ -45,14 +52,19 @@ import { validator } from 'simple-vue-validator';
     computed: {},
     methods: {
       addSkill() {
-        this.$validate().then(success => {
-          if(!success) return;
-          
           this.$emit('addSkill', {...this.value});
           this.value.name = "";
-          this.value.prc = "";
-          this.validation.reset();
-         }); 
+          this.value.prc = "";   
+      },
+      submit() {
+        this.$validate().then(success => {
+          if(!success) return;
+        });
+      },
+      reset() {
+        this.name = '';
+        this.prc = '';
+        this.validation.reset();
       }
     },
     components: {}
