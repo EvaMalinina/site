@@ -8,8 +8,9 @@
         @onTrash = "onTrash"
         @onEdit = "onEdit"
         @onTick = "onTick"
-        @onCross = "onCross"
+        @onCross = "clearSkill"
         @handleName="handleName"
+        @handlePrc="handlePrc"
       )
 
 </template>
@@ -39,10 +40,18 @@ import SkillplankItem from './SkillplankItem'
         this.$emit('onTick', valueId);
       },
       onCross(valueId) {
+        // console.log(this);
         this.$emit('onCross', valueId);
       },
       handleName(data) {
         this.$emit('handleName', data);
+      },
+      handlePrc(data) {
+        this.$emit('handlePrc', data);
+      },
+      clearSkill(data) {
+        // console.log(data);
+        this.$emit('clearSkill', data);
       }
     },
     components: {

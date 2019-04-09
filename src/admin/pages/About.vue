@@ -3,87 +3,22 @@
     .container
       .block-info
         .block-info__name Block «About me»
-        ButtonAddgroup
-        
+        ButtonAddgroup(
+          @showAddingForm="addingForm",
+        )
+        button(
+        //  @click = "addSkillGroup"
+        ).add add
+
+      button(
+        @click = "showAddFormTest = true"
+      ) Add-test  
+
       .blocks
-        .block.block-new 
-          .block__row.block__row_first
-            input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Write name of new group', required='')
-            .block__btns
-              //- .block__pencil
-              //-   button.button__pencil
-              .block__tick
-                button.button__tick
-              .block__cross
-                button.button__cross
-          .block__row.block__row_last 
-            input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
-            input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
-            button.circle-btn.cirlce-btn_block
+        Skilladd(
+          v-if="showAddFormTest"
+        )   
         Skillplank
-        //- .block.block-workflow
-        //-   .block__row.block__row_first
-        //-     input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Workflow', required='')
-        //-     .block__btns
-        //-       //- .block__pencil
-        //-       //-   button.button__pencil
-        //-       .block__tick
-        //-         button.button__tick
-        //-       .block__cross
-        //-         button.button__cross
-        //-   ul.block__list
-        //-     li.block__item
-        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='GIT', required='')
-        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='100 %', required='')
-        //-       .block__btns
-        //-         .block__pencil
-        //-           button.button__pencil
-        //-         .block__trash
-        //-           button.button__trash
-        //-         //- .block__tick
-        //-         //-   button.button__tick
-        //-         //- .block__cross
-        //-         //-   button.button__cross
-        //-     li.block__item
-        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Terminal', required='')
-        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='95 %', required='')
-        //-       .block__btns
-        //-         .block__pencil
-        //-           button.button__pencil
-        //-         .block__trash
-        //-           button.button__trash
-        //-         //- .block__tick
-        //-         //-   button.button__tick
-        //-         //- .block__cross
-        //-         //-   button.button__cross
-        //-     li.block__item
-        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Gulp', required='')
-        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='60 %', required='')
-        //-       .block__btns
-        //-         .block__pencil
-        //-           button.button__pencil
-        //-         .block__trash
-        //-           button.button__trash
-        //-         //- .block__tick
-        //-         //-   button.button__tick
-        //-         //- .block__cross
-        //-         //-   button.button__cross
-        //-     li.block__item
-        //-       input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='Webpack', required='')
-        //-       input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='80 %', required='')
-        //-       .block__btns
-        //-         .block__pencil
-        //-           button.button__pencil
-        //-         .block__trash
-        //-           button.button__trash
-        //-         //- .block__tick
-        //-         //-   button.button__tick
-        //-         //- .block__cross
-        //-         //-   button.button__cross
-        //-   .block__row.block__row_last 
-        //-     input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
-        //-     input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
-        //-     button.circle-btn.cirlce-btn_block
         .block.block-frontend 
           .block__row.block__row_first
             input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Frontend', required='')
@@ -151,15 +86,25 @@
 </template>
 
 <script>
-import Skillplank from "../ui/Skillplank"
-import ButtonAddgroup from "../ui/ButtonAddgroup"
 
 export default {
   name: 'About',
+  data () {
+    return {
+      showAddFormTest: false,
+    }
+  },
   components: {
-    Skillplank,
-    ButtonAddgroup
-  }
+    Skilladd: () => import("../ui/Skilladd.vue"),
+    Skillplank: () => import("../ui/Skillplank.vue"),
+    ButtonAddgroup: () => import("../ui/ButtonAddgroup.vue")
+  },
+  methods: {
+    addingForm(value) {
+      // event.preventDefault();
+      this.value = false;
+    }  
+  },
 };
 </script>
 

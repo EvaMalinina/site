@@ -1,12 +1,15 @@
 import Vue from 'vue';
 import Vuex from'vuex';
 
+
 Vue.use(Vuex);
 
-import autorization from './modules/autorization';
+import categories from './modules/categories.js';
+import works from './modules/works.js';
 
-export const store = name.Vuex.store ({
+export default new Vuex.Store ({
     modules: {
-        autorization
+      categories,
+      works
     },
 });

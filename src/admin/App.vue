@@ -2,21 +2,10 @@
   .wrapper-inner
     MainHeader
     Nav
-    //- About
-    //- Works
-    //- Reviews
     router-view
-
-
 </template>
 
 <script>
-import MainHeader from './components/Header.vue'
-import Nav from './components/Nav.vue'
-import About from './pages/About.vue'
-import Works from './pages/Works'
-import Reviews from './pages/Reviews.vue'
-
 
 export default {
   name: 'app',
@@ -31,11 +20,12 @@ export default {
 		}
   },
   components: {
-    MainHeader,
-    Nav,
-    About,
-    Works,
-    Reviews
+    MainHeader: () => import("./components/Header.vue"),
+    Nav: () => import("./components/Nav.vue"),
+    About: () => import("./pages/About.vue"),
+    Works: () => import("./pages/Works.vue"),
+    Reviews: () => import("./pages/Reviews.vue"),
+    Login: () => import("./pages/Login.vue"),
   }
 }
 </script>
@@ -71,12 +61,10 @@ export default {
   .wrapper-inner {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 77px 1fr 1fr 1fr;
+    grid-template-rows: 80px 77px 1fr;
     grid-template-areas:
       "header"
       "header-nav"
       "content"
-      "content-works"
-      "content-reviews"
   }
 </style>

@@ -27,7 +27,7 @@ import ReviewAdd from '../components/ReviewAdd'
 
 <style lang='pcss'>
 .reviews {
-  grid-area: content-reviews;
+  grid-area: content;
   display: flex;
   flex-direction: column;
 }

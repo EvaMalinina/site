@@ -2,7 +2,7 @@
   .block__tick
     button(@click="onClick").button__tick
 </template>
-
+  
 <script>
 export default {
   name: 'Tick',

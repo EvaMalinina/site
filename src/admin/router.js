@@ -3,26 +3,37 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import About from './pages/About';
-import Works from './pages/Works';
-import Reviews from './pages/Reviews';
-
 const routes = [
   {
     path: '/',
-    component: About
+    component: () => import("./pages/About.vue"),
+    meta: {
+      title: "Block «About me»",
+    }
   },
   {
     path: '/works',
-    component: Works
+    component: () => import("./pages/Works.vue"),
+    meta: {
+      title: "Block «My works»",
+    }
   },
   {
     path: '/reviews',
-    component: Reviews
+    component: () => import("./pages/Reviews.vue"),
+    meta: {
+      title: "Block «My reviews»",
+    }
+  },
+  {
+    path: '/login',
+    component: () => import("./pages/Login.vue"),
+    meta: {
+      title: "Login",
+    }
   }
 ];
 
 export default new VueRouter({
     routes,
-    // mode: 'history'
 });

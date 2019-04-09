@@ -2,11 +2,12 @@
   .block__btns
     Tick(
       v-if="onTick"
-      :onClick="onTick"
+      :onClick="onTick" 
     )
     Cross(
       v-if="onCross"
       :onClick="onCross"
+      
     )
     Pencil(
       v-if="onEdit"
@@ -37,6 +38,7 @@ export default {
     return {
       visible: true,
       invisible: false
+      
     }
   },
   props: {
@@ -44,7 +46,12 @@ export default {
     onCross: [Function, Boolean],
     onEdit: [Function, Boolean],
     onTrash: [Function, Boolean]
-  }
+  },
+  // methods: {
+  //   onCross(value) {
+  //     console.log('yes');
+  //   }
+  // }
 };
 
 </script>

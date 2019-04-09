@@ -27,7 +27,7 @@ import WorkAdd from '../components/WorkAdd'
  
  <style lang='pcss'>
   .works {
-    grid-area: content-works;
+    grid-area: content;
     display: flex;
     flex-direction: column;
 
