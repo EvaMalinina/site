@@ -51,7 +51,7 @@ import SkillplankItem from './SkillplankItem'
       },
       clearSkill(data) {
         // console.log(data);
-        this.$emit('clearSkill', data);
+        this.$emit('onCross', data);
       }
     },
     components: {

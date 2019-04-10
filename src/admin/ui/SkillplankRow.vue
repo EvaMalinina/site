@@ -3,11 +3,11 @@
     input.block__input.block__input_bb.block__input_first(
       name='newgroupname',
       v-model="value.skillTitle",
-      @input="handleRow(value, $event)", 
+      @input="handleInput(value, $event)",
       required='',
       :disabled="!value.isEditRow ? true : false",
       :style="{pointerEvents: value.isEditRow ? 'auto' : 'none'}",
-      :class="value.isEditRow ? 'block__input_active' : ''" 
+      :class="value.isEditRow ? 'block__input_active' : ''"
     )
 
     Btns(
@@ -30,6 +30,10 @@ import Btns from './Btns'
     },
     props: {
       value: Object,
+      onTickRow: Function,
+      onEditRow: Function,
+      onCrossRow: Function,
+      handleRow: Function
     },
     computed: {},
     methods: {
@@ -37,17 +41,13 @@ import Btns from './Btns'
         this.$emit('onTickRow', this.value.id);
       },
       onEdit(value) {
-        // console.log(value);
-        // this.$emit('onEditRow', this.value.id);
-        this.$emit('onEditRow', {...this.value.id});
-        // this.value.name = "";
+        console.log("value", value);
+        this.$emit('onEditRow', this.value.id);
       },
       onCross(value) {
         this.$emit('onCrossRow', this.value.id);
       },
-      handleRow(value, e) {
-        console.log("e", e)
-        console.log("value", value);
+      handleInput(value, e) {
         this.$emit('handleRow', {
           valueId: value.id,
           val: e.target.value
@@ -88,7 +88,7 @@ import Btns from './Btns'
   letter-spacing: normal;
   text-align: left;
   color: #414c63;
-    
+
 }
 .block__input_bb {
   border-bottom: solid 1px #1f232d;

@@ -2,18 +2,10 @@
   .block.block-workflow
     SkillplankRow(
       :value = "value"
-      @onEdit = "onEditRow"
-      @onTick = "onTickRow"
-      @onCross = "onCrossRow"
+      @onTickRow = "onTickRow"
+      @onCrossRow = "removeNewSkill"
       @handleRow = "handleRow"
     )
-
-
-    input(placeholder="Input test" v-model="SkillName")
-    button(
-      @click="addSkillGroup"
-    ) ButtonAddSkillGroup-test
-
 
     SkillplankList(
       :values = "values"
@@ -23,7 +15,7 @@
       @onCross = "clearSkill"
       @handleName="handleName"
       @handlePrc="handlePrc"
-      
+
     )
     SkillplankInput(
       @addSkill="addSkill"
@@ -40,22 +32,26 @@ import { logicalExpression } from 'babel-types';
 import { mapActions } from "vuex";
 
 export default {
-  name: 'Skillplank',
+  name: 'Skilladd',
   data() {
     return {
       SkillName: "",
       values: [
         // {
-        // id: '', 
+        // id: '',
         // name: '',
         // prc: '',
         // }
       ],
       value: {
         id: Math.random(),
-        skillTitle: 'Name of new group'
-      }, 
+        skillTitle: 'Name of new group',
+        isEditRow: true
+      },
     }
+  },
+  props: {
+    onHideNewSkill: Function
   },
   components: {
     SkillplankInput,
@@ -71,7 +67,7 @@ export default {
       } catch (error) {
         alert(error.message)
       }
-      
+
     },
     addSkill(values) {
       this.values.push(values);
@@ -90,7 +86,7 @@ export default {
         return el;
       });
     },
-    onTick(valueId) {   
+    onTick(valueId) {
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {
           return el;
@@ -101,16 +97,8 @@ export default {
         return el;
       });
     },
-    onCross(valueId) {
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEdit', false);
-        // el.isCross = false;
-        return el;
-      });
+    removeNewSkill(valueId) {
+      this.$emit('onHideNewSkill');
     },
     handleName(data) {
       this.values = this.values.map((el) => {
@@ -134,12 +122,12 @@ export default {
         return el;
       });
     },
-    clearSkill(data) {  
+    clearSkill(data) {
       this.values = this.values.map((el) => {
         if (el.id !== data.valueId) {
           return el;
         }
-       
+
         Vue.set(el, 'name', '');
         Vue.set(el, 'prc', '');
         // event.target.reset();
@@ -159,7 +147,7 @@ export default {
         return el;
       });
     },
-    onTickRow(valueId) {   
+    onTickRow(valueId) {
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {
           return el;
@@ -170,7 +158,7 @@ export default {
         return el;
       });
     },
-    onCrossRow(valueId) {
+    skdjnfsldkm(valueId) {
       console.log(this);
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {

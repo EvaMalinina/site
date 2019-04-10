@@ -4,22 +4,19 @@
       .block-info
         .block-info__name Block «About me»
         ButtonAddgroup(
-          @showAddingForm="addingForm",
+          @showAddingForm="showAddFormTest = true",
         )
         button(
         //  @click = "addSkillGroup"
         ).add add
 
-      button(
-        @click = "showAddFormTest = true"
-      ) Add-test  
-
       .blocks
         Skilladd(
           v-if="showAddFormTest"
-        )   
+          @onHideNewSkill="showAddFormTest = false"
+        )
         Skillplank
-        .block.block-frontend 
+        .block.block-frontend
           .block__row.block__row_first
             input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Frontend', required='')
             .block__btns
@@ -54,7 +51,7 @@
                   button.button__tick
                 .block__cross
                   button.button__cross
-                
+
             li.block__item
               input.block__input.block__input_unit.block__input_unit-name(name='newskill', placeholder='JavaScript', required='')
               input.block__input.block__input_unit.block__input_unit-perc(name='percent', placeholder='50 %', required='')
@@ -79,7 +76,7 @@
                 //-   button.button__tick
                 //- .block__cross
                 //-   button.button__cross
-          .block__row.block__row_last 
+          .block__row.block__row_last
             input.block__input.block__input_newskill(name='newskill', placeholder='New skill', required='')
             input.block__input.block__input_percentage(name='percent', placeholder='100 %', required='')
             button.circle-btn.cirlce-btn_block
@@ -100,10 +97,11 @@ export default {
     ButtonAddgroup: () => import("../ui/ButtonAddgroup.vue")
   },
   methods: {
-    addingForm(value) {
+    addingForm(event) {
+      console.log("event", event);
       // event.preventDefault();
       this.value = false;
-    }  
+    }
   },
 };
 </script>
@@ -162,7 +160,7 @@ export default {
 
 .blocks {
   display: grid;
-  grid-template: 387px 387px 
+  grid-template: 387px 387px
   /525px 525px;
   grid-row-gap: 30px;
   grid-column-gap: 30px;
@@ -193,7 +191,7 @@ export default {
 .block__input {
   width: fit-content;
   height: 100%;
-  
+
   @include placeholder {
     font-size: 18px;
     word-wrap: break-word;
@@ -202,7 +200,7 @@ export default {
     letter-spacing: normal;
     text-align: left;
     color: #414c63;
-  }  
+  }
 }
 .block__input_bb {
   border-bottom: solid 1px #1f232d;
@@ -212,7 +210,7 @@ export default {
   margin-top: 25px;
   width: 60%;
 }
-.block__input_newskill, .block__input_percentage {   
+.block__input_newskill, .block__input_percentage {
   border-bottom: solid 1px #1f232d;
   padding-left: 5%;
 
@@ -244,17 +242,17 @@ export default {
     letter-spacing: normal;
     text-align: left;
     color: #414c63;
-    
+
   }
 }
 .block__input_unit-name {
   width: 60%;
-} 
+}
 .block__input_unit-perc {
   width: 15%;
   align-items: center;
   text-align: center;
-} 
+}
 .cirlce-btn_block {
   width: 40px;
   height: 40px;

@@ -85,7 +85,7 @@ module.exports = (env, argv) => {
 
   const config = {
     entry: {
-      main: ["@babel/polyfill", "./src/main.js"],
+      main: ["@babel/polyfill", "./src/templates/main.js"],
       admin: ["@babel/polyfill", "./src/admin/main.js"]
     },
     output: {

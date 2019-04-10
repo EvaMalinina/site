@@ -10,43 +10,66 @@
           label.form__block
             .form__block-title Login
             input.form__input(
-              type='text', 
-              name='login', 
-              placeholder='Terminator_2000', 
+              type='text',
+              name='login',
+              placeholder='Terminator_2000',
               required=''
+              v-model="login"
             )
             .form__img
               .form__icon
-        .form__row     
+        .form__row
           label.form__block
               .form__block-title Password
               input.form__input(
-                type='password', 
-                name='password', 
-                placeholder='*****', 
+                type='password',
+                name='password',
+                placeholder='*****',
                 required=''
+                v-model="pass"
               )
               .form__img
                 .form__icon-key
         .form__btn
-          input.form__button(id="send" type="submit" value='Send')
+          input.form__button(
+            id="send" type="submit" value='Send'
+            @click="submit"
+          )
  </template>
- 
- <script>
-   export default {
-     name: 'app',
-     data () {
-       return {
- 
-       }
-     },
-     computed: {},
-     methods: {},
-     components: {}
-   }
- </script>
- 
- 
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'login',
+  data () {
+    return {
+      login: '',
+      pass: ''
+    }
+  },
+  computed: {},
+  methods: {
+    submit() {
+      axios.post('https://webdev-api.loftschool.com/login', {
+        name: this.login,
+        password: this.pass
+      })
+      .then((data) => {
+        let result = data.data;
+        window.localStorage.setItem('lftoken', result.token);
+        window.localStorage.setItem('lfttl', result.ttl);
+
+        this.$router.push({path: '/'});
+      })
+      .catch(console.error);
+    }
+  },
+  components: {}
+}
+</script>
+
+
  <style lang='pcss' scoped>
   @import "../../styles/mixins.pcss";
 
@@ -67,7 +90,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     background-image: url('../../images/content/bg-filter.png');
     z-index: 1;
@@ -145,7 +168,7 @@
       letter-spacing: normal;
       text-align: left;
       color: #414c63;
-      
+
     }
   }
   .form__img {
@@ -189,6 +212,6 @@
       cursor: pointer;
       border: none;
       align-self: center;
-      
+
     }
  </style>

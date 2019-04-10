@@ -1,8 +1,8 @@
 <template lang="pug">
   .block-info__modify(
     type="button"
-    @click="handleClick" 
-  ) 
+    @click="handleClick"
+  )
     button.circle-btn
     a.block-info__add Add group
 </template>
@@ -12,25 +12,14 @@
 export default {
   name: 'ButtonAddgroup',
   data () {
-    return {
-      // showAddingForm: true,
-    }
+    return {}
   },
-  // props: {
-  //   onAdd: [Function, Boolean]
-  // },
-  // computed: {
-  //   showAddingForm(value) {
-  //     if (this.value ===this.value) {
-  //       return true;
-  //     }
-  //     return false; 
-  //     }
-  // },
+  props: {
+    showAddingForm: Function
+  },
   methods: {
-    handleClick(value) {
-      console.log(value)
-      this.$emit('showAddingForm', value)
+    handleClick(event) {
+      this.$emit('showAddingForm', event)
     }
   }
 };

@@ -12,10 +12,10 @@
     )
     input.block__input.block__input_unit.block__input_unit-perc(
       name='percent',
-      :value="`${value.prc} %`",
+      :value="`${value.prc}`",
       @input="handlePrc(value, $event)",
       @change="clearSkill(value, $event)",
-      
+
       required='',
       :class="value.isEdit ? 'block__input_active' : ''"
       )
@@ -52,21 +52,20 @@ export default {
       this.$emit('onEdit', this.value.id);
     },
     onCross(value) {
-      console.log(value)
+      console.log('asd', value);
       this.$emit('onCross', this.value.id);
     },
     handleName(value, e) {
-      console.log("e", e)
-      console.log("value", value);
       this.$emit('handleName', {
         valueId: value.id,
         val: e.target.value
       });
     },
-    handlePrc(value, e) {  
+    handlePrc(value, e) {
+      console.log("value", value);
       this.$emit('handlePrc', {
         valueId: value.id,
-        prc: e.target.value 
+        prc: e.target.value
       });
     },
     clearSkill(value, e) {
@@ -98,7 +97,7 @@ export default {
   line-height: 22;
   letter-spacing: normal;
   text-align: left;
-  color: #414c63; 
+  color: #414c63;
   border-bottom: solid 1px transparent;
 }
 .block__input_active {

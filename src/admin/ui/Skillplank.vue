@@ -2,7 +2,7 @@
   .block.block-workflow
     SkillplankRow(
       :value = "value"
-      @onEdit = "onEditRow"
+      @onEditRow = "onEditRow"
       @onTick = "onTickRow"
       @onCross = "onCrossRow"
       @handleRow = "handleRow"
@@ -15,7 +15,7 @@
       @onCross = "clearSkill"
       @handleName="handleName"
       @handlePrc="handlePrc"
-      
+
     )
     SkillplankInput(
       @addSkill="addSkill"
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       values: [{
-        id: Math.random(), 
+        id: Math.random(),
         name: 'Git',
         prc: 100,
       },
@@ -56,6 +56,7 @@ export default {
         name: 'Webpack',
         prc: 85,
       }],
+
       value: {
         id: Math.random(),
         name: 'Workflow'
@@ -85,7 +86,18 @@ export default {
         return el;
       });
     },
-    onTick(valueId) {   
+    onTick(valueId) {
+      let editedItem = this.values.find((el) => el.id === valueId);
+      // валидация на проценты чтоб былон е больше 100
+      if (editedItem.prc > 100) {
+        alert('Проуенты не могут быть больше 100');
+        return;
+      }
+
+      // -> /skills/{id} отправляешь запрос на бекенд на сохранения измененных данных
+      // -> после удачного завершения запроса, ты выполняешь код дальше.
+      // в противном случае return;
+
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {
           return el;
@@ -97,6 +109,7 @@ export default {
       });
     },
     onCross(valueId) {
+      console.log("valueId", valueId);
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {
           return el;
@@ -129,12 +142,13 @@ export default {
         return el;
       });
     },
-    clearSkill(data) {  
+    clearSkill(valueId) {
+
       this.values = this.values.map((el) => {
-        if (el.id !== data.valueId) {
+        if (el.id !== valueId) {
           return el;
         }
-       
+
         Vue.set(el, 'name', '');
         Vue.set(el, 'prc', '');
         // event.target.reset();
@@ -143,18 +157,10 @@ export default {
       });
     },
     onEditRow(valueId) {
-      console.log(value);
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEditRow', true);
-        // el.isEdit = true;
-        return el;
-      });
+      console.log("valueId", valueId);
+      Vue.set(this.value, 'isEditRow', true);
     },
-    onTickRow(valueId) {   
+    onTickRow(valueId) {
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {
           return el;
@@ -166,7 +172,7 @@ export default {
       });
     },
     onCrossRow(valueId) {
-      console.log(this);
+      // console.log(this);
       this.values = this.values.map((el) => {
         if (el.id !== valueId ) {
           return el;

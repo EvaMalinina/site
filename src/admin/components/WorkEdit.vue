@@ -12,10 +12,13 @@
               .button.button-ellipse Download
 
           .work-edit__right
-            form.work-form
+            .work-form
               label.work-form__block
                 .work-form__block-title.text Title
-                input.work-form__input(name='work-form-title', placeholder='Design of website for auto salon', required='')
+                input.work-form__input(
+                  name='work-form-title', placeholder='Design of website for auto salon', required='',
+                  v-model="title"
+                )
               label.work-form__block
                 .work-form__block-title.text Link
                 input.work-form__input(name='work-form-link', placeholder='https://afterhoursautosalon.com', required='')
@@ -40,12 +43,34 @@
                     button.button__tag-close
               .work-form__btns
                 button.button-ellipse.button-ellipse_bg-trsp Decline
-                button.button-ellipse Save
+                button.button-ellipse(
+                  @click="submit"
+                ) Save
 </template>
 
 <script>
 export default {
-  name: 'WorkEdit'
+  name: 'WorkEdit',
+  props: {
+    onSubmit: Function
+  },
+  data() {
+    return {
+      title: ''
+    }
+  },
+  methods: {
+    submit() {
+      console.log('sdsf');
+
+      this.$emit('onSubmit', {
+        title: this.title,
+        link: '',
+        description: '',
+        file: ''
+      });
+    }
+  }
 };
 </script>
 
@@ -82,7 +107,7 @@ export default {
 .work-edit__body {
   width: 95%;
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: center;
 }
 .work-edit__left {
@@ -132,7 +157,7 @@ export default {
 }
 .work-form {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 }
 .work-form__block {
   flex: 1;
@@ -151,7 +176,7 @@ export default {
     letter-spacing: normal;
     text-align: left;
     color: #414c63;
-    
+
   }
 }
 .work-form__textarea {

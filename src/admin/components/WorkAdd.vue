@@ -4,12 +4,12 @@
       .workadd
         .workadd__new
           button.button__workadd(
-            @click="showBlankEdit = true"
+            @click="showBlankEdit"
           ) +
           .workadd__text Add work
-        BlankEdit(
-          v-if="showBlankEdit"
-        )
+        //- BlankEdit(
+        //-   v-if="showBlankEdit"
+        //- )
         BlankReady(
           v-if="false"
         )
@@ -25,41 +25,25 @@
 
 export default {
   name: 'WorkAdd',
+  props: {
+    handleShowBlankEdit: Function,
+    items: Array
+  },
   data () {
     return {
-      showBlankEdit: false,
-      items:[
-             {
-               pic: '1.jpg',
-               title: 'School website',
-               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-               link: 'http://loftschool.ru'
-             },
-             {
-               pic: '2.jpg',
-               title: 'Music website',
-               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-               link: 'http://loftschool.ru'
-             },
-             {
-               pic: '3.jpg',
-               title: 'Beauty salon website',
-               text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-               link: 'http://loftschool.ru'
-             },
-            //  {
-            //    pic: '4.jpg',
-            //    title: 'Auto website',
-            //    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-            //    link: 'http://loftschool.ru'
-            //  }
-           ]
+      // showBlankEdit: false,
     }
   },
   components: {
     Blank: () => import("../ui/Blank.vue"),
     BlankEdit: () => import("../ui/BlankEdit.vue"),
     BlankReady: () => import("../ui/BlankReady.vue"),
+  },
+  methods: {
+    showBlankEdit() {
+      console.log('show');
+      this.$emit('handleShowBlankEdit');
+    }
   }
 };
 </script>
