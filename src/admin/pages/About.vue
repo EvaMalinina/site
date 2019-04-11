@@ -6,10 +6,8 @@
         ButtonAddgroup(
           @showAddingForm="showAddFormTest = true",
         )
-        button(
-        //  @click = "addSkillGroup"
-        ).add add
-
+        button.add add
+      pre {{categories}}
       .blocks
         Skilladd(
           v-if="showAddFormTest"
@@ -83,6 +81,8 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 
 export default {
   name: 'About',
@@ -91,18 +91,33 @@ export default {
       showAddFormTest: false,
     }
   },
+  computed: {
+    ...mapState('categories', {
+      categories: state => state.categories
+    }),
+  },
   components: {
     Skilladd: () => import("../ui/Skilladd.vue"),
     Skillplank: () => import("../ui/Skillplank.vue"),
     ButtonAddgroup: () => import("../ui/ButtonAddgroup.vue")
   },
   methods: {
-    addingForm(event) {
-      console.log("event", event);
-      // event.preventDefault();
-      this.value = false;
-    }
-  },
+    ...mapActions('categories', ['fetchCategories']),
+      // ...mapActions('skills', ['fetchSkills']),
+      // filterSkillsByCategoryId(categoryId) {
+      //   return this.skills.filter(skill => skill.category === categoryId);
+      // },
+    },
+    created() {
+      try {
+        const { mapGetters, mapActions } = createNamespacedHelpers('categories')
+        this.fetchCategories(); 
+        
+      } catch (error) {
+        alert('Произошла ошибка при загрузке категорий') 
+      }
+    },
+  
 };
 </script>
 
@@ -128,36 +143,6 @@ export default {
   text-align: left;
   color: #414c63;
 }
-/* .block-info__modify {
-  display: flex;
-  align-items: center;
-} */
-/* .block-info__add {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 2.12;
-  letter-spacing: normal;
-  text-align: left;
-  color: #383bcf;
-  margin-left: 14px;
-}
-.circle-btn {
-  width: 21px;
-  height: 21px;
-  background-image: linear-gradient(to right, #006aed, #3f35cb);
-  border-radius: 50%;
-  position: relative;
-}
-.circle-btn::after {
-  content: "+";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%);
-  font-size: 15px;
-  color: #ffffff;
-} */
-
 .blocks {
   display: grid;
   grid-template: 387px 387px
@@ -166,162 +151,7 @@ export default {
   grid-column-gap: 30px;
   justify-content: center;
 }
-/* .block {
-  box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
-  background-color: #ffffff;
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.block__row {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-}
-.block__row_last {
-  justify-content: flex-end;
-}
-.block__row_first {
-  border-bottom: solid 1px #dedee0;
-  padding: 5px;
-  justify-content: space-between;
-}
-.block__input {
-  width: fit-content;
-  height: 100%;
 
-  @include placeholder {
-    font-size: 18px;
-    word-wrap: break-word;
-    font-weight: 600;
-    line-height: 1.89;
-    letter-spacing: normal;
-    text-align: left;
-    color: #414c63;
-  }
-}
-.block__input_bb {
-  border-bottom: solid 1px #1f232d;
-}
-.block__input_first {
-  padding: 0px 0px 0px 10px;
-  margin-top: 25px;
-  width: 60%;
-}
-.block__input_newskill, .block__input_percentage {
-  border-bottom: solid 1px #1f232d;
-  padding-left: 5%;
-
-  @include placeholder {
-    opacity: 0.5;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 6.2;
-    text-align: left;
-    color: rgba(55, 62, 66, 0.5);
-  }
-}
-.block__input_newskill {
-  width: 213px;
-  margin-right: 10px;
-}
-.block__input_percentage {
-  width: 74px;
-  margin-right: 15px;
-}
-.block__input_unit {
-  margin-right: 7%;
-  padding-bottom: 10px;
-
-  @include placeholder {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 22;
-    letter-spacing: normal;
-    text-align: left;
-    color: #414c63;
-
-  }
-}
-.block__input_unit-name {
-  width: 60%;
-}
-.block__input_unit-perc {
-  width: 15%;
-  align-items: center;
-  text-align: center;
-}
-.cirlce-btn_block {
-  width: 40px;
-  height: 40px;
-}
-.cirlce-btn_block::after {
-  font-size: 30px;
-}
-.block__btns {
-  width: 9%;
-  min-width: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-self: center;
-}
-.block__pencil {
-  width: 14px;
-  height: 14px;
-}
-.button__pencil {
-  height: 100%;
-  width: 100%;
-  background: svg-load('../../images/icons/pencil.svg', fill=#a0a5b1, height=100%, width=100%);
-  background-repeat: no-repeat;
-}
-.block__trash {
-  width: 12px;
-  height: 15px;
-}
-.button__trash {
-  height: 100%;
-  width: 100%;
-  background: svg-load('../../images/icons/trash.svg', fill=#a0a5b1, height=100%, width=100%);
-  background-repeat: no-repeat;
-}
-.block__tick {
-  width: 15px;
-  height: 12px;
-}
-.button__tick {
-  height: 100%;
-  width: 100%;
-  background: svg-load('../../images/icons/tick.svg',  fill= #00d70a, height=100%, width=100%);
-  background-repeat: no-repeat;
-}
-.block__cross {
-  width: 14px;
-  height: 12px;
-}
-.button__cross {
-  height: 100%;
-  width: 100%;
-  background: svg-load('../../images/icons/remove.svg',  fill= #bf2929, height=100%, width=100%);
-  background-repeat: no-repeat;
-}
-.block__list {
-  width: 100%;
-  align-self: center;
-  padding: 0px 0px 0px 10px;
-}
-.block__item {
-  margin-bottom: 20px;
-  display: flex;
-}
-.block-workflow {
-  /* display: grid; */
-  /*box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
-  background-color: #ffffff;
-} */
 .block-frontend {
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
   background-color: #ffffff;

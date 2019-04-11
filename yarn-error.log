@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn remove @babel/polyfill
+  /usr/local/bin/node /usr/local/bin/yarn install
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/eva/Desktop/site/ls-advanced-portfolio/node_modules/@babel/core/node_modules/debug/CHANGELOG.md'
+  Error: EACCES: permission denied, unlink '/Users/eva/Desktop/site/ls-advanced-portfolio/node_modules/@babel/core/node_modules/json5/CHANGELOG.md'
 
 npm manifest: 
   {
@@ -33,6 +33,7 @@ npm manifest:
     "devDependencies": {
       "@babel/core": "^7.3.3",
       "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+      "@babel/polyfill": "^7.4.3",
       "@babel/preset-env": "^7.3.1",
       "acorn": "^6.0.5",
       "autoprefixer": "^9.4.8",

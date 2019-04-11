@@ -5,64 +5,80 @@
         .login__title Autorization
         .login__cross
           .login__cross-icon
-        form.login-form(action="")
-        .form__row
-          label.form__block
-            .form__block-title Login
-            input.form__input(
-              type='text',
-              name='login',
-              placeholder='Terminator_2000',
-              required=''
-              v-model="login"
-            )
-            .form__img
-              .form__icon
-        .form__row
-          label.form__block
-              .form__block-title Password
+        form.login-form(@submit.prevent="login")
+          .form__row
+            label.form__block
+              .form__block-title Login
               input.form__input(
-                type='password',
-                name='password',
-                placeholder='*****',
+                type='text',
+                name='name',
+                placeholder='Terminator_2000',
                 required=''
-                v-model="pass"
+                v-model="user.name"
               )
               .form__img
-                .form__icon-key
-        .form__btn
-          input.form__button(
-            id="send" type="submit" value='Send'
-            @click="submit"
-          )
+                .form__icon
+          .form__row
+            label.form__block
+                .form__block-title Password
+                input.form__input(
+                  type='password',
+                  name='password',
+                  placeholder='*****',
+                  required=''
+                  v-model="user.password"
+                )
+                .form__img
+                  .form__icon-key
+          .form__btn
+            input.form__button(
+              id="send" type="submit" value='Send'
+              @click="login"
+            )
  </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import $axios from "@/requests";
 
 export default {
   name: 'login',
   data () {
     return {
-      login: '',
-      pass: ''
+      user: {
+        name: '',
+        password: ''
+      }
     }
   },
   computed: {},
   methods: {
-    submit() {
-      axios.post('https://webdev-api.loftschool.com/login', {
-        name: this.login,
-        password: this.pass
-      })
-      .then((data) => {
-        let result = data.data;
-        window.localStorage.setItem('lftoken', result.token);
-        window.localStorage.setItem('lfttl', result.ttl);
+    // submit() {
+    //   axios.post('https://webdev-api.loftschool.com/login', {
+    //     name: this.login,
+    //     password: this.pass
+    //   })
+    //   .then((data) => {
+    //     let result = data.data;
+    //     window.localStorage.setItem('lftoken', result.token);
+    //     window.localStorage.setItem('lfttl', result.ttl);
 
-        this.$router.push({path: '/'});
-      })
-      .catch(console.error);
+    //     this.$router.push({path: '/'});
+    //   })
+    //   .catch(console.error);
+    // },
+    async login() {
+      try {
+        const {
+         data: {token}
+         } = await $axios.post('/login', this.user);
+      
+      localStorage.setItem('token', token);
+      $axios.defaults.headers['Autorization'] = `Bearer ${token}`;
+      this.$router.replace('/');
+      } catch (error) {
+        alert('Token is not correct.');
+      }  
     }
   },
   components: {}

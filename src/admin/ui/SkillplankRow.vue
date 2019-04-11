@@ -2,7 +2,7 @@
   .block__row.block__row_first
     input.block__input.block__input_bb.block__input_first(
       name='newgroupname',
-      v-model="value.skillTitle",
+      v-model="value.skillName",
       @input="handleInput(value, $event)",
       required='',
       :disabled="!value.isEditRow ? true : false",
@@ -25,7 +25,7 @@ import Btns from './Btns'
     name: 'SkillplankRow',
     data () {
       return {
-        skillTitle: ''
+        // skillTitle: ''
       }
     },
     props: {

@@ -2,7 +2,7 @@
   .block.block-workflow
     SkillplankRow(
       :value = "value"
-      @onTickRow = "onTickRow"
+      @onTickRow = "addSkillGroup"
       @onCrossRow = "removeNewSkill"
       @handleRow = "handleRow"
     )
@@ -35,7 +35,7 @@ export default {
   name: 'Skilladd',
   data() {
     return {
-      SkillName: "",
+      // skillName: "",
       values: [
         // {
         // id: '',
@@ -45,7 +45,7 @@ export default {
       ],
       value: {
         id: Math.random(),
-        skillTitle: 'Name of new group',
+        skillName: 'Name of new group',
         isEditRow: true
       },
     }
@@ -62,8 +62,9 @@ export default {
     ...mapActions('categories', ['addNewSkillGroup']),
     async addSkillGroup() {
       try {
-        await this.addNewSkillGroup(this.SkillName);
-        this.SkillName = ""
+        await this.addNewSkillGroup(this.value.skillName);
+        
+        this.value.skillName = ""
       } catch (error) {
         alert(error.message)
       }
@@ -147,17 +148,18 @@ export default {
         return el;
       });
     },
-    onTickRow(valueId) {
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
+    // onTickRow(valueId) {
+    //   console.log(this.value.skillName)
+    //   this.values = this.values.map((el) => {
+    //     if (el.id !== valueId ) {
+    //       return el;
+    //     }
 
-        Vue.set(el, 'isEditRow', false);
-        // el.isEdit = true;
-        return el;
-      });
-    },
+    //     Vue.set(el, 'isEditRow', false);
+    //     // el.isEdit = true;
+    //     return el;
+    //   });
+    // },
     skdjnfsldkm(valueId) {
       console.log(this);
       this.values = this.values.map((el) => {
