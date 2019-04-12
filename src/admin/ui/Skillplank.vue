@@ -9,7 +9,7 @@
       @handleRow = "handleRow" 
     )
     SkillplankList(
-      
+      :skills = "skills"
       @onTrash = "onTrash"
       @onEdit = "onEdit"
       @onTick = "onTick"
@@ -39,7 +39,8 @@ export default {
   data() {
     return {
       skill: {
-        category: this.id,
+        // category: this.id,
+        category: this.category.id,
         title: '',
         percent: ''
       }
@@ -81,25 +82,34 @@ export default {
     async addSkill() {
       try {
         await this.addNewSkill(this.skill);
-        
       } catch (error) {
         alert('New skill did not add')
       }
       // this.values.push(values);
     },
-    onTrash (valueId) {
-      this.values = this.values.filter(item => item.id !== valueId);
+    ...mapActions(['removeSkill', 'editSkill']),
+    async onTrash () {
+      try {
+        await this.removeSkill(this.skill.id)
+      } catch (error) {
+        alert('Skill was not removed')
+      }
+      // this.values = this.values.filter(item => item.id !== valueId);
     },
-    onEdit(valueId) {
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
+    async onEdit(valueId) {
+      try {
+        await this.editSkill(this.editedSkill)
+      } catch (error) {
+        
+      }
+      // this.values = this.values.map((el) => {
+      //   if (el.id !== valueId ) {
+      //     return el;
+      //   }
 
-        Vue.set(el, 'isEdit', true);
-        // el.isEdit = true;
-        return el;
-      });
+      //   Vue.set(el, 'isEdit', true);
+      //   return el;
+      // });
     },
     onTick(valueId) {
       let editedItem = this.values.find((el) => el.id === valueId);
@@ -211,7 +221,8 @@ export default {
     },
   },
   props: {
-    category: Object
+    category: Object,
+    skills: Array,
   }
 };
 </script>

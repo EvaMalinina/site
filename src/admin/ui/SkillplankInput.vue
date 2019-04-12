@@ -66,9 +66,9 @@ export default {
   },
   methods: {
     addSkill() {
-        this.$emit('addSkill', {...this.skill});
-        this.skill.title = "";
-        this.skill.percent = "";
+      this.$emit('addSkill', {...this.skill});
+      this.skill.title = "";
+      this.skill.percent = "";
         
     },
     submit() {

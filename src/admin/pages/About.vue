@@ -17,6 +17,7 @@
           v-for="category in categories"
           :key="category.id"
           :category = "category"
+          :skills = "filterSkillsByCategoryId(category.id)"
         )
         .block.block-frontend
           .block__row.block__row_first
@@ -86,7 +87,18 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapActions } = createNamespacedHelpers('categories');
+const {
+    mapActions: categoriesMapActions,
+    mapState: categoriesMapState,
+    mapGetters: categoriesMapGetters,
+    mapMutations: categoriesMapMutations
+} = createNamespacedHelpers('categories');
+const {
+    mapActions: skillsMapActions,
+    mapState: skillsMapState,
+    mapGetters: skillsMapGetters,
+    mapMutations: skillsMapMutations
+} = createNamespacedHelpers('skills');
 
 export default {
   name: 'About',
@@ -96,10 +108,10 @@ export default {
     }
   },
   computed: {
-    ...mapState( {
+    ...categoriesMapState( {
       categories: state => state.categories
     }),
-    ...mapState({
+    ...skillsMapState({
       skills: state => state.skills
     })
   },
@@ -109,11 +121,11 @@ export default {
     ButtonAddgroup: () => import("../ui/ButtonAddgroup.vue")
   },
   methods: {
-    ...mapActions(['fetchCategories']),
-    ...mapActions(['fetchSkills']),
-      // filterSkillsByCategoryId(categoryId) {
-      //   return this.skills.filter(skill => skill.category === categoryId);
-      // },
+    ...categoriesMapActions(['fetchCategories']),
+    ...skillsMapActions(['fetchSkills']),
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId);
+    },
     },
     async created() {
       try {

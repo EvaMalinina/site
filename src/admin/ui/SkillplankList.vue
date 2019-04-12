@@ -1,10 +1,11 @@
 <template lang='pug'>
   ul.block__list
     li(
-      v-for="value in values"
-    ).block__item
+      v-for="skill in skills"
+      :key = "skill.id"
+    ).block_skill
       SkillplankItem(
-        :value = "value"
+        :skill = "skill"
         @onTrash = "onTrash"
         @onEdit = "onEdit"
         @onTick = "onTick"
@@ -26,22 +27,22 @@ import SkillplankItem from './SkillplankItem'
       }
     },
     props: {
-      values: Array
+      skills: Array
     },
     computed: {},
     methods: {
-      onTrash(valueId) {
-        this.$emit('onTrash', valueId);
+      onTrash(skillId) {
+        this.$emit('onTrash', skillId);
       },
-      onEdit(valueId) {
-        this.$emit('onEdit', valueId);
+      onEdit(skillId) {
+        this.$emit('onEdit', skillId);
       },
-      onTick(valueId) {
-        this.$emit('onTick', valueId); 
+      onTick(skillId) {
+        this.$emit('onTick', skillId); 
       },
-      onCross(valueId) {
+      onCross(skillId) {
         // console.log(this);
-        this.$emit('onCross', valueId);
+        this.$emit('onCross', skillId);
       },
       handleName(data) {
         this.$emit('handleName', data);

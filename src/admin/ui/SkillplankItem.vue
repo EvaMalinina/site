@@ -2,28 +2,27 @@
   .item
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
-      :value="`${value.name}`",
-      @input="handleName(value, $event)",
-      @onCross="clearSkill(value, $event)",
+      :skill="`${skill.title}`",
+      @input="handleName(skill, $event)",
+      @onCross="clearSkill(skill, $event)",
       required='',
-      :disabled="!value.isEdit ? true : false",
-      :style="{pointerEvents: value.isEdit ? 'auto' : 'none'}",
-      :class="value.isEdit ? 'block__input_active' : ''"
+      :disabled="!skill.isEdit ? true : false",
+      :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
+      :class="skill.isEdit ? 'block__input_active' : ''"
     )
     input.block__input.block__input_unit.block__input_unit-perc(
       name='percent',
-      :value="`${value.prc}`",
-      @input="handlePrc(value, $event)",
-      @change="clearSkill(value, $event)",
-
+      :value="`${skill.percent}`",
+      @input="handlePrc(skill, $event)",
+      @change="clearSkill(skill, $event)",
       required='',
-      :class="value.isEdit ? 'block__input_active' : ''"
+      :class="skill.isEdit ? 'block__input_active' : ''"
       )
     Btns(
-      :onEdit="!value.isEdit ? (() => onEdit(value)) : false"
-      :onTrash="!value.isEdit ? (() => onTrash(value)) : false"
-      :onTick="value.isEdit ? (() => onTick(value)) : false"
-      :onCross="value.isEdit ? (() => onCross(value)) : false"
+      :onEdit="!skill.isEdit ? (() => onEdit(skill)) : false"
+      :onTrash="!skill.isEdit ? (() => onTrash(skill)) : false"
+      :onTick="skill.isEdit ? (() => onTick(skill)) : false"
+      :onCross="skill.isEdit ? (() => onCross(skill)) : false"
     )
 
 </template>
@@ -37,43 +36,43 @@ export default {
     return {}
   },
   props: {
-    value: Object,
+    skill: Object,
     // onTick: Function
   },
   computed: {},
   methods: {
     onTick(value) {
-      this.$emit('onTick', this.value.id);
+      this.$emit('onTick', this.skill.id);
     },
     onTrash(item) {
-      this.$emit('onTrash', this.value.id);
+      this.$emit('onTrash', this.skill.id);
     },
     onEdit(value) {
-      this.$emit('onEdit', this.value.id);
+      this.$emit('onEdit', this.skill.id);
     },
     onCross(value) {
-      console.log('asd', value);
-      this.$emit('onCross', this.value.id);
+      console.log('asd', skill);
+      this.$emit('onCross', this.skill.id);
     },
-    handleName(value, e) {
+    handleName(skill, e) {
       this.$emit('handleName', {
-        valueId: value.id,
-        val: e.target.value
+        valueId: skill.id,
+        val: e.target.skill
       });
     },
-    handlePrc(value, e) {
-      console.log("value", value);
+    handlePrc(skill, e) {
+      console.log("skill", skill);
       this.$emit('handlePrc', {
-        valueId: value.id,
-        prc: e.target.value
+        valueId: skill.id,
+        prc: e.target.skill
       });
     },
-    clearSkill(value, e) {
+    clearSkill(skill, e) {
       console.log("e", e)
-      console.log("value", value);
+      console.log("skill", skill);
       this.$emit('clearSkill', {
-        valueId: value.id,
-        val: e.target.value
+        valueId: skill.id,
+        val: e.target.skill
       });
     }
   },
