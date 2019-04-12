@@ -8,12 +8,30 @@
           .user__name Tetiana Dotsenko
         .header-left__title Administration Panel
       .header-right
-        button.header-right__btn Log out
+        button.header-right__btn(
+          @click = "logOut"
+        ) Log out
 </template>
 
 <script>
+import $axios from "@/requests";
+
 export default {
-  name: 'MainHeader'
+  name: 'MainHeader',
+  methods:{
+    async logOut() {
+      try {
+        const {
+         data: {token}
+         } = await $axios.post('/logout', this.user);
+      
+      localStorage.setItem('token', token);
+      this.$router.replace('/login');
+      } catch (error) {
+        alert('Token is not deleted.');
+      }  
+    }
+  }
 };
 </script>
 
