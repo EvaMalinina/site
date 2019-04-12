@@ -10,17 +10,17 @@
       v-model="skill.title"
       :style="{borderColor: validation.hasError('skill.title') ? 'red' : ''}"
     )
-   
+
     div(:class="{error: validation.hasError('skill.percent')}")
     input.block__input.block__input_percentage(
-      type= Number, 
+      type= Number,
       name='percent',
       placeholder='100',
       required='',
       v-model="skill.percent"
       :style="{borderColor: validation.hasError('skill.percent') ? 'red' : ''}"
     )
-     
+
     button.circle-btn.cirlce-btn_block(
       :class="isBtnDisabled ? 'disabled' : ''"
       @click="addSkill"
@@ -45,7 +45,6 @@ export default {
   data () {
     return {
       skill: {
-        category: this.id,
         title: '',
         percent: ''
       }
@@ -69,7 +68,6 @@ export default {
       this.$emit('addSkill', {...this.skill});
       this.skill.title = "";
       this.skill.percent = "";
-        
     },
     submit() {
       this.$validate().then(success => {
@@ -113,7 +111,7 @@ export default {
   line-height: 6.2;
   text-align: left;
   color: rgba(55, 62, 66, 0.5);
-  
+
 }
 .disabled {
   opacity: 0.8;

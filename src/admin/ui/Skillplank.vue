@@ -2,11 +2,11 @@
   .block.block-workflow
     SkillplankRow(
       :category="category"
-      
+
       @onEditRow = "onEditRow"
       @onTick = "onTickRow"
       @onCross = "onCrossRow"
-      @handleRow = "handleRow" 
+      @handleRow = "handleRow"
     )
     SkillplankList(
       :skills = "skills"
@@ -36,14 +36,14 @@ const { mapState, mapActions } = createNamespacedHelpers('skills');
 
 export default {
   name: 'Skillplank',
+  props: {
+    category: Object,
+    skills: Array,
+  },
   data() {
     return {
-      skill: {
-        // category: this.id,
-        category: this.category.id,
-        title: '',
-        percent: ''
-      }
+      // category: this.category.id,
+
       // values: [{
       //   id: Math.random(),
       //   name: 'Git',
@@ -79,9 +79,12 @@ export default {
   },
   methods: {
     ...mapActions(['addNewSkill']),
-    async addSkill() {
+    async addSkill(newSkillData) {
       try {
-        await this.addNewSkill(this.skill);
+        await this.addNewSkill({
+          ...newSkillData,
+          category: this.category.id
+        });
       } catch (error) {
         alert('New skill did not add')
       }
@@ -100,7 +103,7 @@ export default {
       try {
         await this.editSkill(this.editedSkill)
       } catch (error) {
-        
+
       }
       // this.values = this.values.map((el) => {
       //   if (el.id !== valueId ) {
@@ -220,10 +223,6 @@ export default {
       });
     },
   },
-  props: {
-    category: Object,
-    skills: Array,
-  }
 };
 </script>
 

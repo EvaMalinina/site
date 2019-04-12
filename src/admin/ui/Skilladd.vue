@@ -63,7 +63,7 @@ export default {
     async addSkillGroup() {
       try {
         await this.addNewSkillGroup(this.value.skillName);
-        
+
         this.value.skillName = ""
       } catch (error) {
         alert(error.message)
@@ -71,6 +71,7 @@ export default {
 
     },
     addSkill(values) {
+      console.log("values", values);
       this.values.push(values);
     },
     onTrash (valueId) {

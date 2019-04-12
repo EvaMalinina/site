@@ -1,11 +1,16 @@
 <template lang="pug">
   .wrapper-inner
-    MainHeader
-    Nav
+    MainHeader(v-if="userIsLogged")
+    Nav(v-if="userIsLogged")
     router-view
 </template>
 
 <script>
+
+import { createNamespacedHelpers } from 'vuex';
+const {
+  mapGetters: userMapGetters,
+} = createNamespacedHelpers('user');
 
 export default {
   name: 'app',
@@ -18,6 +23,11 @@ export default {
 		handleClick(e) {
 			console.log(this.text);
 		}
+  },
+  computed: {
+    ...userMapGetters([
+      'userIsLogged'
+    ])
   },
   components: {
     MainHeader: () => import("./components/Header.vue"),

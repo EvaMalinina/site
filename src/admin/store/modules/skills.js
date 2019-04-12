@@ -1,6 +1,6 @@
 export default  {
   namespaced: true,
-  state: { 
+  state: {
     skills: []
   },
   mutations: {
@@ -19,11 +19,12 @@ export default  {
   },
   actions: {
     async addNewSkill( {commit}, skill) {
+      console.log("skill", JSON.parse(JSON.stringify(skill)));
       try {
         const response = await this.$axios.post('/skills', skill);
         commit('ADD_SKILL', response.data);
         console.log('fff')
-        return response;    
+        return response;
       } catch (error) {
         alert('Request to get skill invalid')
       }
@@ -32,7 +33,7 @@ export default  {
       try {
         const response = await this.$axios.get('/skills/129', skill);
         commit('SET_SKILLS', response.data)
-        return response;    
+        return response;
       } catch (error) {
         alert('Request to fetch skill invalid')
       }
@@ -41,7 +42,7 @@ export default  {
       try {
         const response = await this.$axios.delete(`/skills/${skillId}`, skill);
         commit('REMOVE_SKILL', skillId)
-        return response;    
+        return response;
       } catch (error) {
         alert('Request to delete skill invalid')
       }
@@ -50,7 +51,7 @@ export default  {
       try {
         const response = await this.$axios.post(`/skills/${skillId}`, skill);
         commit('EDIT_SKILL', response.data.skill)
-        return response;    
+        return response;
       } catch (error) {
         alert('Request to edit skill invalid')
       }
