@@ -1,24 +1,24 @@
 <template lang='pug'>
   .block__row.block__row_last(
-    :class="{error: validation.hasError('value.name')}"
+    :class="{error: validation.hasError('skill.title')}"
   )
     input.block__input.block__input_newskill(
       name='newgroup',
       placeholder='New skill',
       autofocus
       required=''
-      v-model="value.name"
-      :style="{borderColor: validation.hasError('value.name') ? 'red' : ''}"
+      v-model="skill.title"
+      :style="{borderColor: validation.hasError('skill.title') ? 'red' : ''}"
     )
    
-    div(:class="{error: validation.hasError('value.prc')}")
+    div(:class="{error: validation.hasError('skill.percent')}")
     input.block__input.block__input_percentage(
       type= Number, 
       name='percent',
       placeholder='100',
       required='',
-      v-model="value.prc"
-      :style="{borderColor: validation.hasError('value.prc') ? 'red' : ''}"
+      v-model="skill.percent"
+      :style="{borderColor: validation.hasError('skill.percent') ? 'red' : ''}"
     )
      
     button.circle-btn.cirlce-btn_block(
@@ -34,26 +34,31 @@ import { Validator } from 'simple-vue-validator';
 export default {
   mixins: [require('simple-vue-validator').mixin],
   validators: {
-    'value.name'(value) {
-      return Validator.value(value).required();
+    'skill.title'(skill) {
+      return Validator.value(skill).required();
     },
-    'value.prc'(value) {
-      return Validator.value(value).integer();
+    'skill.percent'(skill) {
+      return Validator.value(skill).integer();
     }
   },
   name: 'SkillplankInput',
   data () {
     return {
-      value: {
-        id: Date.now(),
-        name: '',
-        prc: '',
-     }
+      skill: {
+        category: this.id,
+        title: '',
+        percent: ''
+      }
+    //   value: {
+    //     id: Date.now(),
+    //     name: '',
+    //     prc: '',
+    //  }
     }
   },
   computed: {
     isBtnDisabled() {
-      if (!this.value.name || !/^[\d]*$/.test(this.value.prc) || this.value.prc > 100) {
+      if (!this.skill.title|| !/^[\d]*$/.test(this.skill.percent) || this.skill.percent > 100) {
         return true;
       }
       return false;
@@ -61,9 +66,9 @@ export default {
   },
   methods: {
     addSkill() {
-        this.$emit('addSkill', {...this.value});
-        this.value.name = "";
-        this.value.prc = "";
+        this.$emit('addSkill', {...this.skill});
+        this.skill.title = "";
+        this.skill.percent = "";
         
     },
     submit() {
@@ -72,8 +77,8 @@ export default {
       });
     },
     reset() {
-      this.name = '';
-      this.prc = '';
+      this.title = '';
+      this.percent = '';
       this.validation.reset();
     }
   },

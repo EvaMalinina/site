@@ -1,14 +1,15 @@
 <template lang="pug">
   .block.block-workflow
     SkillplankRow(
-      :value = "value"
+      :category="category"
+      
       @onEditRow = "onEditRow"
       @onTick = "onTickRow"
       @onCross = "onCrossRow"
-      @handleRow = "handleRow"
+      @handleRow = "handleRow" 
     )
     SkillplankList(
-      :values = "values"
+      
       @onTrash = "onTrash"
       @onEdit = "onEdit"
       @onTick = "onTick"
@@ -26,51 +27,65 @@
 
 <script>
 import Vue from 'vue';
-// import Btns from "./Btns"
-import SkillplankInput from "./SkillplankInput"
 import SkillplankList from "./SkillplankList"
 import SkillplankRow from "./SkillplankRow"
 import { logicalExpression } from 'babel-types';
+
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapActions } = createNamespacedHelpers('skills');
 
 export default {
   name: 'Skillplank',
   data() {
     return {
-      values: [{
-        id: Math.random(),
-        name: 'Git',
-        prc: 100,
-      },
-      {
-        id: Math.random(),
-        name: 'Terminal',
-        prc: 90,
-      },
-      {
-        id: Math.random(),
-        name: 'Gulp',
-        prc: 80,
-      },
-      {
-        id: Math.random(),
-        name: 'Webpack',
-        prc: 85,
-      }],
-
-      value: {
-        id: Math.random(),
-        name: 'Workflow'
+      skill: {
+        category: this.id,
+        title: '',
+        percent: ''
       }
+      // values: [{
+      //   id: Math.random(),
+      //   name: 'Git',
+      //   prc: 100,
+      // },
+      // {
+      //   id: Math.random(),
+      //   name: 'Terminal',
+      //   prc: 90,
+      // },
+      // {
+      //   id: Math.random(),
+      //   name: 'Gulp',
+      //   prc: 80,
+      // },
+      // {
+      //   id: Math.random(),
+      //   name: 'Webpack',
+      //   prc: 85,
+      // }],
+
+      // value: {
+      //   id: Math.random(),
+      //   name: 'Workflow'
+      // },
+
     }
   },
   components: {
-    SkillplankInput,
+    SkillplankInput: () => import('./SkillplankInput.vue'),
     SkillplankList,
     SkillplankRow
   },
   methods: {
-    addSkill(values) {
-      this.values.push(values);
+    ...mapActions(['addNewSkill']),
+    async addSkill() {
+      try {
+        await this.addNewSkill(this.skill);
+        
+      } catch (error) {
+        alert('New skill did not add')
+      }
+      // this.values.push(values);
     },
     onTrash (valueId) {
       this.values = this.values.filter(item => item.id !== valueId);
@@ -90,7 +105,7 @@ export default {
       let editedItem = this.values.find((el) => el.id === valueId);
       // валидация на проценты чтоб былон е больше 100
       if (editedItem.prc > 100) {
-        alert('Проуенты не могут быть больше 100');
+        alert('Проценты не могут быть больше 100');
         return;
       }
 
@@ -194,6 +209,9 @@ export default {
         return el;
       });
     },
+  },
+  props: {
+    category: Object
   }
 };
 </script>

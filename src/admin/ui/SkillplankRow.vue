@@ -2,18 +2,18 @@
   .block__row.block__row_first
     input.block__input.block__input_bb.block__input_first(
       name='newgroupname',
-      v-model="value.skillName",
-      @input="handleInput(value, $event)",
+      v-model="category.category", 
+      @input="handleInput(category, $event)",
       required='',
-      :disabled="!value.isEditRow ? true : false",
-      :style="{pointerEvents: value.isEditRow ? 'auto' : 'none'}",
-      :class="value.isEditRow ? 'block__input_active' : ''"
+      :disabled="!category.isEditRow ? true : false",
+      :style="{pointerEvents: category.isEditRow ? 'auto' : 'none'}",
+      :class="category.isEditRow ? 'block__input_active' : ''"
     )
 
     Btns(
-      :onEdit="!value.isEditRow ? (() => onEdit(value)) : false"
-      :onCross="value.isEditRow ? (() => onCross(value)) : false"
-      :onTick="value.isEditRow ? (() => onTick(value)) : false"
+      :onEdit="!category.isEditRow ? (() => onEdit(category)) : false"
+      :onCross="category.isEditRow ? (() => onCross(category)) : false"
+      :onTick="category.isEditRow ? (() => onTick(category)) : false"
     )
 
 </template>
@@ -21,43 +21,44 @@
 <script>
 import Btns from './Btns'
 
-  export default {
-    name: 'SkillplankRow',
-    data () {
-      return {
-        // skillTitle: ''
-      }
-    },
-    props: {
-      value: Object,
-      onTickRow: Function,
-      onEditRow: Function,
-      onCrossRow: Function,
-      handleRow: Function
-    },
-    computed: {},
-    methods: {
-      onTick(value) {
-        this.$emit('onTickRow', this.value.id);
-      },
-      onEdit(value) {
-        console.log("value", value);
-        this.$emit('onEditRow', this.value.id);
-      },
-      onCross(value) {
-        this.$emit('onCrossRow', this.value.id);
-      },
-      handleInput(value, e) {
-        this.$emit('handleRow', {
-          valueId: value.id,
-          val: e.target.value
-        });
-      },
-    },
-    components: {
-      Btns
+export default {
+  name: 'SkillplankRow',
+  data () {
+    return {
+      // skillTitle: ''
     }
+  },
+  props: {
+    category: Object,
+    value: Object,
+    onTickRow: Function,
+    onEditRow: Function,
+    onCrossRow: Function,
+    handleRow: Function
+  },
+  computed: {},
+  methods: {
+    onTick(value) {
+      this.$emit('onTickRow', this.category.id);
+    },
+    onEdit(value) {
+      console.log("value", value);
+      this.$emit('onEditRow', this.category.id);
+    },
+    onCross(value) {
+      this.$emit('onCrossRow', this.category.id);
+    },
+    handleInput(value, e) {
+      this.$emit('handleRow', {
+        valueId: category.id,
+        val: e.target.category
+      });
+    },
+  },
+  components: {
+    Btns
   }
+}
 </script>
 
 

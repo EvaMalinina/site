@@ -18,12 +18,10 @@ export default  {
      } catch (error) {
        throw new Error(error.response.data.error || error.response.data.message)
      }  
-    }  
     },
     async fetchCategories({ commit }) {
       try {
         const response = await this.$axios.get('/categories');
-        console.log("квывмывм");
         commit("SET_CATEGORIES", response.data.reverse());
         return response;
       } catch (error) {
@@ -31,5 +29,17 @@ export default  {
           error.response.data.error || error.response.data.message
         );
       }
+    },
+    async user({ commit }) {
+      try {
+        const response = await this.$axios.get('/user');
+        commit("SET_USER", response.data.reverse());
+        return response;
+      } catch (error) {
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
+      }
     }
+  }
 }

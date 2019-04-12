@@ -7,13 +7,17 @@
           @showAddingForm="showAddFormTest = true",
         )
         button.add add
-      pre {{categories}}
+      pre {{ skills }}
       .blocks
         Skilladd(
           v-if="showAddFormTest"
           @onHideNewSkill="showAddFormTest = false"
         )
-        Skillplank
+        Skillplank(
+          v-for="category in categories"
+          :key="category.id"
+          :category = "category"
+        )
         .block.block-frontend
           .block__row.block__row_first
             input.block__input.block__input_bb.block__input_first(name='newgroup', placeholder='Frontend', required='')
@@ -81,8 +85,8 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
-
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapActions } = createNamespacedHelpers('categories');
 
 export default {
   name: 'About',
@@ -92,9 +96,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('categories', {
+    ...mapState( {
       categories: state => state.categories
     }),
+    ...mapState({
+      skills: state => state.skills
+    })
   },
   components: {
     Skilladd: () => import("../ui/Skilladd.vue"),
@@ -102,19 +109,25 @@ export default {
     ButtonAddgroup: () => import("../ui/ButtonAddgroup.vue")
   },
   methods: {
-    ...mapActions('categories', ['fetchCategories']),
-      // ...mapActions('skills', ['fetchSkills']),
+    ...mapActions(['fetchCategories']),
+    ...mapActions(['fetchSkills']),
       // filterSkillsByCategoryId(categoryId) {
       //   return this.skills.filter(skill => skill.category === categoryId);
       // },
     },
-    created() {
+    async created() {
       try {
-        const { mapGetters, mapActions } = createNamespacedHelpers('categories')
-        this.fetchCategories(); 
+        await this.fetchCategories(); 
         
       } catch (error) {
         alert('Произошла ошибка при загрузке категорий') 
+      }
+
+      try {
+        await this.fetchSkills(); 
+        
+      } catch (error) {
+        alert('Произошла ошибка при загрузке скиллов') 
       }
     },
   
