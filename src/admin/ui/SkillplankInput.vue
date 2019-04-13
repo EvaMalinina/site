@@ -48,11 +48,6 @@ export default {
         title: '',
         percent: ''
       }
-    //   value: {
-    //     id: Date.now(),
-    //     name: '',
-    //     prc: '',
-    //  }
     }
   },
   computed: {

@@ -41,7 +41,6 @@ import SkillplankItem from './SkillplankItem'
         this.$emit('onTick', skillId); 
       },
       onCross(skillId) {
-        // console.log(this);
         this.$emit('onCross', skillId);
       },
       handleName(data) {

@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .item(v-if = "editmode === false")
+  .item(v-if = "isEdit === false")
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
       :value="`${skill.title}`",
@@ -19,7 +19,7 @@
       :class="skill.isEdit ? 'block__input_active' : ''"
       )
     Btns(
-      :onEdit="editmode = true"
+      :onEdit="isEdit = true"
       :onTrash="onTrash"
     )
   .item(v-else)
@@ -43,7 +43,7 @@
       )
     Btns(
       :onTick="onTick"
-      :onCross="editmode = false"
+      :onCross="isEdit = false"
     )
 
 </template>
@@ -56,14 +56,14 @@ const { mapState, mapActions } = createNamespacedHelpers('skills');
 
 export default {
   name: 'SkillplankItem',
-  data () {
-    return {
-      editmode: false,
-      editedSkill: {...this.skill}
-    }
-  },
   props: {
     skill: Object
+  },
+  data () {
+    return {
+      isEdit: false,
+      editedSkill: {...this.skill}
+    }
   },
   computed: {},
   methods: {
@@ -73,25 +73,10 @@ export default {
     onTrash(item) {
       this.$emit('onTrash', this.skill.id);
     },
-    ...mapActions(['removeSkill', 'editSkill']),
-    async onTrash () {
-      try {
-        await this.removeSkill(this.skill.id)
-      } catch (error) {
-        alert('Skill was not removed')
-      }
+    onEdit(value) {
+      console.log(value)
+      this.$emit('onEdit', this.skill.id);
     },
-    async onEdit(newSkillData) {
-      try {
-        await this.editSkill(this.editedSkill)
-        this.editmode = false;
-      } catch (error) {
-        alert('Skill was not edited')
-      }
-    },
-    // onEdit(value) {
-    //   this.$emit('onEdit', this.skill.id);
-    // },
     onCross(value) {
       console.log('asd', skill);
       this.$emit('onCross', this.skill.id);

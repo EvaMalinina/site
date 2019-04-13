@@ -1,14 +1,14 @@
 <template lang="pug">
   .block.block-workflow
     SkillplankRow(
-      :value = "value"
+      :category="category"
+      @onEditRow ="onEditRow"
       @onTickRow = "addSkillGroup"
       @onCrossRow = "removeNewSkill"
-      @handleRow = "handleRow"
     )
 
     SkillplankList(
-      :values = "values"
+      :skills = "skills"
       @onTrash = "onTrash"
       @onEdit = "onEdit"
       @onTick = "onTick"
@@ -25,46 +25,36 @@
 
 <script>
 import Vue from 'vue';
-import SkillplankInput from "./SkillplankInput"
-import SkillplankList from "./SkillplankList"
-import SkillplankRow from "./SkillplankRow"
 import { logicalExpression } from 'babel-types';
 import { mapActions } from "vuex";
 
 export default {
   name: 'Skilladd',
+  props: {
+    // category: Object,
+    onHideNewSkill: Function,
+    skills: Array,
+  },
   data() {
     return {
-      // skillName: "",
-      values: [
-        // {
-        // id: '',
-        // name: '',
-        // prc: '',
-        // }
-      ],
-      value: {
-        id: Math.random(),
-        skillName: 'Name of new group',
-        isEditRow: true
+      category: {
+        
       },
+      
     }
   },
-  props: {
-    onHideNewSkill: Function
-  },
   components: {
-    SkillplankInput,
-    SkillplankList,
-    SkillplankRow
+    SkillplankInput: () => import('./SkillplankInput.vue'),
+    SkillplankList: () => import('./SkillplankList.vue'),
+    SkillplankRow: () => import('./SkillplankRow.vue'),
   },
   methods: {
     ...mapActions('categories', ['addNewSkillGroup']),
     async addSkillGroup() {
       try {
-        await this.addNewSkillGroup(this.value.skillName);
+        await this.addNewSkillGroup(this.category.category);
 
-        this.value.skillName = ""
+        this.category.category = ""
       } catch (error) {
         alert(error.message)
       }
@@ -74,33 +64,12 @@ export default {
       console.log("values", values);
       this.values.push(values);
     },
-    onTrash (valueId) {
-      this.values = this.values.filter(item => item.id !== valueId);
-    },
-    onEdit(valueId) {
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEdit', true);
-        // el.isEdit = true;
-        return el;
-      });
-    },
-    onTick(valueId) {
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEdit', false);
-        // el.isEdit = true;
-        return el;
-      });
-    },
     removeNewSkill(valueId) {
       this.$emit('onHideNewSkill');
+    },
+    onEditRow(categoryId) {
+      console.log("categoryId", categoryId);
+      Vue.set(this.category, 'isEditRow', true);
     },
     handleName(data) {
       this.values = this.values.map((el) => {
@@ -137,42 +106,6 @@ export default {
         return el;
       });
     },
-    onEditRow(valueId) {
-      console.log(value);
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEditRow', true);
-        // el.isEdit = true;
-        return el;
-      });
-    },
-    // onTickRow(valueId) {
-    //   console.log(this.value.skillName)
-    //   this.values = this.values.map((el) => {
-    //     if (el.id !== valueId ) {
-    //       return el;
-    //     }
-
-    //     Vue.set(el, 'isEditRow', false);
-    //     // el.isEdit = true;
-    //     return el;
-    //   });
-    // },
-    skdjnfsldkm(valueId) {
-      console.log(this);
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEditRow', false);
-        // el.isCross = false;
-        return el;
-      });
-    },
     handleRow(data) {
       this.values = this.values.map((el) => {
         if (el.id !== data.valueId) {
@@ -183,7 +116,7 @@ export default {
         // el.isEdit = true;
         return el;
       });
-    },
+    }
   }
 };
 </script>

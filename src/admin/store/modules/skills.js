@@ -31,7 +31,7 @@ export default  {
         return response;
       } catch (error) {
         alert('Request to get skill invalid')
-      }
+      } 
     },
     async fetchSkills( {commit}, skill) {
       try {
@@ -42,9 +42,10 @@ export default  {
         alert('Request to fetch skill invalid')
       }
     },
-    async removeSkill( {commit}, skill) {
+    async removeSkill( {commit}, skillId) {
+      console.log();
       try {
-        const response = await this.$axios.delete(`/skills/${skillId}`, skill);
+        const response = await this.$axios.delete(`/skills/${skillId}`);
         commit('REMOVE_SKILL', skillId)
         return response;
       } catch (error) {

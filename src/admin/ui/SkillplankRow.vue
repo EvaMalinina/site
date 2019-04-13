@@ -25,12 +25,11 @@ export default {
   name: 'SkillplankRow',
   data () {
     return {
-      // skillTitle: ''
+      
     }
   },
   props: {
     category: Object,
-    value: Object,
     onTickRow: Function,
     onEditRow: Function,
     onCrossRow: Function,
@@ -38,19 +37,18 @@ export default {
   },
   computed: {},
   methods: {
-    onTick(value) {
+    onTick(category) {
       this.$emit('onTickRow', this.category.id);
     },
-    onEdit(value) {
-      console.log("value", value);
+    onEdit(category) {
       this.$emit('onEditRow', this.category.id);
     },
-    onCross(value) {
+    onCross(category) {
       this.$emit('onCrossRow', this.category.id);
     },
-    handleInput(value, e) {
+    handleInput(category, e) { 
       this.$emit('handleRow', {
-        valueId: category.id,
+        categoryId: category.id,
         val: e.target.category
       });
     },
