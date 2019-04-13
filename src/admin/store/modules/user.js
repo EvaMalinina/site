@@ -6,6 +6,9 @@ export default {
   mutations: {
     SET_USER: (state, user) => {
       state.user = user;
+    },
+    DELETE_USER: (state, user) => {
+      state.user = { };
     }
   },
   getters: {

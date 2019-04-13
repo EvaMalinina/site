@@ -26,7 +26,7 @@ export default {
          } = await $axios.post('/logout', this.user);
       
       localStorage.setItem('token', token);
-      this.$router.replace('/login');
+      this.$router.replace('/login');     
       } catch (error) {
         alert('Token is not deleted.');
       }  

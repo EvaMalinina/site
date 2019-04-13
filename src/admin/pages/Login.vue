@@ -115,12 +115,13 @@ export default {
     display: flex;
     align-self: center;
     z-index: 2;
-    width: 32%;
+    min-width: 32%;
     max-width: 563px;
     max-height: 517px;
     background-color: white;
     padding: 60px 0px 60px;
     position: relative;
+    justify-content: center;
   }
   .container {
     width: 73%;

@@ -1,8 +1,8 @@
 <template lang='pug'>
-  .item
+  .item(v-if = "editmode === false")
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
-      :skill="`${skill.title}`",
+      :value="`${skill.title}`",
       @input="handleName(skill, $event)",
       @onCross="clearSkill(skill, $event)",
       required='',
@@ -19,10 +19,31 @@
       :class="skill.isEdit ? 'block__input_active' : ''"
       )
     Btns(
-      :onEdit="!skill.isEdit ? (() => onEdit(skill)) : false"
-      :onTrash="!skill.isEdit ? (() => onTrash(skill)) : false"
-      :onTick="skill.isEdit ? (() => onTick(skill)) : false"
-      :onCross="skill.isEdit ? (() => onCross(skill)) : false"
+      :onEdit="editmode = true"
+      :onTrash="onTrash"
+    )
+  .item(v-else)
+    input.block__input.block__input_unit.block__input_unit-name(
+      name='newskill',
+      :value="`${editedSkill.title}`",
+      @input="handleName(skill, $event)",
+      @onCross="clearSkill(skill, $event)",
+      required='',
+      :disabled="!skill.isEdit ? true : false",
+      :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
+      :class="skill.isEdit ? 'block__input_active' : ''"
+    )
+    input.block__input.block__input_unit.block__input_unit-perc(
+      name='percent',
+      :value="`${editedSkill.percent}`",
+      @input="handlePrc(skill, $event)",
+      @change="clearSkill(skill, $event)",
+      required='',
+      :class="skill.isEdit ? 'block__input_active' : ''"
+      )
+    Btns(
+      :onTick="onTick"
+      :onCross="editmode = false"
     )
 
 </template>
@@ -30,14 +51,19 @@
 <script>
 import Btns from "./Btns"
 
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapActions } = createNamespacedHelpers('skills');
+
 export default {
   name: 'SkillplankItem',
   data () {
-    return {}
+    return {
+      editmode: false,
+      editedSkill: {...this.skill}
+    }
   },
   props: {
-    skill: Object,
-    // onTick: Function
+    skill: Object
   },
   computed: {},
   methods: {
@@ -47,9 +73,25 @@ export default {
     onTrash(item) {
       this.$emit('onTrash', this.skill.id);
     },
-    onEdit(value) {
-      this.$emit('onEdit', this.skill.id);
+    ...mapActions(['removeSkill', 'editSkill']),
+    async onTrash () {
+      try {
+        await this.removeSkill(this.skill.id)
+      } catch (error) {
+        alert('Skill was not removed')
+      }
     },
+    async onEdit(newSkillData) {
+      try {
+        await this.editSkill(this.editedSkill)
+        this.editmode = false;
+      } catch (error) {
+        alert('Skill was not edited')
+      }
+    },
+    // onEdit(value) {
+    //   this.$emit('onEdit', this.skill.id);
+    // },
     onCross(value) {
       console.log('asd', skill);
       this.$emit('onCross', this.skill.id);

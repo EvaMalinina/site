@@ -2,7 +2,6 @@
   .block.block-workflow
     SkillplankRow(
       :category="category"
-
       @onEditRow = "onEditRow"
       @onTick = "onTickRow"
       @onCross = "onCrossRow"
@@ -27,8 +26,6 @@
 
 <script>
 import Vue from 'vue';
-import SkillplankList from "./SkillplankList"
-import SkillplankRow from "./SkillplankRow"
 import { logicalExpression } from 'babel-types';
 
 import { createNamespacedHelpers } from 'vuex';
@@ -74,8 +71,8 @@ export default {
   },
   components: {
     SkillplankInput: () => import('./SkillplankInput.vue'),
-    SkillplankList,
-    SkillplankRow
+    SkillplankList: () => import('./SkillplankList.vue'),
+    SkillplankRow: () => import('./SkillplankRow.vue'),
   },
   methods: {
     ...mapActions(['addNewSkill']),
@@ -90,21 +87,10 @@ export default {
       }
       // this.values.push(values);
     },
-    ...mapActions(['removeSkill', 'editSkill']),
-    async onTrash () {
-      try {
-        await this.removeSkill(this.skill.id)
-      } catch (error) {
-        alert('Skill was not removed')
-      }
-      // this.values = this.values.filter(item => item.id !== valueId);
-    },
-    async onEdit(valueId) {
-      try {
-        await this.editSkill(this.editedSkill)
-      } catch (error) {
-
-      }
+    // onTrash () { 
+    //   // this.values = this.values.filter(item => item.id !== valueId);
+    // },
+    // onEdit() { 
       // this.values = this.values.map((el) => {
       //   if (el.id !== valueId ) {
       //     return el;
@@ -113,11 +99,11 @@ export default {
       //   Vue.set(el, 'isEdit', true);
       //   return el;
       // });
-    },
-    onTick(valueId) {
-      let editedItem = this.values.find((el) => el.id === valueId);
+    // },
+    onTick(skillId) {
+      let editeSkill = this.skills.find((el) => el.id === skillId);
       // валидация на проценты чтоб былон е больше 100
-      if (editedItem.prc > 100) {
+      if (editeSkill.percent > 100) {
         alert('Проценты не могут быть больше 100');
         return;
       }
