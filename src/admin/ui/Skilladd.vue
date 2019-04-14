@@ -106,17 +106,17 @@ export default {
         return el;
       });
     },
-    handleRow(data) {
-      this.values = this.values.map((el) => {
-        if (el.id !== data.valueId) {
-          return el;
-        }
+    // handleRow(data) {
+    //   this.values = this.values.map((el) => {
+    //     if (el.id !== data.valueId) {
+    //       return el;
+    //     }
 
-        Vue.set(el, 'name', data.val);
-        // el.isEdit = true;
-        return el;
-      });
-    }
+    //     Vue.set(el, 'name', data.val);
+    //     // el.isEdit = true;
+    //     return el;
+    //   });
+    // }
   }
 };
 </script>

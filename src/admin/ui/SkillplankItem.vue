@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .item(v-if = "isEdit === false")
+  .item(v-if = "isEditSkill === false")
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
       :value="`${skill.title}`",
@@ -19,7 +19,7 @@
       :class="skill.isEdit ? 'block__input_active' : ''"
       )
     Btns(
-      :onEdit="isEdit = true"
+      :onEdit="onEdit"
       :onTrash="onTrash"
     )
   .item(v-else)
@@ -43,7 +43,7 @@
       )
     Btns(
       :onTick="onTick"
-      :onCross="isEdit = false"
+      :onCross="onCross"
     )
 
 </template>
@@ -61,23 +61,22 @@ export default {
   },
   data () {
     return {
-      isEdit: false,
+      isEditSkill: false,
       editedSkill: {...this.skill}
     }
   },
   computed: {},
   methods: {
-    onTick(value) {
+    onTick(skill) {
       this.$emit('onTick', this.skill.id);
     },
-    onTrash(item) {
+    onTrash(skill) {
       this.$emit('onTrash', this.skill.id);
     },
-    onEdit(value) {
-      console.log(value)
+    onEdit(skill) {
       this.$emit('onEdit', this.skill.id);
     },
-    onCross(value) {
+    onCross(skill) {
       console.log('asd', skill);
       this.$emit('onCross', this.skill.id);
     },

@@ -3,9 +3,8 @@
     SkillplankRow(
       :category="category"
       @onEditRow = "onEditRow"
-      @onTickRow = "onTickRow"
-      @onCrossRow = "onCrossRow"
-      @handleRow = "handleRow"
+      @onTickRow = "editSkillGroup"
+      @onCrossRow = "onTrash"
     )
     SkillplankList(
       :skills = "skills"
@@ -59,6 +58,29 @@ export default {
     SkillplankRow: () => import('./SkillplankRow.vue'),
   },
   methods: {
+    onEditRow(category) {
+      Vue.set(this.category, 'isEditRow', true);
+    },
+     ...categoriesMapActions(['editSkillGroup']),
+    async onTickRow (editedSkillGroup) { 
+      console.log(editedSkillGroup) 
+      try {
+        await this.editSkillGroup(this.editedCategory);
+      } catch (error) {
+        alert('Group was not edited')
+      }
+      Vue.set(this.category, 'isEditRow', false);
+    },
+    ...categoriesMapActions(['removeSkillGroup']),
+    async onTrash (categoryId) {
+    console.log("categoryId");
+      try {
+        await this.removeCategory(this.categoryId)
+        console.log("categoryId");
+      } catch (error) {
+        alert('Category was not removed')
+      }
+    },
     ...skillsMapActions(['addNewSkill']),
     async addSkill(newSkillData) {
       try {
@@ -69,7 +91,6 @@ export default {
       } catch (error) {
         alert('New skill did not add')
       }
-      // this.values.push(values);
     },
     ...skillsMapActions(['removeSkill', 'editSkill']),
     async onTrash (skillId) {
@@ -87,36 +108,16 @@ export default {
         alert('Skill was not edited')
       }
     },
-    ...categoriesMapActions(['editSkillGroup']),
-    async onTickRow (newCategoryData) {
-      try {
-        await this.editSkillGroup(this.editedSkillGroup)
-        Vue.set(this.category, 'isEditRow', false);
-      } catch (error) {
-        alert('Group was not edited')
-      }
-    },
-    handleRow(data) {
-      console.log();
-      this.categories = this.categories.map((el) => {
-        if (el.id !== data.categoryId) {
-          return el;
-        }
-
-        Vue.set(el, 'category', data.val);
-        return el;
-      });
-    },
     // onTrash () { 
     //   // this.values = this.values.filter(item => item.id !== valueId);
     // },
-    onEdit() { 
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
+    onEdit(skillId) { 
+      this.skills = this.skills.map((el) => {
+        if (el.id !== skillId ) {
           return el;
         }
 
-        Vue.set(el, 'isEdit', true);
+        Vue.set(this.skill, 'isEdit', true);
         return el;
       });
     },
@@ -189,10 +190,6 @@ export default {
 
         return el;
       });
-    },
-    onEditRow(categoryId) {
-      console.log("categoryId", categoryId);
-      Vue.set(this.category, 'isEditRow', true);
     },
     // onTickRow(valueId) {
     //   Vue.set(this.category, 'isEditRow', false);

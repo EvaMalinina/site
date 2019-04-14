@@ -2,8 +2,7 @@
   .block__row.block__row_first
     input.block__input.block__input_bb.block__input_first(
       name='newgroupname',
-      v-model="category.category", 
-      @input="handleInput(category, $event)",
+      v-model="input",
       required='',
       :disabled="!category.isEditRow ? true : false",
       :style="{pointerEvents: category.isEditRow ? 'auto' : 'none'}",
@@ -20,6 +19,13 @@
 
 <script>
 import Btns from './Btns'
+import { createNamespacedHelpers } from 'vuex';
+const {
+    mapActions: categoriesMapActions,
+    mapState: categoriesMapState,
+    mapGetters: categoriesMapGetters,
+    mapMutations: categoriesMapMutations
+} = createNamespacedHelpers('categories');
 
 export default {
   name: 'SkillplankRow',
@@ -35,7 +41,20 @@ export default {
     onCrossRow: Function,
     handleRow: Function
   },
-  computed: {},
+  computed: {
+    ...categoriesMapState( {
+      categories: state => state.inputVal   
+    }),
+
+    input: {
+      get () {
+        return this.$store.getters.inputVal;
+      },
+      set (value) {
+        this.$store.commit('handleInputVal', value)
+      }
+    }
+  },
   methods: {
     onTick(category) {
       this.$emit('onTickRow', this.category.id);
@@ -46,12 +65,13 @@ export default {
     onCross(category) {
       this.$emit('onCrossRow', this.category.id);
     },
-    handleInput(category, e) { 
-      this.$emit('handleRow', {
-        categoryId: category.id,
-        val: e.target.category
-      });
-    },
+    // handleInput(category, e) { 
+    //   console.log()
+    //   this.$emit('handleRow', {
+    //     categoryId: category.id,
+    //     val: e.target.value
+    //   });
+    // },
   },
   components: {
     Btns

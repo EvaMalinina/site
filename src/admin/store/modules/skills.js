@@ -37,7 +37,7 @@ export default  {
       try {
         const response = await this.$axios.get('/skills/129', skill);
         commit('SET_SKILLS', response.data)
-        return response;
+        return response; 
       } catch (error) {
         alert('Request to fetch skill invalid')
       }

@@ -1,7 +1,11 @@
 export default  {
   namespaced: true,
   state: { 
-    categories: []
+    categories: [],
+    inputVal: ''
+  },
+  getters: {
+    inputVal: (state) => state.inputVal
   },
   mutations: {
     SET_CATEGORIES: (state, categories) => {
@@ -11,6 +15,14 @@ export default  {
       state.categories = state.categories.map(category => 
         category.id === editedCategory.id ? editedCategory : category
       );
+    },
+    REMOVE_CATEGORIES: (state, deletedCategoryId) => {
+      state.categories = state.categories.filter(category => 
+        category.id !== deletedCategoryId
+      );
+    },
+    handleInputVal: (state, val) => {
+      state.inputVal = val;
     }
   },
   actions: {
@@ -44,6 +56,16 @@ export default  {
         throw new Error(error.response.data.error || error.response.data.message)
       }  
      },
+     async removeSkillGroup( {commit}, categoryId) {
+      console.log(categoryId);
+      try {
+        const response = await this.$axios.delete(`/categories/${categoryId}`);
+        commit('REMOVE_CATEGORIES', categoryId)
+        return response;
+      } catch (error) {
+        alert('Request to delete category invalid')
+      }
+    },
     async user({ commit }) {
       try {
         const response = await this.$axios.get('/user');
