@@ -3,8 +3,9 @@
     SkillplankRow(
       :category="category"
       @onEditRow = "onEditRow"
-      @onTickRow = "editSkillGroup"
-      @onCrossRow = "onTrash"
+      @onTickRow = "onTickRow"
+      @onCrossRow = "onTrashRow"
+      @handleRow = "handleRow"
     )
     SkillplankList(
       :skills = "skills"
@@ -29,16 +30,16 @@ import { logicalExpression } from 'babel-types';
 
 import { createNamespacedHelpers } from 'vuex';
 const {
-    mapActions: categoriesMapActions,
-    mapState: categoriesMapState,
-    mapGetters: categoriesMapGetters,
-    mapMutations: categoriesMapMutations
+  mapActions: categoriesMapActions,
+  mapState: categoriesMapState,
+  mapGetters: categoriesMapGetters,
+  mapMutations: categoriesMapMutations
 } = createNamespacedHelpers('categories');
 const {
-    mapActions: skillsMapActions,
-    mapState: skillsMapState,
-    mapGetters: skillsMapGetters,
-    mapMutations: skillsMapMutations
+  mapActions: skillsMapActions,
+  mapState: skillsMapState,
+  mapGetters: skillsMapGetters,
+  mapMutations: skillsMapMutations
 } = createNamespacedHelpers('skills');
 
 export default {
@@ -48,9 +49,7 @@ export default {
     skills: Array,
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   components: {
     SkillplankInput: () => import('./SkillplankInput.vue'),
@@ -58,30 +57,40 @@ export default {
     SkillplankRow: () => import('./SkillplankRow.vue'),
   },
   methods: {
+    ...categoriesMapActions([
+      'editSkillGroup',
+      'removeSkillGroup'
+    ]),
+    ...skillsMapActions([
+      'addNewSkill',
+      'removeSkill',
+      'editSkill'
+    ]),
+    ...categoriesMapMutations([
+      'HANDLE_CAT_NAME'
+    ]),
+
     onEditRow(category) {
       Vue.set(this.category, 'isEditRow', true);
     },
-     ...categoriesMapActions(['editSkillGroup']),
-    async onTickRow (editedSkillGroup) { 
-      console.log(editedSkillGroup) 
+
+    async onTickRow() {
       try {
-        await this.editSkillGroup(this.editedCategory);
+        await this.editSkillGroup(this.category.id);
       } catch (error) {
         alert('Group was not edited')
       }
       Vue.set(this.category, 'isEditRow', false);
     },
-    ...categoriesMapActions(['removeSkillGroup']),
-    async onTrash (categoryId) {
-    console.log("categoryId");
+
+    async onTrashRow() {
       try {
-        await this.removeCategory(this.categoryId)
-        console.log("categoryId");
+        await this.removeSkillGroup(this.category.id)
       } catch (error) {
         alert('Category was not removed')
       }
     },
-    ...skillsMapActions(['addNewSkill']),
+
     async addSkill(newSkillData) {
       try {
         await this.addNewSkill({
@@ -92,7 +101,7 @@ export default {
         alert('New skill did not add')
       }
     },
-    ...skillsMapActions(['removeSkill', 'editSkill']),
+
     async onTrash (skillId) {
       try {
         await this.removeSkill(this.skillId)
@@ -108,10 +117,10 @@ export default {
         alert('Skill was not edited')
       }
     },
-    // onTrash () { 
+    // onTrash () {
     //   // this.values = this.values.filter(item => item.id !== valueId);
     // },
-    onEdit(skillId) { 
+    onEdit(skillId) {
       this.skills = this.skills.map((el) => {
         if (el.id !== skillId ) {
           return el;
@@ -206,6 +215,12 @@ export default {
         return el;
       });
     },
+    handleRow(value) {
+      this['HANDLE_CAT_NAME']({
+        catId: this.category.id,
+        value
+      })
+    }
   },
 };
 </script>

@@ -31,7 +31,7 @@ export default {
   name: 'SkillplankRow',
   data () {
     return {
-      
+
     }
   },
   props: {
@@ -43,15 +43,15 @@ export default {
   },
   computed: {
     ...categoriesMapState( {
-      categories: state => state.inputVal   
+      categories: state => state.inputVal
     }),
 
     input: {
       get () {
-        return this.$store.getters.inputVal;
+        return this.category.category;
       },
       set (value) {
-        this.$store.commit('handleInputVal', value)
+        this.$emit('handleRow', value);
       }
     }
   },
@@ -65,7 +65,7 @@ export default {
     onCross(category) {
       this.$emit('onCrossRow', this.category.id);
     },
-    // handleInput(category, e) { 
+    // handleInput(category, e) {
     //   console.log()
     //   this.$emit('handleRow', {
     //     categoryId: category.id,

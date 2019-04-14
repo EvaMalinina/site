@@ -3,8 +3,6 @@
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
       :value="`${skill.title}`",
-      @input="handleName(skill, $event)",
-      @onCross="clearSkill(skill, $event)",
       required='',
       :disabled="!skill.isEdit ? true : false",
       :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
@@ -13,7 +11,6 @@
     input.block__input.block__input_unit.block__input_unit-perc(
       name='percent',
       :value="`${skill.percent}`",
-      @input="handlePrc(skill, $event)",
       @change="clearSkill(skill, $event)",
       required='',
       :class="skill.isEdit ? 'block__input_active' : ''"
@@ -27,7 +24,6 @@
       name='newskill',
       :value="`${editedSkill.title}`",
       @input="handleName(skill, $event)",
-      @onCross="clearSkill(skill, $event)",
       required='',
       :disabled="!skill.isEdit ? true : false",
       :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
