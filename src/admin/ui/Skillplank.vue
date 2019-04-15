@@ -13,14 +13,13 @@
       @onEdit = "onEdit"
       @onTick = "onTick"
       @onCross = "clearSkill"
-      @handleName="handleName"
-      @handlePrc="handlePrc"
+      @handleSkillName="handleSkillName"
+      @handleSkillPrc="handleSkillPrc"
 
     )
     SkillplankInput(
       @addSkill="addSkill"
     )
-
 
 </template>
 
@@ -46,7 +45,7 @@ export default {
   name: 'Skillplank',
   props: {
     category: Object,
-    skills: Array,
+    skills: Array
   },
   data() {
     return {}
@@ -69,6 +68,10 @@ export default {
     ...categoriesMapMutations([
       'HANDLE_CAT_NAME'
     ]),
+    ...skillsMapMutations([
+      'HANDLE_SKILL_NAME',
+      'HANDLE_PRCNT'
+    ]),
 
     onEditRow(category) {
       Vue.set(this.category, 'isEditRow', true);
@@ -90,6 +93,18 @@ export default {
         alert('Category was not removed')
       }
     },
+    
+    handleRow(value) {
+      this['HANDLE_CAT_NAME']({
+        catId: this.category.id,
+        value
+      })
+    },
+
+    onEdit(skill) {
+      console.log(skill);
+      Vue.set(this.skill, 'isEdit', true);
+    },
 
     async addSkill(newSkillData) {
       try {
@@ -103,33 +118,50 @@ export default {
     },
 
     async onTrash (skillId) {
+      console.log(skillId)
       try {
         await this.removeSkill(this.skillId)
       } catch (error) {
         alert('Skill was not removed')
       }
     },
-    async onTick(newSkillData) {
+
+    async onTick(skill) {
       try {
-        await this.editSkill(this.editedSkill)
-        this.isEdit = false;
+        await this.editSkill(this.skill.id)
       } catch (error) {
         alert('Skill was not edited')
       }
+      Vue.set(skill, 'isEdit', false);
     },
+
+    handleSkillName(value) {
+      this['HANDLE_SKILL_NAME']({
+        itemId: this.skill.id,
+        value
+      })
+    },
+
+    handleSkillPrc(value) {
+      this['HANDLE_PRCNT']({
+        itemId: this.skill.id,
+        value
+      })
+    },
+
     // onTrash () {
     //   // this.values = this.values.filter(item => item.id !== valueId);
     // },
-    onEdit(skillId) {
-      this.skills = this.skills.map((el) => {
-        if (el.id !== skillId ) {
-          return el;
-        }
+    // onEdit(skillId) {
+    //   this.skills = this.skills.map((el) => {
+    //     if (el.id !== skillId ) {
+    //       return el;
+    //     }
 
-        Vue.set(this.skill, 'isEdit', true);
-        return el;
-      });
-    },
+    //     Vue.set(this.skill, 'isEdit', true);
+    //     return el;
+    //   });
+    // },
     onTick(skillId) {
       let editeSkill = this.skills.find((el) => el.id === skillId);
       // валидация на проценты чтоб былон е больше 100
@@ -214,12 +246,6 @@ export default {
         // el.isCross = false;
         return el;
       });
-    },
-    handleRow(value) {
-      this['HANDLE_CAT_NAME']({
-        catId: this.category.id,
-        value
-      })
     }
   },
 };

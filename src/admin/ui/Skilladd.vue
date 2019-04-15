@@ -4,7 +4,7 @@
       :category="category"
       @onEditRow ="onEditRow"
       @onTickRow = "addSkillGroup"
-      @onCrossRow = "removeNewSkill"
+      @onCrossRow = "removeNewSkill" 
     )
 
     SkillplankList(
@@ -31,16 +31,12 @@ import { mapActions } from "vuex";
 export default {
   name: 'Skilladd',
   props: {
-    // category: Object,
     onHideNewSkill: Function,
     skills: Array,
   },
   data() {
     return {
-      category: {
-        
-      },
-      
+      category: {},  
     }
   },
   components: {
@@ -53,7 +49,6 @@ export default {
     async addSkillGroup() {
       try {
         await this.addNewSkillGroup(this.category.category);
-
         this.category.category = ""
       } catch (error) {
         alert(error.message)
@@ -78,7 +73,6 @@ export default {
         }
 
         Vue.set(el, 'name', data.val);
-        // el.isEdit = true;
         return el;
       });
     },
@@ -89,7 +83,6 @@ export default {
         }
 
         Vue.set(el, 'prc', data.prc);
-        // el.isEdit = true;
         return el;
       });
     },
@@ -101,22 +94,10 @@ export default {
 
         Vue.set(el, 'name', '');
         Vue.set(el, 'prc', '');
-        // event.target.reset();
 
         return el;
       });
-    },
-    // handleRow(data) {
-    //   this.values = this.values.map((el) => {
-    //     if (el.id !== data.valueId) {
-    //       return el;
-    //     }
-
-    //     Vue.set(el, 'name', data.val);
-    //     // el.isEdit = true;
-    //     return el;
-    //   });
-    // }
+    }
   }
 };
 </script>

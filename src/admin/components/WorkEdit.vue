@@ -6,7 +6,13 @@
       .work-edit.block-bg-white
         .title.block-edit__title Work editing
         .work-edit__body
-          .work-edit__left
+          label.work-edit__left
+            input(
+              type="file"
+              @change="appendFileAndRenderPhoto"
+              :class="{'filled': this.rendedPhotoUrl.lenth}"
+              :style="{'backgroundImage': `url(${this.rendedPhotoUrl})`}"
+            )
             .text.work-edit__left-text Drag or drop to load image
             .work-edit__left-btn
               .button.button-ellipse Download
@@ -42,7 +48,9 @@
                   .work-form__tag-close
                     button.button__tag-close
               .work-form__btns
-                button.button-ellipse.button-ellipse_bg-trsp Decline
+                button.button-ellipse.button-ellipse_bg-trsp(
+                  @click="decline"
+                ) Decline
                 button.button-ellipse(
                   @click="submit"
                 ) Save
@@ -56,7 +64,9 @@ export default {
   },
   data() {
     return {
-      title: ''
+      title: '',
+      rendedPhotoUrl: '',
+      photo: ''
     }
   },
   methods: {
@@ -69,6 +79,23 @@ export default {
         description: '',
         file: ''
       });
+    },
+    decline(valueId) {
+      this.$emit('onHideNewWork');
+    },
+    appendFileAndRenderPhoto(e) {
+      const file = e.target.files[0];
+      this.photo = file;
+
+      const reader = new FileReader();
+      try {
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.rendedPhotoUrl = reader.result;
+        }
+      } catch (error) {
+        alert('Ops...Something is wrong.')
+      }
     }
   }
 };

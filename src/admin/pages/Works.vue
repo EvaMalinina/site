@@ -3,6 +3,7 @@
       WorkEdit(
         v-if="showBlankEdit"
         @onSubmit="createNewItem"
+        @onHideNewWork="showBlankEdit = false"
       )
       WorkAdd(
         @handleShowBlankEdit="showBlankEdit = true"
@@ -12,8 +13,6 @@
 
 <script>
 import axios from 'axios';
-import WorkEdit from '../components/WorkEdit'
-import WorkAdd from '../components/WorkAdd'
 
 export default {
   name: 'Works',
@@ -55,8 +54,8 @@ export default {
     },
   },
   components: {
-    WorkEdit,
-    WorkAdd
+    WorkEdit: () => import("../components/WorkEdit.vue"),
+    WorkAdd: () => import("../components/WorkAdd.vue"),
   },
   created() {
     this.getItems();
@@ -66,10 +65,9 @@ export default {
 
 
  <style lang='pcss'>
-  .works {
-    grid-area: content;
-    display: flex;
-    flex-direction: column;
-
-  }
+.works {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+}
  </style>

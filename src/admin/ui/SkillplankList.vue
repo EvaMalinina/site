@@ -10,54 +10,52 @@
         @onEdit = "onEdit"
         @onTick = "onTick"
         @onCross = "clearSkill"
-        @handleName="handleName"
-        @handlePrc="handlePrc"
+        @handleSkillName="handleSkillName"
+        @handleSkillPrc="handleSkillPrc"
       )
 
 </template>
 
 <script>
-import SkillplankItem from './SkillplankItem'
 
-  export default {
-    name: 'SkillplankList',
-    data () {
-      return {
-
-      }
+export default {
+  name: 'SkillplankList',
+  data () {
+    return {}
+  },
+  props: {
+    skills: Array
+  },
+  computed: {},
+  methods: {
+    onTrash(skillId) {
+      this.$emit('onTrash', skillId);
     },
-    props: {
-      skills: Array
+    onEdit(skillId) {
+      console.log(skillId);
+      this.$emit('onEdit', skillId);
     },
-    computed: {},
-    methods: {
-      onTrash(skillId) {
-        this.$emit('onTrash', skillId);
-      },
-      onEdit(skillId) {
-        this.$emit('onEdit', skillId);
-      },
-      onTick(skillId) {
-        this.$emit('onTick', skillId); 
-      },
-      onCross(skillId) {
-        this.$emit('onCross', skillId);
-      },
-      handleName(data) {
-        this.$emit('handleName', data);
-      },
-      handlePrc(data) {
-        this.$emit('handlePrc', data);
-      },
-      clearSkill(data) {
-        // console.log(data);
-        this.$emit('onCross', data);
-      }
+    onTick(skill) {
+      this.$emit('onTick', skill); 
     },
-    components: {
-      SkillplankItem
+    onCross(skill) {
+      this.$emit('onCross', skill);
+    },
+    handleSkillName(data) {
+      this.$emit('handleSkillName', data);
+    },
+    handleSkillPrc(data) {
+      this.$emit('handleSkillPrc', data);
+    },
+    clearSkill(data) {
+      // console.log(data);
+      this.$emit('onCross', data);
     }
+  },
+  components: {
+    SkillplankItem: () => import('./SkillplankItem.vue')
   }
+}
 </script>
 
 

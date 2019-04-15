@@ -5,23 +5,21 @@
 </template>
 
 <script>
-import ReviewEdit from '../components/ReviewEdit'
-import ReviewAdd from '../components/ReviewAdd'
 
-  export default {
-    name: 'Reviews',
-    data () {
-      return {
+export default {
+  name: 'Reviews',
+  data () {
+    return {
 
-      }
-    },
-    computed: {},
-    methods: {},
-    components: {
-      ReviewEdit,
-      ReviewAdd
     }
+  },
+  computed: {},
+  methods: {},
+  components: {
+    ReviewEdit: () => import("../components/ReviewEdit.vue"),
+    ReviewAdd: () => import("../components/ReviewAdd.vue"),
   }
+}
 </script>
 
 

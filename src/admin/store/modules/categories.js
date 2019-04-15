@@ -4,7 +4,6 @@ export default  {
   namespaced: true,
   state: {
     categories: [],
-    inputVal: ''
   },
   getters: {
     inputVal: (state) => state.inputVal
@@ -22,9 +21,6 @@ export default  {
       state.categories = state.categories.filter(category =>
         category.id !== deletedCategoryId
       );
-    },
-    handleInputVal: (state, val) => {
-      state.inputVal = val;
     },
     HANDLE_CAT_NAME: (state, {catId, value}) => {
       console.log("value", value);

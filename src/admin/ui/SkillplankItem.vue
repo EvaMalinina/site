@@ -1,8 +1,9 @@
 <template lang='pug'>
-  .item(v-if = "isEditSkill === false")
+  .item
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
-      :value="`${skill.title}`",
+      
+      v-model="inputSkill"
       required='',
       :disabled="!skill.isEdit ? true : false",
       :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
@@ -10,42 +11,22 @@
     )
     input.block__input.block__input_unit.block__input_unit-perc(
       name='percent',
-      :value="`${skill.percent}`",
+      
+      v-model="inputPrc"
       @change="clearSkill(skill, $event)",
       required='',
       :class="skill.isEdit ? 'block__input_active' : ''"
       )
     Btns(
-      :onEdit="onEdit"
-      :onTrash="onTrash"
-    )
-  .item(v-else)
-    input.block__input.block__input_unit.block__input_unit-name(
-      name='newskill',
-      :value="`${editedSkill.title}`",
-      @input="handleName(skill, $event)",
-      required='',
-      :disabled="!skill.isEdit ? true : false",
-      :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
-      :class="skill.isEdit ? 'block__input_active' : ''"
-    )
-    input.block__input.block__input_unit.block__input_unit-perc(
-      name='percent',
-      :value="`${editedSkill.percent}`",
-      @input="handlePrc(skill, $event)",
-      @change="clearSkill(skill, $event)",
-      required='',
-      :class="skill.isEdit ? 'block__input_active' : ''"
-      )
-    Btns(
-      :onTick="onTick"
-      :onCross="onCross"
+      :onEdit="!skill.isEdit ? (() => onEdit(skill)) : false"
+      :onTrash="!skill.isEdit ? (() => onTrash(skill)) : false"
+      :onTick="skill.isEdit ? (() => onTick(skill)) : false"
+      :onCross="skill.isEdit ? (() => onCross(skill)) : false"
     )
 
 </template>
 
 <script>
-import Btns from "./Btns"
 
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions } = createNamespacedHelpers('skills');
@@ -56,12 +37,26 @@ export default {
     skill: Object
   },
   data () {
-    return {
-      isEditSkill: false,
-      editedSkill: {...this.skill}
-    }
+    return {}
   },
-  computed: {},
+  computed: {
+    inputSkill: {
+      get () {
+        return this.skill.title;
+      },
+      set (value) {
+        this.$emit('handleSkillName', value);
+      }
+    },
+    inputPrc: {
+      get () {
+        return this.skill.percent;
+      },
+      set (value) {
+        this.$emit('handleSkillPrc', value);
+      }
+    },
+  },
   methods: {
     onTick(skill) {
       this.$emit('onTick', this.skill.id);
@@ -70,36 +65,24 @@ export default {
       this.$emit('onTrash', this.skill.id);
     },
     onEdit(skill) {
+      console.log(skill);
       this.$emit('onEdit', this.skill.id);
     },
     onCross(skill) {
       console.log('asd', skill);
       this.$emit('onCross', this.skill.id);
     },
-    handleName(skill, e) {
-      this.$emit('handleName', {
-        valueId: skill.id,
-        val: e.target.skill
-      });
-    },
-    handlePrc(skill, e) {
-      console.log("skill", skill);
-      this.$emit('handlePrc', {
-        valueId: skill.id,
-        prc: e.target.skill
-      });
-    },
-    clearSkill(skill, e) {
-      console.log("e", e)
-      console.log("skill", skill);
-      this.$emit('clearSkill', {
-        valueId: skill.id,
-        val: e.target.skill
-      });
-    }
+    // clearSkill(skill, e) {
+    //   console.log("e", e)
+    //   console.log("skill", skill);
+    //   this.$emit('clearSkill', {
+    //     valueId: skill.id,
+    //     val: e.target.skill
+    //   });
+    // }
   },
   components: {
-    Btns
+    Btns: () => import('./Btns.vue')
   }
 }
 </script>

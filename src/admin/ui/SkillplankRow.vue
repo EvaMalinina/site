@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Btns from './Btns'
+
 import { createNamespacedHelpers } from 'vuex';
 const {
     mapActions: categoriesMapActions,
@@ -30,9 +30,7 @@ const {
 export default {
   name: 'SkillplankRow',
   data () {
-    return {
-
-    }
+    return {}
   },
   props: {
     category: Object,
@@ -42,10 +40,6 @@ export default {
     handleRow: Function
   },
   computed: {
-    ...categoriesMapState( {
-      categories: state => state.inputVal
-    }),
-
     input: {
       get () {
         return this.category.category;
@@ -64,17 +58,10 @@ export default {
     },
     onCross(category) {
       this.$emit('onCrossRow', this.category.id);
-    },
-    // handleInput(category, e) {
-    //   console.log()
-    //   this.$emit('handleRow', {
-    //     categoryId: category.id,
-    //     val: e.target.value
-    //   });
-    // },
+    }
   },
   components: {
-    Btns
+    Btns: () => import('./Btns.vue')
   }
 }
 </script>

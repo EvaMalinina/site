@@ -19,6 +19,28 @@ export default  {
       state.skills = state.skills.map(skill => 
         skill.id === editedSkill.id ? editedSkill : skill
       );
+    },
+    HANDLE_SKILL_NAME: (state, {itemId, value}) => {
+      console.log("value", value);
+      console.log("itemId", itemId);
+      state.skills = state.skills.map((item) => {
+        if (item.id === itemId) {
+          Vue.set(item, 'title', value);
+        }
+
+        return item;
+      });
+    },
+    HANDLE_PRCNT: (state, {itemId, value}) => {
+      console.log("value", value);
+      console.log("itemId", itemId);
+      state.skills = state.skills.map((item) => {
+        if (item.id === itemId) {
+          Vue.set(item, 'percent', value);
+        }
+
+        return item;
+      });
     }
   },
   actions: {
@@ -43,7 +65,7 @@ export default  {
       }
     },
     async removeSkill( {commit}, skillId) {
-      console.log();
+      console.log(skillId);
       try {
         const response = await this.$axios.delete(`/skills/${skillId}`);
         commit('REMOVE_SKILL', skillId)
@@ -52,9 +74,14 @@ export default  {
         alert('Request to delete skill invalid')
       }
     },
-    async editSkill( {commit}, skill) {
+    async editSkill( {state, commit}, skillId) {
+      let skill = state.skills.find((item) => item.id === itemId);
       try {
-        const response = await this.$axios.post(`/skills/${skill.id}`, skill);
+        const response = await this.$axios.post(`/skills/${skill.id}`, {
+          title: skill.title,
+          percent: skill.percent,
+          category: skill.id
+      });
         commit('EDIT_SKILL', response.data.skill)
         return response;
       } catch (error) {
