@@ -6,6 +6,7 @@ export default  {
   actions: {
     addNewWorkExample(store, WorkExample) {
       console.log(WorkExample);
-    }  
+    },
+     
   },
 }

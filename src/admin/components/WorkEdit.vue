@@ -5,13 +5,14 @@
         .block-info__name Block «My works»
       .work-edit.block-bg-white
         .title.block-edit__title Work editing
-        .work-edit__body
-          label.work-edit__left
+        label.work-edit__body
+          .work-edit__left(
+            :class="{'filled': this.rendedPhotoUrl.lenth}"
+            :style="{'backgroundImage': `url(${this.rendedPhotoUrl})`}"
+          )
             input(
               type="file"
-              @change="appendFileAndRenderPhoto"
-              :class="{'filled': this.rendedPhotoUrl.lenth}"
-              :style="{'backgroundImage': `url(${this.rendedPhotoUrl})`}"
+              @change="appendFileAndRenderPhoto" 
             )
             .text.work-edit__left-text Drag or drop to load image
             .work-edit__left-btn
@@ -66,7 +67,9 @@ export default {
     return {
       title: '',
       rendedPhotoUrl: '',
-      photo: ''
+      workExample: {
+        photo: ''
+      } 
     }
   },
   methods: {
@@ -85,7 +88,7 @@ export default {
     },
     appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];
-      this.photo = file;
+      this.workExample.photo = file;
 
       const reader = new FileReader();
       try {
@@ -103,6 +106,10 @@ export default {
 
 <style lang="pcss">
 @import "../../styles/mixins.pcss";
+input {
+  display: flex;
+  z-index: -10;
+}
 .content-work {
   background-color:#f7f9fe;
 }
@@ -147,8 +154,21 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 25px;
+  padding-bottom: 25px;  
 }
+.work-edit__left{
+  &.filled {
+    background: center center no-repeat / cover;
+
+    &.work-edit__left-text{
+      display: none;
+    }
+    &.work-edit__left-btn{
+      display: none;
+    }
+  }
+}
+
 .work-edit__left-text {
   width: 21%;
   text-align: center;
