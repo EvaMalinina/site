@@ -2,16 +2,15 @@
   .item
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
-      
-      v-model="inputSkill"
+      v-model="inputSkill",
+      @change="clearSkill(skill, $event)",
       required='',
       :disabled="!skill.isEdit ? true : false",
       :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
       :class="skill.isEdit ? 'block__input_active' : ''"
     )
     input.block__input.block__input_unit.block__input_unit-perc(
-      name='percent',
-      
+      name='percent',   
       v-model="inputPrc"
       @change="clearSkill(skill, $event)",
       required='',
@@ -34,7 +33,7 @@ const { mapState, mapActions } = createNamespacedHelpers('skills');
 export default {
   name: 'SkillplankItem',
   props: {
-    skill: Object
+    skill: Object 
   },
   data () {
     return {}
@@ -59,14 +58,14 @@ export default {
   },
   methods: {
     onTick(skill) {
-      this.$emit('onTick', this.skill.id);
+      this.$emit('onTick', skill.id);
     },
     onTrash(skill) {
-      this.$emit('onTrash', this.skill.id);
+      this.$emit('onTrash', skill.id);
     },
     onEdit(skill) {
       console.log(skill);
-      this.$emit('onEdit', this.skill.id);
+      this.$emit('onEdit', skill.id);
     },
     onCross(skill) {
       console.log('asd', skill);

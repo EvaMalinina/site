@@ -5,7 +5,7 @@
       @onEditRow = "onEditRow"
       @onTickRow = "onTickRow"
       @onCrossRow = "onTrashRow"
-      @handleRow = "handleRow"
+      @handleRow = "handleRow"  
     )
     SkillplankList(
       :skills = "skills"
@@ -102,8 +102,11 @@ export default {
     },
 
     onEdit(skill) {
-      console.log(skill);
-      Vue.set(this.skill, 'isEdit', true);
+      console.log(value);
+      this['HANDLE_SKILL']({
+        skillId: skill.id,
+        value: true
+      })
     },
 
     async addSkill(newSkillData) {
@@ -120,7 +123,7 @@ export default {
     async onTrash (skillId) {
       console.log(skillId)
       try {
-        await this.removeSkill(this.skillId)
+        await this.removeSkill(skillId)
       } catch (error) {
         alert('Skill was not removed')
       }

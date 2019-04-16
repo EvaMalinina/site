@@ -7,7 +7,7 @@
         .title.block-edit__title Work editing
         label.work-edit__body
           .work-edit__left(
-            :class="{'filled': this.rendedPhotoUrl.lenth}"
+            :class="{'filled': this.rendedPhotoUrl.length}"
             :style="{'backgroundImage': `url(${this.rendedPhotoUrl})`}"
           )
             input(
@@ -23,15 +23,27 @@
               label.work-form__block
                 .work-form__block-title.text Title
                 input.work-form__input(
-                  name='work-form-title', placeholder='Design of website for auto salon', required='',
-                  v-model="title"
+                  name='work-form-title', 
+                  placeholder='Design of website for auto salon', 
+                  required='',
+                  v-model="inputTitle"
                 )
               label.work-form__block
                 .work-form__block-title.text Link
-                input.work-form__input(name='work-form-link', placeholder='https://afterhoursautosalon.com', required='')
+                input.work-form__input(
+                  name='work-form-link', 
+                  placeholder='https://afterhoursautosalon.com', 
+                  required='',
+                  v-model="inputLink"
+                  )
+              
               label.work-form__block
                 .work-form__block-title.text Description
-                textarea.work-form__textarea(name="text", cols="10", rows="8", placeholder='Each of our Detail Experts have a background in car care that spans far beyond just your basic car care needs. Each member of our team is an avid enthusiast of all cars and trucks, attending regional events and shows, where we enter our own vehicles for judging throughout the season.' )
+                textarea.work-form__textarea(
+                  name="text", cols="10", rows="8", 
+                  placeholder='Each of our Detail Experts have a background in car care that spans far beyond just your basic car care needs. Each member of our team is an avid enthusiast of all cars and trucks, attending regional events and shows, where we enter our own vehicles for judging throughout the season.'
+                
+                )
               label.work-form__block
                 .work-form__block-title.text Add tag
                 input.work-form__input(name='work-form-tag', placeholder='Jquery, Vue.js, HTML5', required='')
@@ -61,26 +73,56 @@
 export default {
   name: 'WorkEdit',
   props: {
-    onSubmit: Function
+    onSubmit: Function,
   },
   data() {
-    return {
-      title: '',
+    return {  
       rendedPhotoUrl: '',
       workExample: {
-        photo: ''
-      } 
+        title: '',
+        techs: '',
+        photo: '',
+        link: '',
+        description: ''
+      }
     }
+  },
+  computed: {
+    inputTitle: {
+      get () {
+        return this.title;
+      },
+      set (value) {
+        this.$emit('handleTitle', value);
+      }
+    },
+    inputLink: {
+      get () {
+        return this.percent;
+      },
+      set (value) {
+        this.$emit('handleLink', value);
+      }
+    },
   },
   methods: {
     submit() {
       console.log('sdsf');
 
       this.$emit('onSubmit', {
-        title: this.title,
-        link: '',
+        // workExample: {
+        //   title: '',
+        //   techs: '',
+        //   photo: '',
+        //   link: '',
+        //   description: ''
+        // } 
+        title: '',
+        techs: '',
         description: '',
-        file: ''
+        file: '',
+        link: '',
+        description: ''
       });
     },
     decline(valueId) {

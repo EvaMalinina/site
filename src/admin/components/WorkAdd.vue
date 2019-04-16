@@ -7,9 +7,7 @@
             @click="showBlankEdit"
           ) +
           .workadd__text Add work
-        //- BlankEdit(
-        //-   v-if="showBlankEdit"
-        //- )
+        
         BlankReady(
           v-if="false"
         )
@@ -31,7 +29,6 @@ export default {
   },
   data () {
     return {
-      // showBlankEdit: false,
     }
   },
   components: {

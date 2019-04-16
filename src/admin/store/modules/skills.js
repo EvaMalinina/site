@@ -41,6 +41,15 @@ export default  {
 
         return item;
       });
+    },
+    HANDLE_SKILL: (state, {skillId, value}) => {
+      console.log("skillId", skillId);
+      state.skills = state.skills.map((skill) => {
+        if (skill.id === skillId) {
+          Vue.set(skill, 'isEdit', value);
+        }
+        return skill;
+      });
     }
   },
   actions: {
