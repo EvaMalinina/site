@@ -1,5 +1,5 @@
 <template lang="pug">
-  .content
+  .content 
     .container
       .block-info
         .block-info__name Block «About me»

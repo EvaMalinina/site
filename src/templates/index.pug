@@ -41,7 +41,7 @@ html(lang="en")
               .header__socials
                 +socials('socials', ["insta", "vk", "github"])
 
-            .hero__content
+            #Home.hero__content
               .user
                 .user__desc Web developer
                   br
@@ -55,7 +55,7 @@ html(lang="en")
                 .scroll__pic
                  +icon('scroll', 'scroll__icon')
         section#aboutme.about
-          .container.container_about
+          .container.container_about(id='About me')
             .about__left
               .about__photo
                 +image('content/14.jpg', 'about__pic')
@@ -80,7 +80,7 @@ html(lang="en")
           svg(fill="#ffffff", viewbox="0 0 900 120", class="triangle", preserveAspectRatio="none")
             polygon(points="0,120 900,120 900,0")
 
-      section.skills
+      section#Skills.skills
         .container
           .skills__info
             .skills__bag
@@ -91,7 +91,7 @@ html(lang="en")
               #skills-component
 
 
-      section.works-section
+      section#Experience.works-section
         .container
           .works__title.title.title_fz36 My projects
           .works__block
@@ -117,7 +117,7 @@ html(lang="en")
             polygon(points="-5,-5 900,-5 -5,95" fill="#ffffff")
 
         .container
-          section.last-review
+          section#Reviews.last-review
             .reviews
               .title.title_mb100.title_fz36 What people tell
               include ../data/reviews.json 
@@ -132,24 +132,24 @@ html(lang="en")
                   },
                   {
                     quoteicon: 'quote',
-                    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+                    text: 'This code will pass any tests. Kust please do not load the website on too old browsers. The website is adapted also for gadgets and phones.',
                     personpic: 'vladimir-sabantsev.jpg',
                     personname: 'Vladymyr Sabantsev',
-                    personjob: 'Founder of LoftSchool' 
+                    personjob: 'Tutor' 
                   },
                   {
                     quoteicon: 'quote',
                     text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
-                    personpic: 'vladimir-sabantsev.jpg',
+                    personpic: 'dmitryi-kovalchuk.jpg',
                     personname: 'Vladymyr Sabantsev',
                     personjob: 'Founder of LoftSchool'  
                   },
                   {
                     quoteicon: 'quote',
-                    text: 'This girl was not learning web development somewhere, but at LoftSchool! 4.5 months only the most difficult trials and sleepless nights!',
+                    text: 'This code will pass any tests. Just please do not load the website on too old browsers. The website is adapted also for gadgets and phones.',
                     personpic: 'vladimir-sabantsev.jpg',
                     personname: 'Vladymyr Sabantsev',
-                    personjob: 'Founder of LoftSchool' 
+                    personjob: 'Tutor' 
                   }
                 ];
               include ./components/reviews.pug
@@ -157,7 +157,7 @@ html(lang="en")
 
               #reviews-component
 
-          section.last-form
+          section#Contact.last-form
             .title.title_mb100.titile_mb60 Contact me
               form.order-form(action="")
                 .form__row

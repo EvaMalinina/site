@@ -1,38 +1,38 @@
 [
   {
     "id": 1,
-    "title": "1 Сайт школы онлайн образования",
+    "title": "Travel website",
     "skills": "Html, Css, JavaScript",
     "photo": "1.jpg",
     "link": "//google.com",
-    "desc": "1 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "desc": "A social travel website is a type of travel website that will look at where the user is going and pair them with other places they want to go based on where other people have gone.",
     "icon":"`../images/icons/link.svg`"
   },
   {
     "id": 2,
-    "title": "2 Сайт школы онлайн образования",
-    "skills": "2 Html, Css, JavaScript",
+    "title": "Photographer website",
+    "skills": "Html, SCSS, JavaScript",
     "photo": "2.jpg",
     "link": "//yandex.ru",
-    "desc": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "desc": "As a photographer, your portfolio website is your business card in the digital world. ",
     "icon":"`../images/icons/link.svg`"
   },
   {
     "id": 3,
-    "title": "3 Сайт школы онлайн образования",
-    "skills": "3 Html, Css, JavaScript",
+    "title": "Shop website",
+    "skills": "Html, PCSS, JavaScript",
     "photo": "3.jpg",
     "link": "//rambler.ru",
-    "desc": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "desc": "Promote your business, showcase your art, set up an online shop or just test out new ideas. ",
     "icon":"`../images/icons/link.svg`"
   },
   {
     "id": 4,
-    "title": "4 Сайт школы онлайн образования",
-    "skills": "4 Html, Css, JavaScript",
+    "title": "Website for artist",
+    "skills": "Html, Css, JavaScript",
     "photo": "4.jpg",
     "link": "//rambler.ru",
-    "desc": "4 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!",
+    "desc": "If you're an artist in today's digital-centric environment, you're going to need to create a website to broadcast your portfolio. Let's do it!",
     "icon":"`../images/icons/link.svg`"
   }
 ]

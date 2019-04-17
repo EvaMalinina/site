@@ -8,4 +8,5 @@ import "../scripts/skills";
 import "../scripts/works";
 import "../scripts/reviews";
 import "../scripts/humburger";
+import "../scripts/scroll";
 
