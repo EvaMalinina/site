@@ -31,9 +31,9 @@ export default {
     onTrash(skillId) {
       this.$emit('onTrash', skillId);
     },
-    onEdit(skillId) {
-      console.log(skillId);
-      this.$emit('onEdit', skillId);
+    onEdit(skill) {
+      console.log(skill);
+      this.$emit('onEdit', skill);
     },
     onTick(skill) {
       this.$emit('onTick', skill); 

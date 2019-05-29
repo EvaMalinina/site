@@ -70,7 +70,8 @@ export default {
     ]),
     ...skillsMapMutations([
       'HANDLE_SKILL_NAME',
-      'HANDLE_PRCNT'
+      'HANDLE_PRCNT',
+      'HANDLE_SKILL'
     ]),
 
     onEditRow(category) {
@@ -102,10 +103,11 @@ export default {
     },
 
     onEdit(skill) {
-      console.log(value);
+      console.log(skill);
       this['HANDLE_SKILL']({
+        skill: skill,
         skillId: skill.id,
-        value: true
+        isEdit: true
       })
     },
 
