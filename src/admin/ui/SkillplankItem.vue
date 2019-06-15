@@ -64,11 +64,11 @@ export default {
       this.$emit('onTrash', skill.id);
     },
     onEdit(skill) {
-      console.log("skill", skill);
+      console.log('skill', skill);
       this.$emit('onEdit', skill);
     },
     onCross(skill) {
-      console.log('asd', skill);
+      console.log('skill', skill);
       this.$emit('onCross', this.skill.id);
     },
     // clearSkill(skill, e) {

@@ -42,7 +42,7 @@ export default  {
         return item;
       });
     },
-    HANDLE_SKILL: (state, {skill, value}) => {
+    HANDLE_SKILL: (state, {skill, skillId, value}) => {
       console.log("skill", skill);
       state.skills = state.skills.map((skill) => {
         if (skill.id === skillId) {

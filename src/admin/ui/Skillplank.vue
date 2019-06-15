@@ -107,7 +107,7 @@ export default {
       this['HANDLE_SKILL']({
         skill: skill,
         skillId: skill.id,
-        isEdit: true
+        value: true
       })
     },
 
