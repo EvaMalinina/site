@@ -3,7 +3,6 @@
     input.block__input.block__input_unit.block__input_unit-name(
       name='newskill',
       v-model="inputSkill",
-      @change="clearSkill(skill, $event)",
       required='',
       :disabled="!skill.isEdit ? true : false",
       :style="{pointerEvents: skill.isEdit ? 'auto' : 'none'}",
@@ -12,7 +11,6 @@
     input.block__input.block__input_unit.block__input_unit-perc(
       name='percent',   
       v-model="inputPrc"
-      @change="clearSkill(skill, $event)",
       required='',
       :class="skill.isEdit ? 'block__input_active' : ''"
       )
@@ -33,7 +31,9 @@ const { mapState, mapActions } = createNamespacedHelpers('skills');
 export default {
   name: 'SkillplankItem',
   props: {
-    skill: Object 
+    skill: Object,
+    handleSkillName: Function,
+    handleSkillPrc: Function
   },
   data () {
     return {}
@@ -64,21 +64,11 @@ export default {
       this.$emit('onTrash', skill.id);
     },
     onEdit(skill) {
-      console.log('skill', skill);
       this.$emit('onEdit', skill);
     },
     onCross(skill) {
-      console.log('skill', skill);
-      this.$emit('onCross', this.skill.id);
-    },
-    // clearSkill(skill, e) {
-    //   console.log("e", e)
-    //   console.log("skill", skill);
-    //   this.$emit('clearSkill', {
-    //     valueId: skill.id,
-    //     val: e.target.skill
-    //   });
-    // }
+      this.$emit('onCross', skill);
+    }
   },
   components: {
     Btns: () => import('./Btns.vue')

@@ -12,7 +12,7 @@
       @onTrash = "onTrash"
       @onEdit = "onEdit"
       @onTick = "onTick"
-      @onCross = "clearSkill"
+      @onCross = "onCrossClear"
       @handleSkillName="handleSkillName"
       @handleSkillPrc="handleSkillPrc"
 
@@ -71,7 +71,8 @@ export default {
     ...skillsMapMutations([
       'HANDLE_SKILL_NAME',
       'HANDLE_PRCNT',
-      'HANDLE_SKILL'
+      'HANDLE_SKILL',
+      'CLEAR_SKILL'
     ]),
 
     onEditRow(category) {
@@ -103,11 +104,19 @@ export default {
     },
 
     onEdit(skill) {
-      console.log(skill);
       this['HANDLE_SKILL']({
         skill: skill,
         skillId: skill.id,
         value: true
+      })
+    },
+
+    onCrossClear(skill) {
+      console.log("skill", skill);
+      this['CLEAR_SKILL']({
+        skill: skill,
+        skillId: skill.id,
+        value: false
       })
     },
 
@@ -142,115 +151,39 @@ export default {
 
     handleSkillName(value) {
       this['HANDLE_SKILL_NAME']({
-        itemId: this.skill.id,
+        skillId: this.skill.id,
         value
       })
     },
 
     handleSkillPrc(value) {
       this['HANDLE_PRCNT']({
-        itemId: this.skill.id,
+        skillId: this.skill.id,
         value
       })
     },
 
-    // onTrash () {
-    //   // this.values = this.values.filter(item => item.id !== valueId);
-    // },
-    // onEdit(skillId) {
-    //   this.skills = this.skills.map((el) => {
-    //     if (el.id !== skillId ) {
-    //       return el;
-    //     }
+    // onTick(skillId) {
+      
+    //   // let editeSkill = this.skills.find((el) => el.id === skillId);
+    //   // // валидация на проценты чтоб былон е больше 100
+    //   // if (editeSkill.percent > 100) {
+    //   //   alert('Проценты не могут быть больше 100');
+    //   //   return;
+    //   // }
 
-    //     Vue.set(this.skill, 'isEdit', true);
-    //     return el;
-    //   });
+    //   // -> /skills/{id} отправляешь запрос на бекенд на сохранения измененных данных
+    //   // -> после удачного завершения запроса, ты выполняешь код дальше.
+    //   // в противном случае return;
     // },
-    onTick(skillId) {
-      let editeSkill = this.skills.find((el) => el.id === skillId);
-      // валидация на проценты чтоб былон е больше 100
-      if (editeSkill.percent > 100) {
-        alert('Проценты не могут быть больше 100');
-        return;
+
+    async onTick() {
+      try {
+        await this.editSkill(this.skill.id);
+      } catch (error) {
+        alert('Skill was not edited')
       }
-
-      // -> /skills/{id} отправляешь запрос на бекенд на сохранения измененных данных
-      // -> после удачного завершения запроса, ты выполняешь код дальше.
-      // в противном случае return;
-
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEdit', false);
-        // el.isEdit = true;
-        return el;
-      });
-    },
-    onCross(valueId) {
-      console.log("valueId", valueId);
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEdit', false);
-        // el.isCross = false;
-        return el;
-      });
-    },
-    handleName(data) {
-      this.values = this.values.map((el) => {
-        if (el.id !== data.valueId) {
-          return el;
-        }
-
-        Vue.set(el, 'name', data.val);
-        // el.isEdit = true;
-        return el;
-      });
-    },
-    handlePrc(data) {
-      this.values = this.values.map((el) => {
-        if (el.id !== data.valueId) {
-          return el;
-        }
-
-        Vue.set(el, 'prc', data.prc);
-        // el.isEdit = true;
-        return el;
-      });
-    },
-    clearSkill(valueId) {
-
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId) {
-          return el;
-        }
-
-        Vue.set(el, 'name', '');
-        Vue.set(el, 'prc', '');
-        // event.target.reset();
-
-        return el;
-      });
-    },
-    // onTickRow(valueId) {
-    //   Vue.set(this.category, 'isEditRow', false);
-    // },
-    onCrossRow(valueId) {
-      // console.log(this);
-      this.values = this.values.map((el) => {
-        if (el.id !== valueId ) {
-          return el;
-        }
-
-        Vue.set(el, 'isEditRow', false);
-        // el.isCross = false;
-        return el;
-      });
+      Vue.set(this.skill, 'isEdit', false);
     }
   },
 };

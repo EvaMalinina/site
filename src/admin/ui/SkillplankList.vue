@@ -9,7 +9,7 @@
         @onTrash = "onTrash"
         @onEdit = "onEdit"
         @onTick = "onTick"
-        @onCross = "clearSkill"
+        @onCross = "onCross"
         @handleSkillName="handleSkillName"
         @handleSkillPrc="handleSkillPrc"
       )
@@ -31,25 +31,20 @@ export default {
     onTrash(skillId) {
       this.$emit('onTrash', skillId);
     },
-    onEdit(skill) {
-      console.log(skill);
-      this.$emit('onEdit', skill);
+    onEdit(skillId) {
+      this.$emit('onEdit', skillId);
     },
     onTick(skill) {
       this.$emit('onTick', skill); 
     },
+    handleSkillName(value) {
+      this.$emit('handleSkillName', value);
+    },
+    handleSkillPrc(value) {
+      this.$emit('handleSkillPrc', value);
+    },
     onCross(skill) {
       this.$emit('onCross', skill);
-    },
-    handleSkillName(data) {
-      this.$emit('handleSkillName', data);
-    },
-    handleSkillPrc(data) {
-      this.$emit('handleSkillPrc', data);
-    },
-    clearSkill(data) {
-      // console.log(data);
-      this.$emit('onCross', data);
     }
   },
   components: {

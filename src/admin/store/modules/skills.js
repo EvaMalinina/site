@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 export default  {
   namespaced: true,
   state: {
@@ -20,33 +22,44 @@ export default  {
         skill.id === editedSkill.id ? editedSkill : skill
       );
     },
-    HANDLE_SKILL_NAME: (state, {itemId, value}) => {
+    HANDLE_SKILL_NAME: (state, {skillId, value}) => {
       console.log("value", value);
-      console.log("itemId", itemId);
-      state.skills = state.skills.map((item) => {
-        if (item.id === itemId) {
-          Vue.set(item, 'title', value);
+      console.log("skillId", skillId);
+      state.skills = state.skills.map((skill) => {
+        if (skill.id === skillId) {
+          Vue.set(skill, 'title', value);
         }
 
-        return item;
+        return skill;
       });
     },
-    HANDLE_PRCNT: (state, {itemId, value}) => {
+    HANDLE_PRCNT: (state, {skillId, value}) => {
       console.log("value", value);
-      console.log("itemId", itemId);
-      state.skills = state.skills.map((item) => {
-        if (item.id === itemId) {
-          Vue.set(item, 'percent', value);
+      console.log("skillId", skillId);
+      state.skills = state.skills.map((skill) => {
+        if (skill.id === skillId) {
+          Vue.set(skill, 'percent', value);
         }
 
-        return item;
+        return skill;
       });
     },
     HANDLE_SKILL: (state, {skill, skillId, value}) => {
+      state.skills = state.skills.map((skill) => {
+        if (skill.id === skillId) {
+          Vue.set(skill, 'isEdit', value);
+        }
+        return skill;
+      });
+    },
+
+    CLEAR_SKILL: (state, {skill, skillId, value}) => {
       console.log("skill", skill);
       state.skills = state.skills.map((skill) => {
         if (skill.id === skillId) {
           Vue.set(skill, 'isEdit', value);
+          Vue.set(skill, 'title', '');
+          Vue.set(skill, 'percent', '');
         }
         return skill;
       });
@@ -84,7 +97,7 @@ export default  {
       }
     },
     async editSkill( {state, commit}, skillId) {
-      let skill = state.skills.find((item) => item.id === itemId);
+      let skill = state.skills.find((item) => item.id === skillId);
       try {
         const response = await this.$axios.post(`/skills/${skill.id}`, {
           title: skill.title,
