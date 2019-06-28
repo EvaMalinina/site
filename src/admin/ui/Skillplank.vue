@@ -150,6 +150,7 @@ export default {
     },
 
     handleSkillName(value) {
+      console.log(value);
       this['HANDLE_SKILL_NAME']({
         skillId: this.skill.id,
         value

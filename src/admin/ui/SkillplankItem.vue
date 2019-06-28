@@ -44,6 +44,7 @@ export default {
         return this.skill.title;
       },
       set (value) {
+        console.log(value);
         this.$emit('handleSkillName', value);
       }
     },
@@ -52,13 +53,14 @@ export default {
         return this.skill.percent;
       },
       set (value) {
+        console.log(value);
         this.$emit('handleSkillPrc', value);
       }
     },
   },
   methods: {
     onTick(skill) {
-      this.$emit('onTick', skill.id);
+      this.$emit('onTick', skill);
     },
     onTrash(skill) {
       this.$emit('onTrash', skill.id);

@@ -31,16 +31,18 @@ export default {
     onTrash(skillId) {
       this.$emit('onTrash', skillId);
     },
-    onEdit(skillId) {
-      this.$emit('onEdit', skillId);
+    onEdit(skill) {
+      this.$emit('onEdit', skill);
     },
     onTick(skill) {
       this.$emit('onTick', skill); 
     },
     handleSkillName(value) {
+      console.log(value);
       this.$emit('handleSkillName', value);
     },
     handleSkillPrc(value) {
+      console.log(value);
       this.$emit('handleSkillPrc', value);
     },
     onCross(skill) {
