@@ -52,7 +52,7 @@
   ],
   "dependencies": {
     "ajv": "^6.10.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "flickity": "^2.2.0",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
