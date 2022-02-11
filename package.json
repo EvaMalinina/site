@@ -51,7 +51,7 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "axios": "^0.18.0",
     "flickity": "^2.2.0",
     "normalize.css": "^8.0.1",
